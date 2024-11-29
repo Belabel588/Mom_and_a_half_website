@@ -1,12 +1,12 @@
 import { HashRouter as Router } from 'react-router-dom'
 
 import { useState } from 'react'
-// import './main.css'
 import { AppHeader } from './cmps/AppHeader'
+import './assets/styles/main.scss'
 
 export function App() {
   return <Router>
-    <section>
+    <section className='app-main-layout'>
       <AppHeader />
     </section>
   </Router>
