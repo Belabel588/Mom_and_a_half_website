@@ -1,9 +1,23 @@
-
-
-
 // pages
 @import './app.scss';
 
 // cmps
 
 @import './cmps/AppHeader.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+}
+
+// You can also apply the 'Rubik' font to specific elements
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rubik', sans-serif;
+}
