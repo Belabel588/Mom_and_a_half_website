@@ -18,6 +18,13 @@
   }
 
 
+  .hero-img:hover{
+    filter: brightness(50%);
+    cursor:pointer;
+    transition: 0.5s;
+  }
+
+
   .hero-section-text{
     position:absolute;
     
