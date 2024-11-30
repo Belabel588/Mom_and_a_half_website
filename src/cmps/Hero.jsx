@@ -8,7 +8,7 @@ export function Hero() {
       </div>
 
       <div className="hero-section-text">
-        <p>מלווה הורים <br></br>  להורות כייפית ושמחה </p>
+        <p>מלווה הורים להורות כייפית ושמחה </p>
       </div>
 
     </section>

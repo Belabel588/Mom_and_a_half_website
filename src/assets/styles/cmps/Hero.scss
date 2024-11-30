@@ -2,10 +2,15 @@
   display: flex;
   position: relative;
 
-
   // background-image: url('../src/assets/styles/imgs/images/Hero-img-3.jpg');
   // width: 100vw;
   // height: 100vh;
+
+  animation:appear linear;
+  // animation-timeline:view();
+  animation-range:entry 0% cover 100%;
+  animation-duration: 0.8s;
+  
   
   
   .hero-img {
@@ -30,14 +35,14 @@
     
     // color:rgb(255, 204, 204);
     color:var(--primary-pink);
-    font-size: 2.8rem;
+    font-size: 4rem;
     text-align:  right;
-    width:35%;
-    top:27%;
-    left:31.5%;
+    width:50%;
+    top:22%;
+    left:17%;
     // font-family: "Rubik", sans-serif;
     font-family: var(--rubik);
-    font-weight: 500;
+    font-weight: 700;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   }
 

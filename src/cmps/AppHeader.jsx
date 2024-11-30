@@ -1,7 +1,21 @@
 export function AppHeader() {
+
+
+  // const handleScroll = (event) => {
+  //   event.preventDefault();
+  //   const targetId = event.currentTarget.getAttribute("href").substring(1);
+  //   const targetElement = document.getElementById(targetId);
+  //   if (targetElement) {
+  //     window.scrollTo({
+  //       top: targetElement.offsetTop,
+  //       behavior: "smooth"
+  //     });
+  //   }
+  // };
+
   return (
     <header>
-      <div className="web-main-header">
+      <div id="web-main-header">
 
 
 
@@ -24,7 +38,7 @@ export function AppHeader() {
 
         <div>
           <nav className="app-header-main-nav">
-            <a className="app-header-main-link" href="#">מתמודדים</a>
+            <a className="app-header-main-link" href="#issue-section">מתמודדים</a>
             <a className="app-header-main-link" href="#">אני מאמין</a>
             <a className="app-header-main-link" href="#">קצת עליי</a>
           </nav>
