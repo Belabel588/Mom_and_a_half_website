@@ -4,12 +4,12 @@ export function AppHeader() {
       <div className="web-main-header">
 
 
+
         <div className="main-header-logo">
           <img className="main-header-logo-img"
             src="../src/assets/styles/imgs/logos/logo-pink-circle-shay.png"
             alt="mom and a half logo" />
         </div>
-
 
         <div>
           <nav className="app-header-main-nav">
