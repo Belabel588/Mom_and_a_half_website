@@ -19,8 +19,8 @@
 
 
   .hero-img:hover{
-    filter: brightness(50%);
-    cursor:pointer;
+    filter: brightness(90%);
+    // cursor:pointer;
     transition: 0.5s;
   }
 
@@ -29,7 +29,7 @@
     position:absolute;
     
     // color:rgb(255, 204, 204);
-    color:rgba(255, 255, 255, 0.761);
+    color:var(--primary-pink);
     font-size: 3.125rem;
     text-align:  right;
     width:45%;
