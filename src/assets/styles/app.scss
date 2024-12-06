@@ -4,6 +4,8 @@ html, body {
   height: fit-content;
   scroll-behavior: smooth;
 
+  font-family: var(--Valera);
+
 
   // animation:appear linear;
   // // animation-timeline:view();
@@ -13,7 +15,7 @@ html, body {
 }
 
 body {
-  font-family: var(--rubik);
+  font-family: var(--Valera);
 }
 
 .app-main-layout {
