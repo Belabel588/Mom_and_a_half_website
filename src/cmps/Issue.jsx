@@ -18,7 +18,7 @@ export function Issue() {
       </div>
 
       <div className="issue-section-img">
-        <img className="issue-img" src="../public/images/issue-section-img-1.jpg" alt="Sarit 'Mom and a half' reading book with a smile" />
+        <img className="issue-img" src="./images/issue-section-img-1.jpg" alt="Sarit 'Mom and a half' reading book with a smile" />
 
       </div>
 

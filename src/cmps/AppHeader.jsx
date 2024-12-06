@@ -31,7 +31,7 @@ export function AppHeader() {
 
         <div className="main-header-logo">
           <img className="main-header-logo-img"
-            src="../public/images/logo-pink-circle-shay.png"
+            src="./images/logo-pink-circle-shay.png"
             alt="mom and a half logo" />
         </div>
 
