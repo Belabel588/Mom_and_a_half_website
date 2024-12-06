@@ -24,8 +24,8 @@
       direction: rtl;
 
 
-      width:500px;
-    height:300px;
+      width:31.25rem;
+    height:18.75rem;
     padding:3rem;
     padding-right: 4.5rem;
     padding-top: 1rem;
@@ -39,7 +39,7 @@
     color:white;
     background: rgba(51, 102, 102, 0.897);
 
-        border-radius: 100px;
+        border-radius: 6.25rem;
 }
 
 
@@ -67,8 +67,8 @@ text-align: right;
       direction: rtl;
 
 
-      width:400px;
-    height:170px;
+      width:25rem;
+    height:10.625rem;
     padding:3rem;
     padding-top: 0.5rem;
     padding-bottom: 4rem;
@@ -82,7 +82,7 @@ text-align: right;
     color:white;
     background: rgba(51, 102, 102, 0.897);
 
-        border-radius: 100px;
+        border-radius: 6.25rem;
 }
 
 
@@ -154,7 +154,7 @@ text-align: center;
   .issue-img{
     width:100%;
     height:100%;
-    border-radius: 100px;
+    border-radius: 6.25rem;
     object-fit: contain;
     padding-bottom: 2rem;
   }
