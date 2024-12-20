@@ -25,15 +25,16 @@
 
 
       width:31.25rem;
-    height:18.75rem;
-    padding:3rem;
+    height:23rem;
+    padding:2.4rem;
     padding-right: 4.5rem;
     padding-top: 1rem;
+    padding-bottom: 3.5rem;
 
 
 
-    left:44%;
-    top:23%;
+    left:45%;
+    top:17%;
 
 
     color:white;
@@ -46,15 +47,16 @@
 .issue-section-text{
       color:white;
 
-          font-size:1.6rem ;
+          font-size:1.4rem ;
     text-align: right;
 }
 
 .issue-section-textbox-header{
   color:var(--primary-pink);
 
-  font-size:1.8rem ;
+  font-size:1.7rem ;
 text-align: right;
+margin-bottom:-0.2rem;
 }
   
 
@@ -67,29 +69,29 @@ text-align: right;
       direction: rtl;
 
 
-      width:25rem;
-    height:10rem;
-    padding:3rem;
+      width:31rem;
+    height:8rem;
+    padding:1rem;
     padding-top: 0.5rem;
-    padding-bottom: 4.5rem;
+    padding-bottom: 0.1rem;
 
 
 
-    left:49%;
-    top:69%;
+    left:48.5%;
+    top:70%;
 
 
     color:white;
     background: rgba(51, 102, 102, 0.897);
 
-        border-radius: 4.5rem;
+        border-radius: 3.5rem;
 }
 
 
 .issue-section-text-2{
   color:var(--primary-pink);
 
-  font-size:1.6rem;
+  font-size:1.8rem;
 text-align: center;
 }
 

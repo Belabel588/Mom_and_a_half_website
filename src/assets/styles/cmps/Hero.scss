@@ -32,17 +32,19 @@
 
   .hero-section-text{
     position:absolute;
+
+    direction: rtl;
     
     // color:rgb(255, 204, 204);
-    color:var(--primary-pink);
-    font-size: 4rem;
+    color:rgba(255, 255, 255, 0.799);
+    font-size: 3rem;
     text-align:  right;
-    width:50%;
-    top:22%;
-    left:17%;
+    width:40%;
+    top:24%;
+    left:23%;
     // font-family: "Rubik", sans-serif;
-    font-family: var(--rubik);
-    font-weight: 700;
+    font-family: var(--Valera);
+    font-weight: 500;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   }
 
