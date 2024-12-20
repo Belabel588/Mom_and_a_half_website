@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { AppHeader } from './cmps/AppHeader'
 import { Hero } from './cmps/Hero'
 import { Issue } from './cmps/Issue'
+import { IssueStart } from './cmps/IssueStart'
 import './assets/styles/main.scss'
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
         <AppHeader />
         <Hero />
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
+        <IssueStart />
         <Issue />
       </section>
     </Router>

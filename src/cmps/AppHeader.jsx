@@ -38,7 +38,7 @@ export function AppHeader() {
 
         <div>
           <nav className="app-header-main-nav">
-            <a className="app-header-main-link" href="#issue-section">מתמודדים</a>
+            <a className="app-header-main-link" href="#issue-section-start">מתמודדים</a>
             <a className="app-header-main-link" href="#">אני מאמין</a>
             <a className="app-header-main-link" href="#">קצת עליי</a>
           </nav>

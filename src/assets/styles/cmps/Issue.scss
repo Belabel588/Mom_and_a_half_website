@@ -3,11 +3,12 @@
   position: relative;
   flex-direction: column;
   justify-content: flex-start;
+  
 
 
   width:90vw;
   height:fit-content;
-  margin-top: 4rem;
+  margin-top: -3rem;
   // padding: 1rem;
 
   animation:appear linear;
@@ -24,7 +25,7 @@
       direction: rtl;
 
 
-      width:31.25rem;
+    width:31.25rem;
     height:23rem;
     padding:2.4rem;
     padding-right: 4.5rem;
@@ -34,7 +35,7 @@
 
 
     left:45%;
-    top:17%;
+    top:4%;
 
 
     color:white;
@@ -54,7 +55,7 @@
 .issue-section-textbox-header{
   color:var(--primary-pink);
 
-  font-size:1.7rem ;
+  font-size:1.7rem;
 text-align: right;
 margin-bottom:-0.2rem;
 }
@@ -69,7 +70,7 @@ margin-bottom:-0.2rem;
       direction: rtl;
 
 
-      width:31rem;
+    width:30rem;
     height:8rem;
     padding:1rem;
     padding-top: 0.5rem;
@@ -77,8 +78,8 @@ margin-bottom:-0.2rem;
 
 
 
-    left:48.5%;
-    top:70%;
+    left:49.5%;
+    top:66%;
 
 
     color:white;
@@ -125,31 +126,18 @@ text-align: center;
   // }
 
 
+ 
 
+    
 
-  .issue-section-header{
-   display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-
-
-
-    font-size: 2.8rem;
-    font-weight: 700;
-    color:var(--primary-green);
   }
-
+    
   .issue-section-img{
     display: flex;
     
-    
-
 
     width:50vw;
     max-height:49rem;
-
-
-    
   }
 
 
@@ -160,4 +148,3 @@ text-align: center;
     object-fit: contain;
     padding-bottom: 2rem;
   }
-}
