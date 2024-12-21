@@ -4,11 +4,11 @@ export function Hero() {
 
 
       <div className="hero-img-div">
-        <img className="hero-img" src="./images/Hero-img-8.jpg" alt="Sarit 'Mom and a half' on the couch working and smiling" />
+        <img className="hero-img" src="./images/Hero-img-11.jpg" alt="Sarit 'Mom and a half' on the couch working and smiling" />
       </div>
 
       <div className="hero-section-text">
-        <h1>זוכרים איך היה לכם ברור איזה הורים אתם רוצים להיות?</h1>
+        <p>זוכרים איך היה לכם ברור איזה הורים אתם רוצים להיות?</p>
       </div>
 
     </section>

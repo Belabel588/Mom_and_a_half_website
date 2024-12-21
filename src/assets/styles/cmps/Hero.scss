@@ -37,17 +37,20 @@
 
     direction: rtl;
     
-    // color:rgb(255, 204, 204);
-    color:rgba(255, 255, 255, 0.799);
-    font-size: 3.4rem;
+    color:rgba(255, 204, 204, 0.872);
+    // color:rgba(255, 255, 255, 0.799);
+    // color:var(--primary-pink);
+    font-size: 2.8rem;
     text-align:  right;
-    width:40%;
-    top:24%;
-    left:25%;
+    width:30%;
+    top:35%;
+    left:6%;
+    rotate:-5deg;
     // font-family: "Rubik", sans-serif;
-    font-family: var(--Valera);
-    font-weight: 700;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    font-family: var(--Fredoka);
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
   }
 
 }
