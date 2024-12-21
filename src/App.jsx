@@ -17,6 +17,8 @@ export function App() {
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
         <IssueStart />
         <Issue />
+
+        <img className='logo-nav' src="./images/nav-logo-pink.png" alt="logo navigation button" />
       </section>
     </Router>
   )
