@@ -33,15 +33,37 @@ body {
 
 .logo-nav{
   position:fixed;
+  // display: none;
+  visibility: hidden;
 
   height:4rem;
   width:8rem;
   top:80%;
   left:92%;
 
+  cursor: pointer;
 
+
+}
+
+
+.show{
+  visibility: visible;
   animation:appear linear;
   // animation-timeline:view();
   animation-range:entry 0% cover 100%;
   animation-duration: 0.6s;
 }
+
+// .disappear{
+//   // display: none;
+//   visibility: hidden;
+//   // transition: 0.6;
+
+//   animation-name: disappear linear;
+//   animation-range: entry 0% cover 100%;
+//   animation-duration: 0.6s;
+
+
+ 
+// }

@@ -1,4 +1,12 @@
+import { useEffect, useState } from 'react'
+
 export function Hero() {
+
+
+
+
+
+
   return (
     <section className="hero-section">
 
