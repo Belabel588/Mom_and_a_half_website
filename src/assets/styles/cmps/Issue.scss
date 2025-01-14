@@ -1,12 +1,16 @@
 #issue-section{
   display: flex;
   position: relative;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: flex-start;
+
+  align-items:left;
+  
+
   
 
 
-  width:75vw;
+  width:80vw;
   height:fit-content;
   margin-top: -3rem;
   // padding: 1rem;
@@ -16,125 +20,116 @@
   animation-range:entry 0% cover 40%;
 
 
- 
-.issue-section-textbox{
-  display:flex;
-  flex-direction:column;
+  .issue-section-texts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: space-between;
 
-  position: absolute;
+
+    max-width: 100%;
+    max-height: 0.5rem;
+
+
+    position: absolute;
+    gap:6rem;
+
+          left:50%;
+      top:18%;
+
+      
+    
+    
+    
+    .issue-section-textbox{
+      display:flex;
+      flex-direction:column;
+      
+      // position: absolute;
       direction: rtl;
+      
+      
+      
+      margin:0;  
+      max-width:100%;
+      max-height:100%;
+      padding:2.4rem;
+      // padding-right: 3.5rem;
+      // padding-top: 1rem;
+      // padding-bottom: 3.5rem;
 
 
-
-    margin:0;  
-    width:31.25rem;
-    height:23rem;
-    padding:2.4rem;
-    padding-right: 3.5rem;
-    padding-top: 1rem;
-    padding-bottom: 3.5rem;
-
-
-
-    left:55%;
-    top:18%;
-
-
-    color:white;
-    font-weight: 400;
-    background: rgba(51, 102, 102, 0.897);
-
-        border-radius: 6.25rem;
-}
-
-
-.issue-section-text{
+      
+      
+      
+      // left:52%;
+      // top:18%;
+      
+      
       color:white;
-
-          font-size:1.4rem ;
-    text-align: right;
-}
-
-.issue-section-textbox-header{
-  color:var(--primary-pink);
-
-  font-size:1.7rem;
-text-align: right;
-margin-bottom:-0.2rem;
-font-weight: 500;
-}
-  
-
-
-.issue-section-textbox-2{
-  display:flex;
-  flex-direction:column;
-
-  position: absolute;
+      font-weight: 400;
+      background: rgba(51, 102, 102, 0.897);
+      
+      border-radius: 6.25rem;
+    }
+    
+    
+    .issue-section-text{
+      color:white;
+      
+      font-size:var(--pc-regular-letter) ;
+      text-align: right;
+    }
+    
+    .issue-section-textbox-header{
+      color:var(--primary-pink);
+      
+      font-size:var(--pc-regular-big-letter);
+      text-align: right;
+      margin-bottom:-0.2rem;
+      font-weight: 500;
+    }
+    
+    
+    
+    .issue-section-textbox-2{
+      display:flex;
+      flex-direction:column;
+      
+      // position: absolute;
       direction: rtl;
-
-
-    width:30rem;
-    height:8rem;
-    padding:1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.1rem;
-
-
-
-    left:58.2%;
-    top:67%;
-
-
-    color:white;
+      
+      
+      max-width:30rem;
+      max-height:100%;
+      padding:1rem;
+      // padding-top: 0.5rem;
+      // padding-bottom: 0.1rem;
+      
+      
+      
+      // left:15%;
+      // top:67%;
+      
+      
+      color:white;
+      
+      background: rgba(51, 102, 102, 0.897);
+      
+      border-radius: 3.5rem;
+    }
     
-    background: rgba(51, 102, 102, 0.897);
-
-        border-radius: 3.5rem;
-}
-
-
-.issue-section-text-2{
-  color:var(--primary-pink);
-
-  font-size:1.7rem;
-  font-weight: 500;
-text-align: center;
-}
-
-  // &::after{
-  //   content:'זוכרים את עצמכם דקה לפני שהפכתם להורים בפעם הראשונה? זוכרים איך היה לכם ברור איזה הורים אתם רוצים להיות? גם אתם מרגישים שהרבה פעמים אתם לא שם? קורה בדיוק ההפך?' ;
-  //   position:absolute;
-  //   direction: rtl;
-
-
     
- 
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items:center;
-
-
-  //   color:white;
-  //   background: rgba(51, 102, 102, 0.897);
-
-  //   font-size:1.5rem ;
-  //   text-align: right;
-
-  //   width:500px;
-  //   height:200px;
-  //   padding:4rem;
-
-  //   left:44%;
-  //   top:28%;
-
-  //   border-radius: 100px;
-  // }
-
-
- 
-
+    .issue-section-text-2{
+      color:var(--primary-pink);
+      
+      font-size:var(--pc-regular-big-letter);
+      font-weight: 500;
+      text-align: center;
+    }
     
+  }
+
 
   }
     
@@ -142,14 +137,14 @@ text-align: center;
     display: flex;
     
 
-    width:50vw;
+   max-width:50vw;
     max-height:fit-content;
   }
 
 
   .issue-img{
-    width:100%;
-    height:100%;
+    max-width:100%;
+    max-height:100%;
     border-radius: 6.25rem;
     object-fit: contain;
     padding-bottom: 2rem;

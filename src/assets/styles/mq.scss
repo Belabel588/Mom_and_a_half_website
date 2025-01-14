@@ -1,0 +1,891 @@
+@media screen and (min-width:1650px) and (max-width:1900px) {
+  #issue-section{
+    display: flex;
+    position: relative;
+    // flex-direction: column;
+    justify-content: flex-start;
+  
+    align-items:left;
+    
+  
+    
+  
+  
+    width:80vw;
+    height:fit-content;
+    margin-top: -3rem;
+    // padding: 1rem;
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+  
+  
+    .issue-section-texts{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: space-between;
+  
+  
+      max-width: 100%;
+      max-height: 0.5rem;
+  
+  
+      position: absolute;
+      gap:7rem;
+  
+            left:48%;
+            top: 14.5%;
+  
+        
+      
+      
+      
+      .issue-section-textbox{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        
+        margin:0;  
+        max-width:100%;
+        max-height:100%;
+        padding:2.4rem;
+        // padding-right: 3.5rem;
+        // padding-top: 1rem;
+        // padding-bottom: 3.5rem;
+  
+  
+        
+        
+        
+        // left:52%;
+        // top:18%;
+        
+        
+        color:white;
+        font-weight: 400;
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 6.25rem;
+      }
+      
+      
+      .issue-section-text{
+        color:white;
+        
+        font-size:var(--pc-regular-letter) ;
+        text-align: right;
+      }
+      
+      .issue-section-textbox-header{
+        color:var(--primary-pink);
+        
+        font-size:var(--pc-regular-big-letter);
+        text-align: right;
+        margin-bottom:-0.2rem;
+        font-weight: 500;
+      }
+      
+      
+      
+      .issue-section-textbox-2{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        max-width:30rem;
+        max-height:100%;
+        padding:1.3rem;
+        // padding-top: 0.5rem;
+        // padding-bottom: 0.1rem;
+        
+        
+        
+        // left:15%;
+        // top:67%;
+        
+        
+        color:white;
+        
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 3.5rem;
+      }
+      
+      
+      .issue-section-text-2{
+        color:var(--primary-pink);
+        
+        font-size:var(--pc-regular-big-letter);
+        font-weight: 500;
+        text-align: center;
+      }
+      
+    }
+  
+  
+    }
+      
+    .issue-section-img{
+      display: flex;
+      
+  
+     max-width:50vw;
+      max-height:fit-content;
+    }
+  
+  
+    .issue-img{
+      max-width:100%;
+      max-height:100%;
+      border-radius: 6.25rem;
+      object-fit: contain;
+      padding-bottom: 2rem;
+    }
+}
+
+ 
+ 
+ //todo###################################### LAPTOP ##########################################
+
+@media screen and (min-width:1435px) and (max-width:1649px) {
+  #issue-section{
+    display: flex;
+    position: relative;
+    // flex-direction: column;
+    justify-content: flex-start;
+  
+    align-items:left;
+    
+  
+    
+  
+  
+    width:80vw;
+    height:fit-content;
+    margin-top: -3rem;
+    // padding: 1rem;
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+  
+  
+    .issue-section-texts{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: space-between;
+  
+  
+      max-width: 100%;
+      max-height: 0.5rem;
+  
+  
+      position: absolute;
+      gap:7rem;
+  
+            left:48%;
+            top: 17%;
+  
+        
+      
+      
+      
+      .issue-section-textbox{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        
+        margin:0;  
+        max-width:100%;
+        max-height:100%;
+        padding:2.4rem;
+        // padding-right: 3.5rem;
+        // padding-top: 1rem;
+        // padding-bottom: 3.5rem;
+  
+  
+        
+        
+        
+        // left:52%;
+        // top:18%;
+        
+        
+        color:white;
+        font-weight: 400;
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 6.25rem;
+      }
+      
+      
+      .issue-section-text{
+        color:white;
+        
+        font-size:var(--ipad-pro-regular-letter) ;
+        text-align: right;
+      }
+      
+      .issue-section-textbox-header{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-pro-regular-big-letter);
+        text-align: right;
+        margin-bottom:-0.2rem;
+        font-weight: 500;
+      }
+      
+      
+      
+      .issue-section-textbox-2{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        max-width:25rem;
+        max-height:100%;
+        padding:1.3rem;
+        // padding-top: 0.5rem;
+        // padding-bottom: 0.1rem;
+        
+        
+        
+        // left:15%;
+        // top:67%;
+        
+        
+        color:white;
+        
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 3.5rem;
+      }
+      
+      
+      .issue-section-text-2{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-pro-regular-big-letter);
+        font-weight: 500;
+        text-align: center;
+      }
+      
+    }
+  
+  
+    }
+      
+    .issue-section-img{
+      display: flex;
+      
+  
+     max-width:50vw;
+      max-height:fit-content;
+    }
+  
+  
+    .issue-img{
+      max-width:100%;
+      max-height:100%;
+      border-radius: 6.25rem;
+      object-fit: contain;
+      padding-bottom: 2rem;
+    }
+}
+
+
+  //todo###################################### IPAD PRO ##########################################
+
+@media screen and (min-width:1300px)  and (max-width:1433px) {
+  .hero-section{
+    display: flex;
+    position: relative;
+  
+    // background-image: url('../src/assets/styles/imgs/images/Hero-img-3.jpg');
+    // width: 100vw;
+    // height: 100vh;
+  
+    animation:appear linear;
+    // animation-timeline:view();
+    animation-range:entry 0% cover 100%;
+    animation-duration: 0.8s;
+  
+    margin-bottom: 3rem;
+    
+    
+    
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.625rem;
+      // margin-top:2px;
+      filter: brightness(95%);
+    }
+  
+  
+    .hero-img:hover{
+      filter: brightness(90%);
+      // cursor:pointer;
+      transition: 0.5s;
+    }
+  
+  
+    .hero-section-text{
+      position:absolute;
+  
+      direction: rtl;
+      
+      color:rgba(255, 204, 204, 0.872);
+      // color: rgb(253, 227, 217);
+      // color:rgba(255, 255, 255, 0.799);
+      // color:var(--primary-pink);
+      font-size: var(--ipad-pro-main-header);
+      text-align:  right;
+      width:30%;
+      top:40%;
+      left:6%;
+      rotate:-5.5deg;
+      // font-family: "Rubik", sans-serif;
+      font-family: var(--Fredoka);
+      font-weight: 500;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+    }
+  
+  }
+
+  #issue-section-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  
+    direction: rtl;
+  
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+    
+    .issue-section-intro-header{
+      color: var(--secondary-brown);
+      
+      font-size:var(--ipad-pro-sub-big-header);
+      // margin-top:-0.5rem;
+      font-weight: 500;
+      margin-bottom: 4rem;
+      letter-spacing: 0.1rem;
+    }
+    
+  
+    .issue-section-list{
+      display: grid;
+  
+  
+  
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+  
+  
+      margin-bottom: 10rem;
+      // margin-top:-0.4rem;
+  
+      color: var(--secondary-brown);
+  
+      gap:2rem;
+      // width:80%;
+  
+      list-style: none;
+  
+  .issue-section-list-item{
+       font-size:var(--ipad-pro-regular-big-letter);
+       max-width: 20rem;
+       font-weight: 300;
+  
+       
+  }
+    }
+  
+    .issue-section-header{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+  
+      direction: rtl;
+      
+      
+      
+      font-size: var(--ipad-pro-main-header);
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      color:var(--primary-green);
+    }
+  }
+  
+  
+  
+  
+  
+  
+
+  #issue-section{
+    display: flex;
+    position: relative;
+    // flex-direction: column;
+    justify-content: flex-start;
+  
+    align-items:left;
+    
+  
+    
+  
+  
+    width:80vw;
+    height:fit-content;
+    margin-top: -3rem;
+    // padding: 1rem;
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+  
+  
+    .issue-section-texts{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: space-between;
+  
+  
+      max-width: 100%;
+      max-height: 0.5rem;
+  
+  
+      position: absolute;
+      gap:5rem;
+  
+            left:48%;
+            top: 9%;
+  
+        
+      
+      
+      
+      .issue-section-textbox{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        
+        margin:0;  
+        max-width:100%;
+        max-height:100%;
+        padding:2.4rem;
+        // padding-right: 3.5rem;
+        // padding-top: 1rem;
+        // padding-bottom: 3.5rem;
+  
+  
+        
+        
+        
+        // left:52%;
+        // top:18%;
+        
+        
+        color:white;
+        font-weight: 400;
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 6.25rem;
+      }
+      
+      
+      .issue-section-text{
+        color:white;
+        
+        font-size:var(--ipad-pro-regular-letter) ;
+        text-align: right;
+      }
+      
+      .issue-section-textbox-header{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-pro-regular-big-letter);
+        text-align: right;
+        margin-bottom:-0.2rem;
+        font-weight: 500;
+      }
+      
+      
+      
+      .issue-section-textbox-2{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        max-width:20rem;
+        max-height:100%;
+        padding:1.3rem;
+        // padding-top: 0.5rem;
+        // padding-bottom: 0.1rem;
+        
+        
+        
+        // left:15%;
+        // top:67%;
+        
+        
+        color:white;
+        
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 3.5rem;
+      }
+      
+      
+      .issue-section-text-2{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-pro-regular-big-letter);
+        font-weight: 500;
+        text-align: center;
+      }
+      
+    }
+  
+  
+    }
+      
+    .issue-section-img{
+      display: flex;
+      
+  
+     max-width:50vw;
+      max-height:fit-content;
+    }
+  
+  
+    .issue-img{
+      max-width:100%;
+      max-height:100%;
+      border-radius: 6.25rem;
+      object-fit: contain;
+      padding-bottom: 2rem;
+    }
+}
+
+
+
+
+ //todo###################################### IPAD AIR ##########################################
+
+
+@media screen and (min-width:1000px)  and (max-width:1300px){
+  .hero-section{
+    display: flex;
+    position: relative;
+  
+    // background-image: url('../src/assets/styles/imgs/images/Hero-img-3.jpg');
+    // width: 100vw;
+    // height: 100vh;
+  
+    animation:appear linear;
+    // animation-timeline:view();
+    animation-range:entry 0% cover 100%;
+    animation-duration: 0.8s;
+  
+    margin-bottom: 3rem;
+    
+    
+    
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.625rem;
+      // margin-top:2px;
+      filter: brightness(95%);
+    }
+  
+  
+    .hero-img:hover{
+      filter: brightness(90%);
+      // cursor:pointer;
+      transition: 0.5s;
+    }
+  
+  
+    .hero-section-text{
+      position:absolute;
+  
+      direction: rtl;
+      
+      color:rgba(255, 204, 204, 0.872);
+      // color: rgb(253, 227, 217);
+      // color:rgba(255, 255, 255, 0.799);
+      // color:var(--primary-pink);
+      font-size: var(--ipad-air-main-header);
+      text-align:  right;
+      width:30%;
+      top:40%;
+      left:6%;
+      rotate:-5.5deg;
+      // font-family: "Rubik", sans-serif;
+      font-family: var(--Fredoka);
+      font-weight: 500;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+    }
+  
+  }
+
+  #issue-section-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  
+    direction: rtl;
+  
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+    
+    .issue-section-intro-header{
+      color: var(--secondary-brown);
+      
+      font-size:var(--ipad-air-sub-big-header);
+      // margin-top:-0.5rem;
+      font-weight: 500;
+      margin-bottom: 4rem;
+      letter-spacing: 0.1rem;
+    }
+    
+  
+    .issue-section-list{
+      display: grid;
+  
+  
+  
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+  
+  
+      margin-bottom: 10rem;
+      // margin-top:-0.4rem;
+  
+      color: var(--secondary-brown);
+  
+      gap:2rem;
+      // width:80%;
+  
+      list-style: none;
+  
+  .issue-section-list-item{
+       font-size:var(--ipad-air-regular-big-letter);
+       max-width: 20rem;
+       font-weight: 300;
+  
+       
+  }
+    }
+  
+    .issue-section-header{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+  
+      direction: rtl;
+      
+      
+      
+      font-size: var(--ipad-air-main-header);
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      color:var(--primary-green);
+    }
+  }
+  
+
+  #issue-section{
+    display: flex;
+    position: relative;
+    // flex-direction: column;
+    justify-content: flex-start;
+  
+    align-items:left;
+    
+  
+    
+  
+  
+    width:80vw;
+    height:fit-content;
+    margin-top: -3rem;
+    // padding: 1rem;
+  
+    animation:appear linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 40%;
+  
+  
+    .issue-section-texts{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: space-between;
+  
+  
+      max-width: 100%;
+      max-height: 0.5rem;
+  
+  
+      position: absolute;
+      gap:5rem;
+  
+            left:48%;
+            top: 12.5%;
+  
+        
+      
+      
+      
+      .issue-section-textbox{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        
+        margin:0;  
+        max-width:100%;
+        max-height:100%;
+        padding:2.4rem;
+        // padding-right: 3.5rem;
+        // padding-top: 1rem;
+        // padding-bottom: 3.5rem;
+  
+  
+        
+        
+        
+        // left:52%;
+        // top:18%;
+        
+        
+        color:white;
+        font-weight: 400;
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 6.25rem;
+      }
+      
+      
+      .issue-section-text{
+        color:white;
+        
+        font-size:var(--ipad-air-regular-letter) ;
+        text-align: right;
+      }
+      
+      .issue-section-textbox-header{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-air-regular-big-letter);
+        text-align: right;
+        margin-bottom:-0.2rem;
+        font-weight: 500;
+      }
+      
+      
+      
+      .issue-section-textbox-2{
+        display:flex;
+        flex-direction:column;
+        
+        // position: absolute;
+        direction: rtl;
+        
+        
+        max-width:20rem;
+        max-height:100%;
+        padding:1.3rem;
+        // padding-top: 0.5rem;
+        // padding-bottom: 0.1rem;
+        
+        
+        
+        // left:15%;
+        // top:67%;
+        
+        
+        color:white;
+        
+        background: rgba(51, 102, 102, 0.897);
+        
+        border-radius: 3.5rem;
+      }
+      
+      
+      .issue-section-text-2{
+        color:var(--primary-pink);
+        
+        font-size:var(--ipad-air-regular-big-letter);
+        font-weight: 500;
+        text-align: center;
+      }
+      
+    }
+  
+  
+    }
+      
+    .issue-section-img{
+      display: flex;
+      
+  
+     max-width:50vw;
+      max-height:fit-content;
+    }
+  
+  
+    .issue-img{
+      max-width:100%;
+      max-height:100%;
+      border-radius: 6.25rem;
+      object-fit: contain;
+      padding-bottom: 2rem;
+    }
+}

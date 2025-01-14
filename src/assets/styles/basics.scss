@@ -3,23 +3,24 @@
 :root{
 
   
-  // fonts:
-  --rubik:"Rubik", sans-serif;
+  //todo###################################### FONTS ##########################################
+
+  // --rubik:"Rubik", sans-serif;
   
   
   // Heebo:
   // font-family: "Heebo", sans-serif;
 
   // Valera Round:
-  --Valera:"Varela Round", sans-serif;
+  // --Valera:"Varela Round", sans-serif;
 
   // Arimo:
-  --Arimo:"Arimo", sans-serif;
+  // --Arimo:"Arimo", sans-serif;
 
   // Fredoka
   --Fredoka:"Fredoka", sans-serif;
   
-  // colors:
+  //todo###################################### COLORS ##########################################
   
   
   --primary-green:rgb(051, 102, 102);
@@ -28,4 +29,33 @@
   
   
   --secondary-brown: rgb(173,140, 133);
+
+
+
+
+
+
+  
+  //todo###################################### TEXT SIZES ##########################################
+  
+  //* PC/MONITOR// 
+  
+  --pc-main-header:2.8rem;
+  --pc-sub-big-header:2rem;
+  --pc-regular-big-letter:1.6rem;
+  --pc-regular-letter:1.4rem;
+
+
+    //* IPAD PRO // 
+    --ipad-pro-main-header:2.5rem;
+    --ipad-pro-sub-big-header:1.7rem;
+    --ipad-pro-regular-big-letter:1.3rem;
+    --ipad-pro-regular-letter:1.1rem;
+
+
+        //* IPAD AIR //
+        --ipad-air-main-header:2.2rem;
+        --ipad-air-sub-big-header:1.4rem;
+        --ipad-air-regular-big-letter:1rem;
+        --ipad-air-regular-letter:0.8rem;
 }

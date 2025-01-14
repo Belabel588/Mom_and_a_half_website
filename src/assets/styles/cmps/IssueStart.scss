@@ -15,7 +15,7 @@
   .issue-section-intro-header{
     color: var(--secondary-brown);
     
-    font-size:2rem;
+    font-size:var(--pc-sub-big-header);
     // margin-top:-0.5rem;
     font-weight: 500;
     margin-bottom: 4rem;
@@ -44,7 +44,7 @@
     list-style: none;
 
 .issue-section-list-item{
-     font-size:1.6rem;
+     font-size:var(--pc-regular-big-letter);
      max-width: 20rem;
      font-weight: 300;
 
@@ -61,7 +61,7 @@
     
     
     
-    font-size: 3rem;
+    font-size: var(--pc-main-header);
     font-weight: 700;
     letter-spacing: 0.1rem;
     color:var(--primary-green);
