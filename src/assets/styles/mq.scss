@@ -361,7 +361,7 @@
       text-align:  right;
       width:30%;
       top:40%;
-      left:6%;
+      left:1.5%;
       rotate:-5.5deg;
       // font-family: "Rubik", sans-serif;
       font-family: var(--Fredoka);
@@ -655,7 +655,7 @@
       text-align:  right;
       width:30%;
       top:40%;
-      left:6%;
+      left:1.5%;
       rotate:-5.5deg;
       // font-family: "Rubik", sans-serif;
       font-family: var(--Fredoka);
@@ -888,4 +888,389 @@
       object-fit: contain;
       padding-bottom: 2rem;
     }
-}
+  }
+
+
+
+     //todo###################################### MOBILE ##########################################
+     @media screen and (min-width:300px)  and (max-width:1000px){
+
+      #web-main-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: space-evenly;
+        // gap:2.5rem;
+        // width: 100vw;
+        
+          background-color: rgb(255, 255, 255);
+          width: 100vw;
+          height: 7vh;
+          margin-left: auto;
+          margin-right: auto;
+          padding-top: 0.625rem;
+          padding-bottom: 0.625rem;
+          border-bottom-left-radius: 0.625rem;
+          border-bottom-right-radius: 0.625rem;
+          // position: fixed;
+          
+          animation:appear linear;
+          // animation-timeline:view();
+          animation-range:entry 0% cover 100%;
+          animation-duration: 0.6s;
+        
+          
+        
+        .main-header-logo{
+          display:flex;
+          // padding-left: 2.5rem;
+          height:100%;
+        
+        }
+        
+        .main-header-logo-img{
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+        
+        
+        .app-header-main-nav{
+          display:flex;
+          gap:2.5rem;
+          // padding-right: 2.5rem;
+          display: none;
+          
+        
+        
+          .app-header-main-link{
+            font-size:1.375rem;
+            font-weight: 600;
+            text-decoration: none;
+            color:var(--primary-green);
+
+            display: none;
+          }
+        
+          .app-header-main-link:hover{
+            transform: scale(1.1);
+            transition: 0.5s;
+        
+          }
+        }
+        
+        }
+
+
+       .hero-section{
+         display: flex;
+         position: relative;
+         
+         // background-image: url('../src/assets/styles/imgs/images/Hero-img-3.jpg');
+         // width: 100vw;
+         // height: 100vh;
+         
+         animation:appear linear;
+         // animation-timeline:view();
+         animation-range:entry 0% cover 100%;
+         animation-duration: 0.8s;
+         
+         margin-bottom: 3rem;
+         
+         
+         
+         .hero-img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           border-radius: 0.625rem;
+           // margin-top:2px;
+           filter: brightness(95%);
+          }
+          
+          
+          .hero-img:hover{
+            filter: brightness(90%);
+            // cursor:pointer;
+            transition: 0.5s;
+          }
+          
+          
+          .hero-section-text{
+            position:absolute;
+            
+            direction: rtl;
+            
+            color:rgba(255, 204, 204, 0.872);
+            // color: rgb(253, 227, 217);
+            // color:rgba(255, 255, 255, 0.799);
+            // color:var(--primary-pink);
+            font-size: var(--mobile-main-header);
+            text-align:  right;
+            width:30%;
+            top:40%;
+            left:1.5%;
+            rotate:-5.5deg;
+            // font-family: "Rubik", sans-serif;
+            font-family: var(--Fredoka);
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+          }
+          
+        }
+        
+        #issue-section-start{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          
+          
+          direction: rtl;
+          
+          
+          animation:appear linear;
+          animation-timeline:view();
+          animation-range:entry 0% cover 40%;
+          
+          .issue-section-intro-header{
+            color: var(--secondary-brown);
+            
+            font-size:var(--mobile-sub-big-header);
+            // margin-top:-0.5rem;
+            font-weight: 500;
+            margin-bottom: 4rem;
+            letter-spacing: 0.1rem;
+          }
+          
+          
+          .issue-section-list{
+            display: grid;
+            
+            
+            
+            
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            
+            
+            margin-bottom: 10rem;
+            margin-left: 1rem;
+            // margin-top:-0.4rem;
+            
+            color: var(--secondary-brown);
+            
+            gap:2rem;
+            // width:80%;
+            
+            list-style: none;
+            
+            .issue-section-list-item{
+              font-size:var(--mobile-regular-big-letter);
+              max-width: 20rem;
+              font-weight: 300;
+              
+              
+            }
+          }
+          
+          .issue-section-header{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            
+            direction: rtl;
+            
+            
+            
+            font-size: var(--mobile-main-header);
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            color:var(--primary-green);
+          }
+        }
+        
+        
+        #issue-section{
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          justify-content: flex-start;
+          
+          align-items:center;
+          
+          
+
+          gap:50rem;
+          
+          
+          
+          width:100vw;
+          height:100vh;
+          margin-top: -5rem;
+          // padding: 1rem;
+          
+          animation:appear linear;
+          animation-timeline:view();
+          animation-range:entry 0% cover 40%;
+          
+          
+          .issue-section-texts{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: space-between;
+            
+            
+            max-width: 80%;
+            max-height: 0.5rem;
+            
+            
+            position: absolute;
+            gap:0.1rem;
+            
+            left: 10%;
+            top: 45%;
+            
+            
+            
+            
+            
+            .issue-section-textbox{
+              display:flex;
+              flex-direction:column;
+              align-items: center;
+              
+              // position: absolute;
+              direction: rtl;
+              
+              
+              
+              margin:0;  
+              max-width:100%;
+              max-height:20%;
+              padding:1.5rem;
+              // padding-right: 3.5rem;
+              // padding-top: 1rem;
+              // padding-bottom: 3.5rem;
+              
+              
+              
+              
+              
+              // left:52%;
+              // top:18%;
+              
+              
+              color:white;
+              font-weight: 400;
+              background: rgba(51, 102, 102, 0.897);
+              
+              border-radius: 5.5rem;
+            }
+            
+            
+            .issue-section-text{
+              color:white;
+              
+              font-size:var(--mobile-regular-letter) ;
+              text-align: center;
+            }
+            
+            .issue-section-textbox-header{
+              color:var(--primary-pink);
+              
+              font-size:var(--mobile-regular-big-letter);
+              text-align: center;
+              margin-bottom:-0.2rem;
+              font-weight: 500;
+            }
+            
+            
+            
+            .issue-section-textbox-2{
+              display:flex;
+              flex-direction:column;
+              
+              // position: absolute;
+              direction: rtl;
+              
+              
+              max-width:65%;
+              max-height:100%;
+              padding:0.9rem;
+              // padding-top: 0.5rem;
+              // padding-bottom: 0.1rem;
+              
+              
+              
+              // left:15%;
+              // top:67%;
+              
+              
+              color:white;
+              
+              background: rgba(51, 102, 102, 0.897);
+              
+              border-radius: 3.5rem;
+            }
+            
+            
+            .issue-section-text-2{
+              color:var(--primary-pink);
+              
+              font-size:var(--mobile-regular-big-letter);
+              font-weight: 500;
+              text-align: center;
+            }
+            
+          }
+          
+          
+        }
+        
+        .issue-section-img{
+          display: flex;
+          
+          
+          max-width:90vw;
+          max-height:fit-content;
+        }
+        
+        
+        .issue-img{
+          max-width:100%;
+          max-height:100%;
+          border-radius: 6.25rem;
+          object-fit: contain;
+          padding-bottom: 2rem;
+        }
+
+
+        .logo-nav{
+          position:fixed;
+          // display: none;
+          // visibility: hidden;
+          // display: none;
+        
+          height:1.8rem;
+          width:3.8rem;
+          top:80%;
+          left:86%;
+        
+          cursor: pointer;
+        
+        
+          &.logo-nav:hover{
+            transform: scale(1.1);
+            transition: 0.5s;
+        
+          }
+        
+        
+        }
+      }
+ 
+      
