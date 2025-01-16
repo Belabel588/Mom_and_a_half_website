@@ -1011,10 +1011,10 @@
             // color:var(--primary-pink);
             font-size: var(--mobile-main-header);
             text-align:  right;
-            width:45%;
-            top:67%;
-            left:1.2%;
-            rotate:-5.5deg;
+            width:50%;
+            top:5%;
+            left:20%;
+            rotate:0deg;
             // font-family: "Rubik", sans-serif;
             font-family: var(--Fredoka);
             font-weight: 500;
@@ -1141,7 +1141,7 @@
             gap:0.1rem;
             
             left: 10%;
-            top: 47.8%;
+            top: 50%;
             
             
             
@@ -1186,14 +1186,14 @@
               color:white;
               
               font-size:var(--mobile-regular-letter) ;
-              text-align: center;
+              text-align: right;
             }
             
             .issue-section-textbox-header{
               color:var(--primary-pink);
               
               font-size:var(--mobile-regular-big-letter);
-              text-align: center;
+              text-align: right;
               margin-bottom:-0.2rem;
               font-weight: 500;
             }
