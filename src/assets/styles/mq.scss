@@ -1038,7 +1038,7 @@
           animation-timeline:view();
           animation-range:entry 0% cover 40%;
 
-          width:98vw;
+          width:100vw;
 
           
           .issue-section-intro-header{
@@ -1050,7 +1050,7 @@
             margin-bottom: 4rem;
             letter-spacing: 0.1rem;
 
-          margin-right: 1.5rem;
+          // margin-left: 1rem;
           }
           
           
@@ -1066,12 +1066,12 @@
             
             
             margin-bottom: 10rem;
-            margin-left: 1rem;
+            margin-left: 1.2rem;
             // margin-top:-0.4rem;
             
             color: var(--secondary-brown);
             
-            gap:2rem;
+            gap:1rem;
             // width:80%;
             
             list-style: none;
@@ -1141,7 +1141,7 @@
             gap:0.1rem;
             
             left: 10%;
-            top: 55%;
+            top: 48%;
             
             
             
