@@ -23,7 +23,7 @@ body {
 }
 
 .app-main-layout {
-  min-height: fit-content;
+  height: 370vh;
   width: 100vw;
   background-color: rgb(253, 227, 217);
   display: flex;
@@ -39,7 +39,7 @@ body {
   height:4rem;
   width:8rem;
   top:80%;
-  left:92%;
+  left:93%;
 
   cursor: pointer;
 
