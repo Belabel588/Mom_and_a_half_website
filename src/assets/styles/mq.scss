@@ -1012,7 +1012,7 @@
             font-size: var(--mobile-main-header);
             text-align:  right;
             width:45%;
-            top:68%;
+            top:65%;
             left:1.2%;
             rotate:-5.5deg;
             // font-family: "Rubik", sans-serif;
@@ -1038,7 +1038,7 @@
           animation-timeline:view();
           animation-range:entry 0% cover 40%;
 
-          width:92vw;
+          width:98vw;
 
           
           .issue-section-intro-header{
@@ -1049,6 +1049,8 @@
             font-weight: 500;
             margin-bottom: 4rem;
             letter-spacing: 0.1rem;
+
+          margin-right: 1.5rem;
           }
           
           
