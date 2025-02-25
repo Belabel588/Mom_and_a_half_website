@@ -5,6 +5,8 @@ import { Hero } from './cmps/Hero'
 import { Issue } from './cmps/Issue'
 import { IssueStart } from './cmps/IssueStart'
 import './assets/styles/main.scss'
+import './cmps/About'
+import { About } from './cmps/About'
 
 
 
@@ -39,6 +41,7 @@ export function App() {
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
         <IssueStart />
         <Issue />
+        <About />
 
         <a href="#web-main-header">
           <img className={`logo-nav ${showNavLogo ? 'show' : ''}`} src="./images/nav-logo-pink.png" alt=" לוגו ניווט לתחילת הדף" />
