@@ -10,7 +10,7 @@ export function About() {
       <div className="about-section-container">
 
         <div className="about-section-img-container">
-          <img className="about-section-img" src="public/images/About-img-1.jpg" alt="Sarit 'Mom And A Half' smiling with a whit wall background" />
+          <img className="about-section-img" src="./images/About-img-1.jpg" alt="Sarit 'Mom And A Half' smiling with a whit wall background" />
         </div>
 
         <div className="about-section-text">
