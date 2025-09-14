@@ -11,24 +11,28 @@ import { About } from './cmps/About'
 
 
 export function App() {
-  const [showNavLogo, setNavLogo] = useState(true)
+  const [showNavLogo, setNavLogo] = useState(false)
 
   useEffect(() => {
-    const observedSection = document.getElementById('issue-section-start')
+    const observedSection = document.getElementById('hero-section')
+    if (!observedSection) return
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setNavLogo(showNavLogo)
+          setNavLogo(false)
         } else {
-          setNavLogo(!showNavLogo)
+          setNavLogo(true)
         }
-      }, { threshold: 1 })
-      // console.log(entries)
-
-    })
+      })
+    }, { threshold: 0.1 })
 
     observer.observe(observedSection)
-  })
+
+    return () => {
+      observer.unobserve(observedSection)
+    }
+  }, [])
 
   return (
 
@@ -37,7 +41,9 @@ export function App() {
     <section className='app-main-layout'>
       <Router>
         <AppHeader />
-        <Hero />
+        <div id="hero-section">
+          <Hero />
+        </div>
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
         <IssueStart />
         <Issue />
