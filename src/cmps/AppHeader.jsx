@@ -24,7 +24,7 @@ export function AppHeader() {
           <nav className="app-header-main-nav">
             <a className="app-header-main-link" href="#">צור קשר</a>
             <a className="app-header-main-link" href="#">המפגשים</a>
-            <a className="app-header-main-link" href="#">המלצות</a>
+            <a className="app-header-main-link" href="#">מילים טובות</a>
           </nav>
         </div>
 
@@ -38,8 +38,8 @@ export function AppHeader() {
 
         <div>
           <nav className="app-header-main-nav">
-            <a className="app-header-main-link" href="#issue-section-start">מתמודדים</a>
-            <a className="app-header-main-link" href="#">אני מאמין</a>
+            <a className="app-header-main-link" href="#issue-section-start">הורים מספרים</a>
+            <a className="app-header-main-link" href="#issue-section">למה בחרתי</a>
             <a className="app-header-main-link" href="#about-section">קצת עליי</a>
           </nav>
 

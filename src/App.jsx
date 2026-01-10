@@ -43,11 +43,11 @@ export function App() {
         <AppHeader />
         <div id="hero-section">
           <Hero />
+          <About />
         </div>
+        <Issue />
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
         <IssueStart />
-        <Issue />
-        <About />
 
         <a href="#web-main-header">
           <img className={`logo-nav ${showNavLogo ? 'show' : ''}`} src="./images/nav-logo-pink.png" alt=" לוגו ניווט לתחילת הדף" />
