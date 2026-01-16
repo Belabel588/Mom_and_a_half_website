@@ -7,6 +7,7 @@ import { IssueStart } from './cmps/IssueStart'
 import './assets/styles/main.scss'
 import './cmps/About'
 import { About } from './cmps/About'
+import { Contact } from './cmps/Contact'
 
 
 
@@ -48,6 +49,7 @@ export function App() {
         <Issue />
         {/* <a className="app-header-main-link" href="#issue-section" onClick={handleScroll}>מתמודדים</a> */}
         <IssueStart />
+        <Contact />
 
         <a href="#web-main-header">
           <img className={`logo-nav ${showNavLogo ? 'show' : ''}`} src="./images/nav-logo-pink.png" alt=" לוגו ניווט לתחילת הדף" />

@@ -22,7 +22,7 @@ export function AppHeader() {
 
         <div>
           <nav className="app-header-main-nav">
-            <a className="app-header-main-link" href="#">צור קשר</a>
+            <a className="app-header-main-link" href="#contact-section">צור קשר</a>
             <a className="app-header-main-link" href="#">המפגשים</a>
             <a className="app-header-main-link" href="#">מילים טובות</a>
           </nav>

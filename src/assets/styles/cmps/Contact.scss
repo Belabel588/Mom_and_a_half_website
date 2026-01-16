@@ -1,0 +1,129 @@
+#contact-section {
+  width: 100vw;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+
+  margin-left: 5rem;
+
+  direction: rtl;
+
+  --primary-green: rgb(51, 102, 102);
+  --primary-pink: rgb(255, 204, 204);
+  --secondary-brown: rgb(173, 140, 133);
+
+  --text-light: #ffffff;
+  --text-dark: #1f2933;
+}
+
+.contact-section-texts {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* CTA WINDOW */
+.contact-section-form {
+  width: 100%;
+  background: var(--primary-green);
+  padding: 3.5rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem 2.2rem;
+}
+
+/* HEADER + TEXT INSIDE CTA */
+.contact-section-textbox {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-section-header {
+  font-size: 2.4rem;
+  color: var(--text-light);
+  margin-bottom: 0.6rem;
+}
+
+.contact-section-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* INPUTS */
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+
+  label {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text-light);
+  }
+
+  input,
+  textarea {
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 0.95rem;
+    background: #ffffff;
+    color: var(--text-dark);
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.45);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  &:last-of-type {
+    grid-column: 1 / -1;
+  }
+}
+
+/* BUTTON */
+.contact-button-wrapper {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contact-submit-button {
+  min-width: 240px;
+  padding: 1rem 3rem;
+  border-radius: 40px;
+  border: none;
+
+  background: var(--secondary-brown);
+  color: #fff;
+
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    background: var(--primary-pink);
+    color: #5a3a35;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 32px rgba(173, 140, 133, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 20px rgba(173, 140, 133, 0.35);
+  }
+}
