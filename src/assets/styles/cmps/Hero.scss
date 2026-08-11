@@ -56,3 +56,68 @@
 
 }
 
+/* Responsive adjustments for the hero floating text so it fits a wide range of devices
+   and keeps a consistent visual ratio. Breakpoints chosen to cover large desktop,
+   laptop/tablet, small tablet/large phone, and small phone screens. */
+
+@media (max-width: 1200px) {
+  .hero-section .hero-section-text {
+    width: 35%;
+    font-size: calc(var(--pc-main-header) * 0.9);
+    top: 50%;
+    left: 2%;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    margin-bottom: 2rem;
+  }
+  .hero-section .hero-section-text {
+    width: 42%;
+    font-size: calc(var(--pc-main-header) * 0.8);
+    top: 52%;
+    left: 2.5%;
+    rotate: -4deg;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Stack the layout on small screens so image and floating text don't overlap awkwardly */
+  .hero-section {
+    display: block;
+  }
+  .hero-section .hero-img-div {
+    width: 100%;
+  }
+  .hero-section .hero-img { height: auto; }
+  .hero-section .hero-section-text{
+    position: absolute;
+    width: clamp(140px, 48%, 260px);
+    font-size: clamp(18px, 4.5vw, 24px);
+    top: 55%;
+    left: 4%;
+    rotate: -3deg;
+    transform: translateY(-50%);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-section .hero-section-text{
+    width: clamp(120px, 60%, 220px);
+    font-size: clamp(16px, 5.5vw, 20px);
+    top: 56%;
+    left: 6%;
+    rotate: -2deg;
+  }
+}
+
+/* Ensure the floating text box keeps a consistent visual ratio and doesn't collapse
+   when resized. The aspect-ratio creates a predictable height for the floating box
+   while its width adapts to viewport size. Padding and box-sizing keep text readable. */
+.hero-section .hero-section-text{
+  aspect-ratio: 4 / 1; /* width : height ratio for the floating object */
+  padding: 0.8rem 1rem;
+  box-sizing: border-box;
+}

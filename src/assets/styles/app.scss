@@ -56,6 +56,25 @@ body {
 
 }
 
+/* Make images responsive across the site so absolute/floating elements align predictably */
+img{ max-width:100%; height:auto; display:block; }
+
+/* Responsive positioning for fixed/floating nav controls */
+@media (max-width: 1200px){
+.logo-nav{ left: 90%; top: 78%; }
+.mobile-nav{ width: 36vh; }
+}
+
+@media (max-width: 900px){
+.logo-nav{ left: 86%; top: 76%; }
+.mobile-nav{ width: 34vh; left: auto; right: 2rem; }
+}
+
+@media (max-width: 600px){
+.logo-nav{ left: 82%; top: 74%; }
+.mobile-nav{ width: 60vw; left:50%; transform: translateX(-50%); top: auto; bottom: 6%; }
+}
+
 
 
 .mobile-nav{

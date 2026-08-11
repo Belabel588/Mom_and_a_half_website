@@ -150,3 +150,86 @@
     object-fit: contain;
     padding-bottom: 2rem;
   }
+ 
+/* Responsive rules to keep issue floating textboxes stable across viewports.
+   - Convert fixed rem offsets into percentage-based placement where appropriate
+   - Stack layout on small screens to avoid overlap
+   - Use clamp() and aspect-ratio to maintain readable size and consistent ratio */
+
+@media (max-width: 1200px) {
+  #issue-section{
+    width:90vw;
+    margin-top: -2rem;
+  }
+  #issue-section .issue-section-texts{
+    width: 52vw;
+    height: auto;
+    left: 55%;
+    top: 1.5rem;
+    gap: 3rem;
+  }
+  #issue-section .issue-section-textbox{
+    width: 44vw;
+    height: auto;
+    padding: 2rem;
+  }
+  #issue-section .issue-section-textbox-2{
+    width:36vw;
+    height: auto;
+    left: 42%;
+  }
+  #issue-section .issue-section-img{ max-width:45vw; }
+}
+
+@media (max-width: 900px) {
+  /* Tablet / small laptop: prefer percentage positioning and smaller gaps */
+  #issue-section{
+    display:block;
+    width:100%;
+    margin-top: 0.5rem;
+  }
+  #issue-section .issue-section-texts{
+    position: relative; /* stop absolute overlap */
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+  #issue-section .issue-section-textbox,
+  #issue-section .issue-section-textbox-2{
+    position: relative;
+    width: calc(100% - 2rem);
+    height: auto;
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+  #issue-section .issue-section-img{
+    max-width:100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Phones: stack and use fluid type */
+  #issue-section{ width:100%; margin-bottom: 2rem; }
+  #issue-section .issue-section-texts{ padding: 0.6rem; }
+  #issue-section .issue-section-textbox,
+  #issue-section .issue-section-textbox-2{
+    width: 100%;
+    padding: 0.8rem;
+    font-size: clamp(14px, 3.8vw, 16px);
+    aspect-ratio: 3 / 1;
+  }
+  #issue-section .issue-section-textbox{ margin-bottom: 0.8rem; }
+}
+
+@media (max-width: 420px) {
+  #issue-section .issue-section-textbox,
+  #issue-section .issue-section-textbox-2{
+    font-size: clamp(13px, 4.5vw, 15px);
+    padding: 0.6rem;
+    border-radius: 1.5rem;
+  }
+}
