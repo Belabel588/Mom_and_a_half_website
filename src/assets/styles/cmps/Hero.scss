@@ -70,52 +70,51 @@
 }
 
 @media (max-width: 900px) {
+  /* On tablet and below switch to a stacked layout so the image and text do not overlap.
+     Use a centered, full-width text block for readability on narrow viewports. */
   .hero-section {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
   }
-  .hero-section .hero-section-text {
-    width: 42%;
-    font-size: calc(var(--pc-main-header) * 0.8);
-    top: 52%;
-    left: 2.5%;
-    rotate: -4deg;
-  }
-}
 
-@media (max-width: 600px) {
-  /* Stack the layout on small screens so image and floating text don't overlap awkwardly */
-  .hero-section {
-    display: block;
-  }
   .hero-section .hero-img-div {
     width: 100%;
   }
-  .hero-section .hero-img { height: auto; }
-  .hero-section .hero-section-text{
-    position: absolute;
-    width: clamp(140px, 48%, 260px);
-    font-size: clamp(18px, 4.5vw, 24px);
-    top: 55%;
-    left: 4%;
-    rotate: -3deg;
-    transform: translateY(-50%);
+  .hero-section .hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.625rem;
+  }
+
+  .hero-section .hero-section-text {
+    /* Stop absolute positioning on smaller screens so text flows naturally under the image */
+    position: static;
+    width: 100%;
+    max-width: 720px;
+    font-size: clamp(18px, 3.6vw, 22px);
+    rotate: 0deg;
+    transform: none;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    box-sizing: border-box;
+    order: 2; /* keep text after the image */
+    aspect-ratio: auto;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
   }
 }
 
+/* Small phones: increase legibility and spacing */
 @media (max-width: 420px) {
-  .hero-section .hero-section-text{
-    width: clamp(120px, 60%, 220px);
-    font-size: clamp(16px, 5.5vw, 20px);
-    top: 56%;
-    left: 6%;
-    rotate: -2deg;
+  .hero-section .hero-section-text {
+    font-size: clamp(16px, 4.8vw, 20px);
+    padding: 0.6rem 0.75rem;
   }
 }
 
-/* Ensure the floating text box keeps a consistent visual ratio and doesn't collapse
-   when resized. The aspect-ratio creates a predictable height for the floating box
-   while its width adapts to viewport size. Padding and box-sizing keep text readable. */
+/* Desktop / wide layouts keep the floating-box styling but ensure it has a stable box model */
 .hero-section .hero-section-text{
   aspect-ratio: 4 / 1; /* width : height ratio for the floating object */
   padding: 0.8rem 1rem;
