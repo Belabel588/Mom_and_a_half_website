@@ -61,17 +61,7 @@
    laptop/tablet, small tablet/large phone, and small phone screens. */
 
 @media (max-width: 1200px) {
-  .hero-section .hero-section-text {
-    width: 35%;
-    font-size: calc(var(--pc-main-header) * 0.9);
-    top: 50%;
-    left: 2%;
-  }
-}
-
-@media (max-width: 900px) {
-  /* On tablet and below switch to a stacked layout so the image and text do not overlap.
-     Use a centered, full-width text block for readability on narrow viewports. */
+  /* Tablet and smaller: stack the hero image and text, and use a card-style text block. */
   .hero-section {
     margin-bottom: 2rem;
     display: flex;
@@ -83,6 +73,7 @@
   .hero-section .hero-img-div {
     width: 100%;
   }
+
   .hero-section .hero-img {
     width: 100%;
     height: auto;
@@ -90,32 +81,50 @@
   }
 
   .hero-section .hero-section-text {
-    /* Stop absolute positioning on smaller screens so text flows naturally under the image */
     position: static;
-    width: 100%;
-    max-width: 720px;
-    font-size: clamp(18px, 3.6vw, 22px);
-    rotate: 0deg;
+    width: min(100%, 720px);
+    max-width: 100%;
+    margin: 0 auto;
+    order: 2;
+    text-align: right;
+    direction: rtl;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+    font-size: clamp(18px, 3.4vw, 22px);
     transform: none;
-    text-align: center;
-    padding: 0.75rem 1rem;
+    rotate: 0deg;
+    padding: 1.2rem 1rem;
     box-sizing: border-box;
-    order: 2; /* keep text after the image */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     aspect-ratio: auto;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
   }
 }
 
-/* Small phones: increase legibility and spacing */
+@media (max-width: 600px) {
+  .hero-section {
+    gap: 0.75rem;
+  }
+
+  .hero-section .hero-section-text {
+    width: 100%;
+    padding: 1.3rem 1rem;
+    font-size: clamp(18px, 4.2vw, 21px);
+    border-radius: 0.9rem;
+  }
+}
+
 @media (max-width: 420px) {
   .hero-section .hero-section-text {
     font-size: clamp(16px, 4.8vw, 20px);
-    padding: 0.6rem 0.75rem;
+    padding: 1rem 0.9rem;
   }
 }
 
 /* Desktop / wide layouts keep the floating-box styling but ensure it has a stable box model */
-.hero-section .hero-section-text{
+.hero-section .hero-section-text {
   aspect-ratio: 4 / 1; /* width : height ratio for the floating object */
   padding: 0.8rem 1rem;
   box-sizing: border-box;
