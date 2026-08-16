@@ -1,8 +1,13 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   height: fit-content;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 
   // direction: rtl;
 
@@ -19,16 +24,21 @@ html, body {
 
 body {
   font-family: var(--Fredoka);
-  
+
+  /* Painted here too so the safe-area strips on notched phones and any
+     overscroll gutter match the layout instead of showing through white. */
+  background-color: rgb(253, 227, 217);
 }
 
 .app-main-layout {
   height: fit-content;
-  width: 100vw;
+  /* 100% rather than 100vw: 100vw counts the scrollbar, so on platforms with
+     classic space-taking scrollbars it runs wider than the page and gets clipped. */
+  width: 100%;
   background-color: rgb(253, 227, 217);
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .logo-nav{
@@ -37,7 +47,7 @@ body {
   height: 4rem;
   width: 8rem;
   top: 80%;
-  left: 93%;
+  right: 2%;
   cursor: pointer;
   opacity: 0;
   transition: visibility 0.3s, opacity 0.3s;
@@ -54,6 +64,25 @@ body {
   }
 
 
+}
+
+/* Make images responsive across the site so absolute/floating elements align predictably */
+img{ max-width:100%; height:auto; display:block; }
+
+/* Responsive positioning for fixed/floating nav controls */
+@media (max-width: 1200px){
+.logo-nav{ left: auto; right: 2%; top: 78%; }
+.mobile-nav{ width: 36vh; }
+}
+
+@media (max-width: 900px){
+.logo-nav{ left: auto; right: 2%; top: 76%; width: 6rem; height: 3rem; }
+.mobile-nav{ width: 34vh; left: auto; right: 2rem; }
+}
+
+@media (max-width: 600px){
+.logo-nav{ left: auto; right: 2%; top: 74%; width: 5rem; height: 2.5rem; }
+.mobile-nav{ width: 60vw; left:50%; transform: translateX(-50%); top: auto; bottom: 6%; }
 }
 
 

@@ -1,10 +1,15 @@
+/* The hero is the one full-bleed band on the page: square corners, edge to edge,
+   with the headline sitting on the photo at every screen size. The wrapper div
+   holds the About section too, so it needs an explicit width — the centering
+   layout would otherwise leave it to shrink-to-fit. */
+#hero-section{
+  width: 100%;
+}
+
 .hero-section{
   display: flex;
   position: relative;
-
-  // background-image: url('../src/assets/styles/imgs/images/Hero-img-3.jpg');
-  // width: 100vw;
-  // height: 100vh;
+  width: 100%;
 
   animation:appear linear;
   // animation-timeline:view();
@@ -12,15 +17,17 @@
   animation-duration: 0.8s;
 
   margin-bottom: 3rem;
-  
-  
-  
+
+  .hero-img-div{
+    position: relative; // positioning context for the headline
+    width: 100%;
+  }
+
   .hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0.625rem;
-    // margin-top:2px;
+    border-radius: 0;
     filter: brightness(95%);
   }
 
@@ -36,23 +43,91 @@
     position:absolute;
 
     direction: rtl;
-    
+
     color:rgba(255, 204, 204, 0.872);
-    // color: rgb(253, 227, 217);
-    // color:rgba(255, 255, 255, 0.799);
-    // color:var(--primary-pink);
     font-size: var(--pc-main-header);
     text-align:  right;
-    width:30%;
-    top:48%;
+    // Sits on the wall below the window; the narrower box keeps the right-hand
+    // (leading, in RTL) edge clear of her shoulder.
+    width:27%;
+    top:54%;
     left:1.5%;
     rotate:-5.5deg;
-    // font-family: "Rubik", sans-serif;
     font-family: var(--Fredoka);
     font-weight: 500;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     text-decoration: none;
+
+    // Stable box for the floating headline so it keeps its shape over the photo.
+    aspect-ratio: 4 / 1;
+    padding: 0.8rem 1rem;
   }
 
 }
 
+/* Media queries come last on purpose: these override the floating-headline box
+   above, and an unscoped rule placed after them would silently win instead.
+   The headline stays absolutely positioned on the photo at every size — it only
+   takes a larger share of the frame and fluid type as the image gets smaller. */
+
+@media (max-width: 1200px) {
+  .hero-section .hero-section-text {
+    width: 31%;
+    font-size: calc(var(--pc-main-header) * 0.9);
+    top: 55%;
+    left: 2%;
+  }
+}
+
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  /* Hold the first screen for the hero alone: the section reserves the viewport
+     minus the header, so the About card always starts below the fold. svh is the
+     toolbar-visible height, so this still holds when mobile chrome is showing. */
+  .hero-section {
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem);
+    align-items: stretch;
+    margin-bottom: 2rem;
+  }
+
+  .hero-section .hero-img {
+    height: 100%;
+    object-fit: cover;
+    // The tall phone frame only shows ~46% of the photo's width, so this picks
+    // the slice that centres her and keeps her face whole.
+    object-position: 62% center;
+  }
+
+  /* Tablets held vertically keep enough wall beside her arm for the headline to
+     sit roughly where it does on desktop. */
+  .hero-section .hero-section-text {
+    width: 27%;
+    top: 42%;
+    left: 2%;
+    font-size: clamp(11px, 3.3vw, 30px);
+    padding: 0;
+    aspect-ratio: auto;
+    // A touch more shadow keeps the smaller type off the bright window behind it.
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+  }
+
+  .hero-section .hero-section-text p {
+    margin: 0;
+  }
+}
+
+/* Phones crop the photo far tighter, leaving no usable wall beside her arm, so
+   the headline sits above her head instead — wider, and centred over her. */
+@media (max-width: 600px) {
+  .hero-section .hero-section-text {
+    // Narrow enough to wrap into a squarish block rather than a wide thin banner.
+    width: 38%;
+    top: 2%;
+    left: 33%;
+    text-align: center;
+    // Straight rather than tilted: the desktop tilt reads as a stray slant once
+    // the headline is a centred block above her head.
+    rotate: 0deg;
+    font-size: clamp(13px, 4.1vw, 26px);
+  }
+}

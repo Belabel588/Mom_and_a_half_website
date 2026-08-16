@@ -7,16 +7,23 @@ justify-content: space-evenly;
 // width: 100vw;
 
   background-color: rgb(255, 255, 255);
-  width: 100vw;
+  width: 100%;
   height: 18vh;
   margin-left: auto;
   margin-right: auto;
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
+  /* The white band spans the full page; these keep its contents out of the
+     notch/rounded corners on devices that report a safe area. */
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  /* Square bottom edge so the bar meets the full-bleed hero flush, with no
+     rounded notch letting the page background show through at the corners. */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   // position: fixed;
-  
+  position: relative; // anchors the mobile dropdown panel
+
   animation:appear linear;
   // animation-timeline:view();
   animation-range:entry 0% cover 100%;
@@ -59,4 +66,134 @@ justify-content: space-evenly;
   }
 }
 
+}
+
+/* The layout centers its children, and once the nav links are hidden the bar
+   would otherwise shrink to the width of the logo alone. */
+.app-main-layout > header{
+  width: 100%;
+}
+
+/* Hamburger, dropdown panel and backdrop are all kept at this specificity so the
+   media query below can override them — nesting them under #web-main-header would
+   make the base rules unbeatable by a plain class selector. */
+.app-header-hamburger{
+  display: none;
+
+  position: absolute;
+  top: 50%;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  transform: translateY(-50%);
+
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span{
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--primary-green);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+
+  span + span{
+    margin-top: 6px;
+  }
+
+  &.is-open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  &.is-open span:nth-child(2){ opacity: 0; }
+  &.is-open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+}
+
+.app-header-mobile-nav{
+  display: none;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+
+  flex-direction: column;
+  align-items: stretch;
+
+  padding: 0.5rem 1rem 1.25rem;
+  padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+
+  .app-header-mobile-link{
+    direction: rtl;
+    text-align: center;
+
+    padding: 0.85rem 0.5rem;
+    border-radius: 0.5rem;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    text-decoration: none;
+  }
+
+  .app-header-mobile-link:active{
+    background-color: rgba(51, 102, 102, 0.08);
+  }
+}
+
+.app-header-menu-backdrop{
+  display: none;
+
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Phones, plus tablets held vertically, swap the six inline links for the hamburger.
+   Keep this query in sync with MOBILE_NAV_QUERY in AppHeader.jsx. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  #web-main-header{
+    justify-content: center;
+    height: auto;
+    min-height: 4.5rem;
+    padding: 0.75rem 1rem;
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+    z-index: 30; // keeps the bar and its panel above the backdrop
+  }
+
+  #web-main-header .app-header-nav-group{
+    display: none;
+  }
+
+  #web-main-header .main-header-logo{
+    height: 3.25rem;
+  }
+
+  #web-main-header .main-header-logo-img{
+    width: auto;
+    height: 100%;
+  }
+
+  .app-header-hamburger{
+    display: flex;
+  }
+
+  .app-header-mobile-nav.is-open{
+    display: flex;
+  }
+
+  .app-header-menu-backdrop{
+    display: block;
+  }
 }

@@ -1,10 +1,8 @@
 #contact-section {
-  width: 100vw;
+  width: 100%;
   padding: 5rem 2rem;
   display: flex;
   justify-content: center;
-
-  margin-left: 5rem;
 
   direction: rtl;
 
@@ -125,5 +123,23 @@
   &:active {
     transform: translateY(0);
     box-shadow: 0 8px 20px rgba(173, 140, 133, 0.35);
+  }
+}
+
+/* Below tablet, the 2-column form grid gets too narrow to use comfortably;
+   drop to a single column and ease off the padding. */
+@media (max-width: 700px) {
+  #contact-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .contact-section-form {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    gap: 1.2rem;
+  }
+
+  .contact-section-header {
+    font-size: clamp(20px, 6vw, 28px);
   }
 }

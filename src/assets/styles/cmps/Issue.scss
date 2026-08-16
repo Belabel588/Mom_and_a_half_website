@@ -45,13 +45,16 @@
     .issue-section-textbox{
       display:flex;
       flex-direction:column;
-      
+      // Centre the header and body in the bubble; without this the headings'
+      // default margins push the block off-centre against the fixed height.
+      justify-content: center;
+
       // position: absolute;
       direction: rtl;
-      
-      
-      
-      margin:0;  
+
+
+
+      margin:0;
       width:40vw;
       height:48vh;
       padding:2.4rem;
@@ -77,17 +80,19 @@
     
     .issue-section-text{
       color:white;
-      
+
       font-size:var(--pc-regular-letter) ;
       text-align: right;
+      // Browser default heading/paragraph margins fight the bubble's own padding.
+      margin: 0;
     }
-    
+
     .issue-section-textbox-header{
       color:var(--primary-pink);
-      
+
       font-size:var(--pc-regular-big-letter);
       text-align: right;
-      margin-bottom:-0.2rem;
+      margin: 0 0 0.75rem;
       font-weight: 500;
     }
     
@@ -96,11 +101,13 @@
     .issue-section-textbox-2{
       display:flex;
       flex-direction:column;
-      
+      justify-content: center;
+      align-items: center;
+
       // position: absolute;
       direction: rtl;
-      
-      
+
+
       width:32vw;
       height:15vh;
       padding:1rem;
@@ -123,10 +130,11 @@
     
     .issue-section-text-2{
       color:var(--primary-pink);
-      
+
       font-size:var(--pc-regular-big-letter);
       font-weight: 500;
       text-align: center;
+      margin: 0;
     }
     
   }
@@ -150,3 +158,117 @@
     object-fit: contain;
     padding-bottom: 2rem;
   }
+ 
+/* Responsive rules to keep issue floating textboxes stable across viewports.
+   - Convert fixed rem offsets into percentage-based placement where appropriate
+   - Stack layout on small screens to avoid overlap
+   - Use clamp() and aspect-ratio to maintain readable size and consistent ratio */
+
+@media (max-width: 1200px) {
+  #issue-section{
+    width:90vw;
+    margin-top: -2rem;
+  }
+  #issue-section .issue-section-texts{
+    width: 46%;
+    height: auto;
+    left: 50%;
+    top: 1.5rem;
+    gap: 3rem;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox{
+    width: 92%;
+    height: auto;
+    padding: 2rem;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox-2{
+    width: 78%;
+    height: auto;
+  }
+  #issue-section .issue-section-img{ max-width:45vw; }
+}
+
+/* Phones and vertically-held tablets stack the photo above the text bubbles.
+   Image and bubbles share one width and sit in a tight column so they read as a
+   single group rather than a small picture floating away from its text. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  #issue-section{
+    display:block;
+    width:100%;
+    margin-top: 0.5rem;
+    padding: 0 1rem;
+  }
+  #issue-section .issue-section-img{
+    display: block;
+    width: min(100%, 40rem);
+    max-width: none;
+    margin: 0 auto;
+  }
+  #issue-section .issue-img{
+    width: 100%;
+    height: auto;
+    /* The source photo is essentially square, so cover fills the bubble cleanly. */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 2rem;
+    padding-bottom: 0;
+  }
+  #issue-section .issue-section-texts{
+    position: relative; /* stop absolute overlap */
+    left: auto;
+    top: auto;
+    width: min(100%, 40rem);
+    margin: 0 auto;
+    height: auto;
+    gap: 1rem;
+    padding: 1rem 0 0;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox,
+  #issue-section .issue-section-texts .issue-section-textbox-2{
+    position: relative;
+    left: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    padding: 1.5rem;
+    border-radius: 2rem;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox-header,
+  #issue-section .issue-section-texts .issue-section-text,
+  #issue-section .issue-section-texts .issue-section-text-2{
+    font-size: clamp(15px, 2.4vw, 22px);
+  }
+}
+
+@media (max-width: 600px) {
+  /* Phones: fluid type. Horizontal padding stays on #issue-section so the bubbles
+     keep matching the photo's width instead of tucking in narrower than it. */
+  #issue-section{ width:100%; margin-bottom: 2rem; }
+  #issue-section .issue-section-texts .issue-section-textbox,
+  #issue-section .issue-section-texts .issue-section-textbox-2{
+    width: 100%;
+    max-width: none;
+    padding: 1.25rem;
+    aspect-ratio: auto;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox-header,
+  #issue-section .issue-section-texts .issue-section-text,
+  #issue-section .issue-section-texts .issue-section-text-2{
+    font-size: clamp(14px, 3.8vw, 16px);
+  }
+}
+
+@media (max-width: 420px) {
+  #issue-section{ padding: 0 0.75rem; }
+  #issue-section .issue-img{ border-radius: 1.5rem; }
+  #issue-section .issue-section-texts .issue-section-textbox,
+  #issue-section .issue-section-texts .issue-section-textbox-2{
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+  #issue-section .issue-section-texts .issue-section-textbox-header,
+  #issue-section .issue-section-texts .issue-section-text,
+  #issue-section .issue-section-texts .issue-section-text-2{
+    font-size: clamp(13px, 4.5vw, 15px);
+  }
+}
