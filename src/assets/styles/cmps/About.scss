@@ -7,9 +7,18 @@ justify-content: center;
 margin-top: 8rem;
 margin-bottom: 8rem;
 
-animation:appear linear;
-animation-timeline:view();
-animation-range:entry 0% cover 40%;
+/* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
+   is-visible, not CSS animation-timeline:view() — that never actually
+   updates with scroll in practice, so sections using it just render frozen
+   at whatever opacity they happened to compute on first load. */
+opacity: 0;
+transform: translateY(32px) scale(0.97);
+transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+&.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
 
 

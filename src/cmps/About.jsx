@@ -1,9 +1,10 @@
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+
 export function About() {
-
-
+  const [ref, isVisible] = useRevealOnScroll()
 
   return (
-    <section id="about-section">
+    <section id="about-section" ref={ref} className={isVisible ? 'is-visible' : ''}>
 
 
 

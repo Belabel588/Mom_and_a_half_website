@@ -6,6 +6,19 @@
 
   direction: rtl;
 
+  /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
+     is-visible, not CSS animation-timeline:view() — that never actually
+     updates with scroll in practice, so sections using it just render frozen
+     at whatever opacity they happened to compute on first load. */
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
   --primary-green: rgb(51, 102, 102);
   --primary-pink: rgb(255, 204, 204);
   --secondary-brown: rgb(173, 140, 133);

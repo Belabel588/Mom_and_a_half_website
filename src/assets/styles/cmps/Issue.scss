@@ -1,11 +1,8 @@
 #issue-section{
   display: flex;
   position: relative;
-  // flex-direction: column;
   justify-content: flex-start;
-
-  align-items:left;
-  
+  align-items: flex-start;
 
 
   margin-bottom: 8rem;
@@ -13,35 +10,62 @@
   width:80vw;
   height:fit-content;
   margin-top: -3rem;
-  // padding: 1rem;
 
-  animation:appear linear;
-  animation-timeline:view();
-  animation-range:entry 0% cover 40%;
+  /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
+     is-visible, not CSS animation-timeline:view() — that never actually
+     updates with scroll in practice, so sections using it just render frozen
+     at whatever opacity they happened to compute on first load. */
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 
 
-  .issue-section-texts{
+  .issue-section-img{
+    flex: 0 1 50%;
+    min-width: 0;
+    padding-bottom: 2rem;
+
     display: flex;
-    position: absolute;
+  }
+
+  /* Cropped taller than the source photo's native ~1:1 ratio so the frame
+     reads as a portrait rather than a square next to the text column. */
+  .issue-img{
+    width:100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 6.25rem;
+    object-fit: cover;
+  }
+
+  /* The bubbles live in normal flow beside the photo instead of being
+     absolutely positioned over it: a narrow column (tablet landscape widths)
+     wraps the paragraph onto more lines, and when that column is taken out of
+     flow its extra height doesn't grow the section — the bottom bubble just
+     spills out past the photo. Keeping it in flow means the section always
+     grows to fit whichever of photo/text is taller. The negative margin pulls
+     the column left to keep the "floating over the photo" overlap look. */
+  .issue-section-texts{
+    position: relative;
+    flex: 1 1 46%;
+    min-width: 0;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    // justify-content: space-between;
 
-
-    width: 48vw;
-    height: 45vh;
-
-
-    // position: absolute;
     gap:5rem;
 
-          left:35rem;
-      top:1rem;
+    margin-left: -4rem;
+    padding-top: 1rem;
+    z-index: 1;
 
-      
-    
-    
-    
+
+
     .issue-section-textbox{
       display:flex;
       flex-direction:column;
@@ -49,35 +73,20 @@
       // default margins push the block off-centre against the fixed height.
       justify-content: center;
 
-      // position: absolute;
       direction: rtl;
 
-
-
       margin:0;
-      width:40vw;
-      height:48vh;
+      width:100%;
       padding:2.4rem;
-      // padding-right: 3.5rem;
-      // padding-top: 1rem;
-      // padding-bottom: 3.5rem;
 
-
-      
-      
-      
-      // left:52%;
-      // top:18%;
-      
-      
       color:white;
       font-weight: 400;
       background: rgba(51, 102, 102, 0.897);
-      
+
       border-radius: 6.25rem;
     }
-    
-    
+
+
     .issue-section-text{
       color:white;
 
@@ -95,39 +104,28 @@
       margin: 0 0 0.75rem;
       font-weight: 500;
     }
-    
-    
-    
+
+
+
     .issue-section-textbox-2{
       display:flex;
       flex-direction:column;
       justify-content: center;
       align-items: center;
 
-      // position: absolute;
       direction: rtl;
 
-
-      width:32vw;
-      height:15vh;
+      width:78%;
       padding:1rem;
-      // padding-top: 0.5rem;
-      // padding-bottom: 0.1rem;
-      
-      
-      
-      left:12.5rem;
-      // top:67%;
-      
-      
+
       color:white;
-      
+
       background: rgba(51, 102, 102, 0.897);
-      
+
       border-radius: 3.5rem;
     }
-    
-    
+
+
     .issue-section-text-2{
       color:var(--primary-pink);
 
@@ -136,33 +134,18 @@
       text-align: center;
       margin: 0;
     }
-    
-  }
-
 
   }
-    
-  .issue-section-img{
-    display: flex;
-    
-
-   max-width:50vw;
-    max-height:fit-content;
-  }
 
 
-  .issue-img{
-    max-width:100%;
-    max-height:100%;
-    border-radius: 6.25rem;
-    object-fit: contain;
-    padding-bottom: 2rem;
-  }
- 
+}
+
 /* Responsive rules to keep issue floating textboxes stable across viewports.
-   - Convert fixed rem offsets into percentage-based placement where appropriate
+   - Percentage-based flex-basis keeps the columns proportional at every width
+     so the text column's height (which grows as the paragraph wraps) never
+     outgrows the photo it sits beside.
    - Stack layout on small screens to avoid overlap
-   - Use clamp() and aspect-ratio to maintain readable size and consistent ratio */
+   - Use clamp() to keep type readable */
 
 @media (max-width: 1200px) {
   #issue-section{
@@ -170,22 +153,9 @@
     margin-top: -2rem;
   }
   #issue-section .issue-section-texts{
-    width: 46%;
-    height: auto;
-    left: 50%;
-    top: 1.5rem;
-    gap: 3rem;
+    margin-left: -2.5rem;
+    padding-top: 1.5rem;
   }
-  #issue-section .issue-section-texts .issue-section-textbox{
-    width: 92%;
-    height: auto;
-    padding: 2rem;
-  }
-  #issue-section .issue-section-texts .issue-section-textbox-2{
-    width: 78%;
-    height: auto;
-  }
-  #issue-section .issue-section-img{ max-width:45vw; }
 }
 
 /* Phones and vertically-held tablets stack the photo above the text bubbles.
@@ -204,32 +174,26 @@
     max-width: none;
     margin: 0 auto;
   }
+  #issue-section .issue-section-img{
+    padding-bottom: 0;
+  }
   #issue-section .issue-img{
     width: 100%;
     height: auto;
-    /* The source photo is essentially square, so cover fills the bubble cleanly. */
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: 2rem;
-    padding-bottom: 0;
   }
   #issue-section .issue-section-texts{
-    position: relative; /* stop absolute overlap */
-    left: auto;
-    top: auto;
     width: min(100%, 40rem);
-    margin: 0 auto;
-    height: auto;
+    margin: 0 auto; /* also resets the desktop overlap's negative margin-left */
     gap: 1rem;
     padding: 1rem 0 0;
   }
   #issue-section .issue-section-texts .issue-section-textbox,
   #issue-section .issue-section-texts .issue-section-textbox-2{
-    position: relative;
-    left: auto;
     width: 100%;
     max-width: none;
-    height: auto;
     padding: 1.5rem;
     border-radius: 2rem;
   }
@@ -249,7 +213,6 @@
     width: 100%;
     max-width: none;
     padding: 1.25rem;
-    aspect-ratio: auto;
   }
   #issue-section .issue-section-texts .issue-section-textbox-header,
   #issue-section .issue-section-texts .issue-section-text,

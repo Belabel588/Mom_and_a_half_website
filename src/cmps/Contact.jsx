@@ -1,6 +1,10 @@
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+
 export function Contact() {
+  const [ref, isVisible] = useRevealOnScroll()
+
   return (
-    <section id="contact-section">
+    <section id="contact-section" ref={ref} className={isVisible ? 'is-visible' : ''}>
 
       <div className="contact-section-texts">
 

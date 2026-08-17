@@ -8,13 +8,15 @@ justify-content: space-evenly;
 
   background-color: rgb(255, 255, 255);
   width: 100%;
-  height: 18vh;
+  height: 22vh;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-bottom: 0.5rem;
   /* The white band spans the full page; these keep its contents out of the
-     notch/rounded corners on devices that report a safe area. */
+     notch/rounded corners on devices that report a safe area. The top inset
+     covers the Dynamic Island/notch specifically — without it, the logo can
+     render partly behind the cutout instead of below it. */
+  padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
   /* Square bottom edge so the bar meets the full-bleed hero flush, with no
@@ -165,8 +167,9 @@ justify-content: space-evenly;
   #web-main-header{
     justify-content: center;
     height: auto;
-    min-height: 4.5rem;
+    min-height: 5.5rem;
     padding: 0.75rem 1rem;
+    padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
     padding-left: calc(1rem + env(safe-area-inset-left, 0px));
     padding-right: calc(1rem + env(safe-area-inset-right, 0px));
     z-index: 30; // keeps the bar and its panel above the backdrop
@@ -177,7 +180,7 @@ justify-content: space-evenly;
   }
 
   #web-main-header .main-header-logo{
-    height: 3.25rem;
+    height: 4.25rem;
   }
 
   #web-main-header .main-header-logo-img{

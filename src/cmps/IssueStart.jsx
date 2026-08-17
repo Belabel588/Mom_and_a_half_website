@@ -1,12 +1,12 @@
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+
 export function IssueStart() {
-
-
-
+  const [ref, isVisible] = useRevealOnScroll()
 
 
   return (
     <section>
-      <div id="issue-section-start">
+      <div id="issue-section-start" ref={ref} className={isVisible ? 'is-visible' : ''}>
         <h2 className="issue-section-header">עם מה הורים מתמודדים?</h2>
         <h3 className="issue-section-intro-header">משפטים שאני שומעת מהורים כל הזמן:</h3>
 

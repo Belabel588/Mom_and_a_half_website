@@ -8,9 +8,18 @@
   direction: rtl;
 
 
-  animation:appear linear;
-  animation-timeline:view();
-  animation-range:entry 0% cover 40%;
+  /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
+     is-visible, not CSS animation-timeline:view() — that never actually
+     updates with scroll in practice, so sections using it just render frozen
+     at whatever opacity they happened to compute on first load. */
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
   
   .issue-section-intro-header{
     color: var(--secondary-brown);
@@ -46,14 +55,18 @@
        section, pushing the items off-centre from the headings above them. */
     padding: 0;
     margin-top: 0;
+  }
 
-.issue-section-list-item{
-     font-size:var(--pc-regular-big-letter);
-     max-width: 20rem;
-     font-weight: 300;
-
-     
-}
+  /* Kept at the same nesting depth (one level under #issue-section-start, not
+     under .issue-section-list) so its specificity matches the mobile media
+     query below. Nesting it under .issue-section-list used to outrank that
+     query, so the mobile font-size clamp() never actually applied and the
+     list items stayed at their fixed desktop size — bigger than the headings
+     above them, which do shrink correctly on mobile. */
+  .issue-section-list-item{
+    font-size:var(--pc-regular-big-letter);
+    max-width: 20rem;
+    font-weight: 300;
   }
 
   .issue-section-header{

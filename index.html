@@ -13,6 +13,11 @@
     rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Without this, iOS Safari tints its own top/bottom chrome bars white/gray
+       instead of the page's background, leaving a mismatched band around the
+       Dynamic Island and home indicator even though the page itself already
+       extends under them (viewport-fit=cover, above). -->
+  <meta name="theme-color" content="#fde3d9" />
   <title>אמא וחצי</title>
   <link rel="stylesheet" href="/src/assets/styles/main.css">
 </head>
