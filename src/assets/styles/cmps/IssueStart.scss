@@ -86,8 +86,11 @@
 }
 
 /* The 3-column grid of complaint phrases gets too tight below tablet width;
-   drop to 2 columns, then 1 on phones, and let headers/text scale with clamp(). */
-@media (max-width: 900px) {
+   drop to 2 columns, then 1 on phones, and let headers/text scale with clamp().
+   Matches the mobile/tablet-portrait query used elsewhere (e.g. AppHeader) so
+   a tablet held vertically (up to 1024px) gets this sizing too, not just
+   phones — it was previously missing that clause. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
   #issue-section-start{
     width: 100%;
     padding: 0 1rem;
@@ -106,8 +109,10 @@
     gap: 1.5rem;
     margin-bottom: 4rem;
   }
+  /* A bit bigger than before, but kept under both titles' clamp() ranges above
+     at every width in this bracket. */
   #issue-section-start .issue-section-list-item{
-    font-size: clamp(14px, 2.6vw, 18px);
+    font-size: clamp(15px, 2.9vw, 20px);
     max-width: none;
     text-align: center;
   }

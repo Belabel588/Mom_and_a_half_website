@@ -13,10 +13,11 @@ html, body {
 
   font-family: var(--Fredoka);
 
-  /* Matches the body's background below so iOS Safari's rubber-band overscroll
-     (which paints from the html element, not body) doesn't flash white above/
-     below the page content near the Dynamic Island and home indicator. */
-  background-color: rgb(253, 227, 217);
+  /* iOS Safari's rubber-band overscroll paints from the html element, not
+     body, so this is what shows behind the Dynamic Island and home indicator
+     on mobile. White matches the AppHeader band at the top of the page, and
+     is used for the bottom overscroll too so both ends look continuous. */
+  background-color: #ffffff;
 
 
 
@@ -30,8 +31,8 @@ html, body {
 body {
   font-family: var(--Fredoka);
 
-  /* Painted here too so the safe-area strips on notched phones and any
-     overscroll gutter match the layout instead of showing through white. */
+  /* The peach shows through in the gaps between sections; html above is kept
+     white on purpose so the very top/bottom overscroll matches the header. */
   background-color: rgb(253, 227, 217);
 }
 
