@@ -52,6 +52,13 @@
   margin-bottom: 1.5rem;
 }
 
+.contact-section-logo {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto 1rem;
+  object-fit: contain;
+}
+
 .contact-section-header {
   font-size: 2.4rem;
   color: var(--text-light);
@@ -96,9 +103,18 @@
     min-height: 130px;
   }
 
-  &:last-of-type {
-    grid-column: 1 / -1;
-  }
+}
+
+/* :last-of-type doesn't work here — the actual last <div> sibling in the grid
+   is .contact-button-wrapper, not this field, since :last-of-type only looks
+   at tag name, not class. An explicit class is what actually targets it. */
+.contact-field-message {
+  grid-column: 1 / -1;
+  /* Tablet-landscape/desktop only (the 2-column grid — see the 700px
+     breakpoint below): narrower and centered under the other inputs instead
+     of stretching edge-to-edge. */
+  width: 70%;
+  margin: 0 auto;
 }
 
 /* BUTTON */
@@ -106,6 +122,40 @@
   grid-column: 1 / -1;
   margin-top: 2rem;
   text-align: center;
+}
+
+/* SOCIAL LINKS */
+.contact-social-links {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+
+  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+
+  svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  &:hover {
+    background: var(--primary-pink);
+    color: var(--primary-green);
+    transform: scale(1.1);
+  }
 }
 
 .contact-submit-button {
@@ -137,6 +187,27 @@
     transform: translateY(0);
     box-shadow: 0 8px 20px rgba(173, 140, 133, 0.35);
   }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.contact-form-status {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.contact-form-status-success {
+  color: var(--primary-pink);
+}
+
+.contact-form-status-error {
+  color: #ffb4b4;
 }
 
 /* Below tablet, the 2-column form grid gets too narrow to use comfortably;
@@ -154,5 +225,10 @@
 
   .contact-section-header {
     font-size: clamp(20px, 6vw, 28px);
+  }
+
+  .contact-field-message {
+    width: 100%;
+    margin: 0;
   }
 }

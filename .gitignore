@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Backend secrets and stored form submissions (contain real visitor PII)
+.env
+server/data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

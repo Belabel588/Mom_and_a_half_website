@@ -7,7 +7,6 @@ html, body {
   padding: 0;
   height: fit-content;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 
   // direction: rtl;
 
@@ -30,6 +29,13 @@ html, body {
 
 body {
   font-family: var(--Fredoka);
+
+  /* iOS Safari breaks momentum scrolling (the page can freeze mid-scroll,
+     particularly near the top) when overflow-x:hidden sits on the root html
+     element — it has to go on body instead to clip horizontal overflow
+     safely there. */
+  overflow-x: hidden;
+  position: relative;
 
   /* The peach shows through in the gaps between sections; html above is kept
      white on purpose so the very top/bottom overscroll matches the header. */
