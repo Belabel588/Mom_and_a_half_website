@@ -26,9 +26,9 @@ justify-content: space-evenly;
   // position: fixed;
   position: relative; // anchors the mobile dropdown panel
 
-  animation:appear linear;
-  // animation-timeline:view();
-  animation-range:entry 0% cover 100%;
+  // Fade only, for the same reason as the hero: scaling a full-width band up
+  // from 0.5 makes the logo and links slide into place after load.
+  animation: fade-in linear;
   animation-duration: 0.6s;
 
   

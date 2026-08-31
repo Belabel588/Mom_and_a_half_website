@@ -11,6 +11,20 @@
   }
 }
 
+/* Opacity only. `appear` scales from 0.5, which is fine for a bounded card but
+   wrong for full-bleed bands: on the hero it zoomed the photo up over ~0.8s, so
+   the subject visibly drifted into place after load and read as the image
+   moving on scroll. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes disappear {
   from {
     opacity: 1;
