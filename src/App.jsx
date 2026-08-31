@@ -9,7 +9,6 @@ import { About } from './cmps/About'
 import { Issue } from './cmps/Issue'
 import { Testimonials } from './cmps/Testimonials'
 import { Contact } from './cmps/Contact'
-import { AccessibilityMenu } from './cmps/AccessibilityMenu'
 import './assets/styles/main.scss'
 
 /* Split out from App so it can call useLanguage — a component cannot consume a
@@ -55,13 +54,14 @@ function Page() {
           <Contact />
         </main>
 
+        {/* The accessibility control lives in AppHeader, not here — see the
+            utility cluster there. This back-to-top logo is the one thing that
+            stays floating, since its whole job is to be reachable mid-page. */}
         <a href="#web-main-header" aria-label={t.nav.backToTop}>
           <img className={`logo-nav ${showNavLogo ? 'show' : ''}`}
             src="./images/nav-logo-pink.png"
             alt={t.nav.backToTop} />
         </a>
-
-        <AccessibilityMenu />
       </Router>
     </section >
   )

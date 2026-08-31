@@ -17,12 +17,12 @@ justify-content: space-evenly;
      covers the Dynamic Island/notch specifically — without it, the logo can
      render partly behind the cutout instead of below it. */
   padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
-  /* The language toggle is absolutely positioned, so it takes no flow space and
-     the nav would run underneath it. Reserving room on BOTH sides keeps the
-     logo centred (space-evenly would otherwise shift it) while pulling the
-     links clear of the toggle. */
-  padding-left: calc(4.5rem + env(safe-area-inset-left, 0px));
-  padding-right: calc(4.5rem + env(safe-area-inset-right, 0px));
+  /* The utility cluster (language + accessibility) is absolutely positioned, so
+     it takes no flow space and the nav would run underneath it. Reserving room
+     on BOTH sides keeps the logo centred (space-evenly would otherwise shift
+     it) while pulling the links clear of the cluster. */
+  padding-left: calc(7rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(7rem + env(safe-area-inset-right, 0px));
   /* Square bottom edge so the bar meets the full-bleed hero flush, with no
      rounded notch letting the page background show through at the corners. */
   border-bottom-left-radius: 0;
@@ -90,6 +90,17 @@ justify-content: space-evenly;
 
   #web-main-header .app-header-main-nav .app-header-main-link{
     font-size: 1.05rem;
+  }
+}
+
+/* The last stretch before the hamburger takes over at 900px. */
+@media (max-width: 1100px) {
+  #web-main-header .app-header-main-nav{
+    gap: 0.8rem;
+  }
+
+  #web-main-header .app-header-main-nav .app-header-main-link{
+    font-size: 0.95rem;
   }
 }
 

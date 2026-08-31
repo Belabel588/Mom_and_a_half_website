@@ -53,16 +53,36 @@ body {
   align-items: center;
 }
 
+/* Back-to-top control. Anchored to the bottom corner rather than the old
+   top:80% — mid-screen it landed in the middle of a paragraph (the About text
+   on mobile especially), and with a transparent PNG it read as damage to the
+   text rather than as a button floating above it.
+
+   `cover`, not `contain`: the source is 2000x933, a circular badge centred in a
+   wide, mostly transparent canvas. Contain fits that whole width into the
+   button, which shrinks the badge itself to under half the button and leaves a
+   broad white ring. Cover crops the empty sides away so the badge fills the
+   disc, and the white background then shows only as a thin rim around it. */
 .logo-nav{
   position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 55;
+
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  object-fit: cover;
+
   visibility: hidden;
-  height: 4rem;
-  width: 8rem;
-  top: 80%;
-  right: 2%;
-  cursor: pointer;
   opacity: 0;
-  transition: visibility 0.3s, opacity 0.3s;
+  cursor: pointer;
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
 
   &.show {
     visibility: visible;
@@ -71,11 +91,7 @@ body {
 
   &:hover{
     transform: scale(1.1);
-    transition: 0.5s;
-
   }
-
-
 }
 
 /* Make images responsive across the site so absolute/floating elements align predictably */
@@ -83,17 +99,17 @@ img{ max-width:100%; height:auto; display:block; }
 
 /* Responsive positioning for fixed/floating nav controls */
 @media (max-width: 1200px){
-.logo-nav{ left: auto; right: 2%; top: 78%; }
 .mobile-nav{ width: 36vh; }
 }
 
 @media (max-width: 900px){
-.logo-nav{ left: auto; right: 2%; top: 76%; width: 6rem; height: 3rem; }
 .mobile-nav{ width: 34vh; left: auto; right: 2rem; }
 }
 
 @media (max-width: 600px){
-.logo-nav{ left: auto; right: 2%; top: 74%; width: 5rem; height: 2.5rem; }
+/* A touch smaller and tighter into the corner, so it covers as little of the
+   text as a floating control can. */
+.logo-nav{ width: 3rem; height: 3rem; bottom: 1rem; right: 1rem; }
 .mobile-nav{ width: 60vw; left:50%; transform: translateX(-50%); top: auto; bottom: 6%; }
 }
 

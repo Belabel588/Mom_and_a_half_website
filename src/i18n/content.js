@@ -165,12 +165,15 @@ export const CONTENT = {
     label: 'English',
     switchTo: 'מעבר לעברית',
 
+    /* Kept deliberately short — six English labels plus the logo and the utility
+       cluster only fit the bar between 900 and 1200px if the labels stay tight.
+       The longer phrasing lives in the section headings themselves. */
     nav: {
-      about: 'About me',
-      why: 'Why I chose this',
+      about: 'About',
+      why: 'Why I do this',
       parents: 'Parents say',
       testimonials: 'Kind words',
-      meetings: 'The sessions',
+      meetings: 'Sessions',
       contact: 'Contact',
       openMenu: 'Open menu',
       closeMenu: 'Close menu',

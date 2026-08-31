@@ -70,13 +70,9 @@ html[data-lang="en"] {
 }
 
 /* ── The toggle itself ────────────────────────────────────────────────────── */
+/* Positioning comes from .header-utilities, which this now sits inside — see
+   _accessibility.scss. */
 .lang-toggle{
-  position: absolute;
-  top: 50%;
-  left: calc(1rem + env(safe-area-inset-left, 0px));
-  transform: translateY(-50%);
-  z-index: 31;
-
   padding: 0.4rem 0.85rem;
 
   background: transparent;

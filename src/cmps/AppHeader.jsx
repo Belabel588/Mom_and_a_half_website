@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { AccessibilityMenu } from './AccessibilityMenu'
 
 /* Keep this in sync with the matching media query in AppHeader.scss:
    phones, plus tablets held vertically, get the hamburger instead of the full nav. */
@@ -60,12 +61,20 @@ export function AppHeader() {
     <header>
       <div id="web-main-header">
 
-        <button className="lang-toggle"
-          onClick={toggleLanguage}
-          lang={isHebrew ? 'en' : 'he'}
-          aria-label={t.switchTo}>
-          {isHebrew ? 'EN' : 'עב'}
-        </button>
+        {/* Language and accessibility live together as one small utility cluster
+            in the bar, rather than floating over the page. The cluster is the
+            positioning context for the accessibility panel, which drops beneath
+            it only while open. */}
+        <div className="header-utilities">
+          <button className="lang-toggle"
+            onClick={toggleLanguage}
+            lang={isHebrew ? 'en' : 'he'}
+            aria-label={t.switchTo}>
+            {isHebrew ? 'EN' : 'עב'}
+          </button>
+
+          <AccessibilityMenu />
+        </div>
 
         <div className="app-header-nav-group">
           <nav className="app-header-main-nav" aria-label={t.nav.about}>
