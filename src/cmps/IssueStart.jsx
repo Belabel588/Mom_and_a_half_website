@@ -1,29 +1,37 @@
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
+const MAYBE_LINES = [
+  'אולי הילד שלכם מתקשה לקבל גבולות, וכל בקשה הופכת למאבק.',
+  'אולי יש בבית הרבה התנגדויות, ויכוחים או התקפי זעם.',
+  'אולי אתם מרגישים שאתם חוזרים שוב ושוב לאותן סיטואציות ולא בטוחים איך נכון להגיב.',
+  'אולי אתם יודעים מה לא עובד — אבל עדיין לא מצאתם את הדרך שמתאימה לכם.',
+  'ואולי אתם פשוט רוצים להבין טוב יותר את הילד שלכם, את עצמכם כהורים ואת מה שקורה ביניכם בבית.',
+]
+
 export function IssueStart() {
   const [ref, isVisible] = useRevealOnScroll()
-
 
   return (
     <section>
       <div id="issue-section-start" ref={ref} className={isVisible ? 'is-visible' : ''}>
-        <h2 className="issue-section-header">עם מה הורים מתמודדים?</h2>
-        <h3 className="issue-section-intro-header">משפטים שאני שומעת מהורים כל הזמן:</h3>
+        <h2 className="issue-section-header">אולי הגעתם לכאן כי...</h2>
+
+        <p className="issue-section-intro-header">
+          אתם אוהבים את הילדים שלכם ורוצים להיות ההורים הכי טובים שאתם יכולים להיות —
+          אבל היומיום לפעמים מרגיש מורכב ומתיש.
+        </p>
 
         <ul className="issue-section-list">
-          <li className="issue-section-list-item">אני מותש.ת</li>
-          <li className="issue-section-list-item">הוא לא מקשיב לי</li>
-          <li className="issue-section-list-item">היא בוכה על כל דבר</li>
-          <li className="issue-section-list-item">הוא נצמד אליי ולא מוכן ללכת לאף אחד</li>
-          <li className="issue-section-list-item">כשהיא משטחת בקניון או ברחוב אין דרך להרגיע אותה</li>
-          <li className="issue-section-list-item">היא לא נרדמת עד השעות הקטנות של הלילה</li>
-          <li className="issue-section-list-item">היא לא מפסיקה להציק לאחותה</li>
-          <li className="issue-section-list-item">הוא לא מספר לי כלום</li>
-          <li className="issue-section-list-item">היא מכה אותי</li>
-          <li className="issue-section-list-item">הוא כל הזמן חוטף צעצועים</li>
-          <li className="issue-section-list-item">קשה לה להיפרד בבוקר</li>
-          <li className="issue-section-list-item">הוא מקנא באחותו הקטנה</li>
+          {MAYBE_LINES.map(line => (
+            <li className="issue-section-list-item" key={line}>{line}</li>
+          ))}
         </ul>
+
+        <p className="issue-section-outro">
+          אם מצאתם את עצמכם באחת מהשורות האלה — אתם ממש לא לבד.
+          <br />
+          אפשר להבין, אפשר ללמוד ואפשר למצוא דרכים חדשות להתמודד.
+        </p>
       </div>
     </section>
   )

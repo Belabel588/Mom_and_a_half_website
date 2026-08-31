@@ -10,8 +10,8 @@ const NAV_LINKS = [
   { href: '#about-section', label: 'קצת עליי' },
   { href: '#issue-section', label: 'למה בחרתי' },
   { href: '#issue-section-start', label: 'הורים מספרים' },
-  { href: '#', label: 'מילים טובות' },
-  { href: '#', label: 'המפגשים' },
+  { href: '#testimonials-section', label: 'מילים טובות' },
+  { href: '#meetings-section', label: 'המפגשים' },
   { href: '#contact-section', label: 'צור קשר' },
 ]
 

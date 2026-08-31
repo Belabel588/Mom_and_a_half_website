@@ -55,7 +55,13 @@ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       min-width: 0;
       background-color: var(--secondary-brown);
 
-      padding: 1.5rem;
+      /* The bio is shorter than the portrait is tall, so centre it rather than
+         letting it sit at the top with a large empty panel underneath. */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 2.5rem;
       border-top-left-radius: 6.25rem;
       border-bottom-left-radius: 6.25rem;
 
@@ -68,12 +74,19 @@ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         color:var(--primary-green);
       }
 
+      /* The bio runs as several <p>s now rather than one block of <br>s, so the
+         spacing between them lives here instead of in the markup. */
       .about-section-text-body{
         font-size: var(--ipad-pro-regular-letter);
         font-weight: 400;
-        line-height: 1.5rem;
+        line-height: 1.7;
         direction: rtl;
         color: white;
+        margin: 0 0 1.1rem;
+
+        &:last-child{
+          margin-bottom: 0;
+        }
       }
     }
   }

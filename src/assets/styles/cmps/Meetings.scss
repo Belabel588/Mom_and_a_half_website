@@ -1,0 +1,267 @@
+/* The one section with no photograph — the alternating card colours and the
+   chip grid are doing the visual work an image does in the other sections. */
+#meetings-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  direction: rtl;
+
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto 8rem;
+  padding: 0 2rem;
+
+  /* Revealed via IntersectionObserver (see useRevealOnScroll); see the note in
+     IssueStart.scss for why this is not animation-timeline:view(). */
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .meetings-header{
+    margin: 0 0 3rem;
+
+    font-size: var(--pc-main-header);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    color: var(--primary-green);
+    text-align: center;
+  }
+
+  .meetings-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Stretch (the default) rather than start: the two cards hold different
+       amounts of text, and matching their heights keeps the pair reading as one
+       band instead of two ragged columns. */
+    gap: 2rem;
+
+    width: 100%;
+    /* Generous gap before "למי ההדרכה מתאימה?" so that block reads as its own
+       beat rather than running straight on from the two cards above it. */
+    margin-bottom: 7.5rem;
+  }
+
+  .meetings-card{
+    display: flex;
+    flex-direction: column;
+
+    padding: 2.75rem 2.5rem;
+
+    background: rgba(51, 102, 102, 0.897);
+    border-radius: 3.5rem;
+    color: white;
+  }
+
+  /* Second card in brown so the two read as a pair of distinct ideas rather
+     than one long green wall. */
+  .meetings-card-alt{
+    background: var(--secondary-brown);
+  }
+
+  .meetings-card-header{
+    margin: 0 0 1.25rem;
+
+    color: var(--primary-pink);
+    font-size: var(--pc-sub-big-header);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .meetings-card-text{
+    margin: 0 0 1rem;
+
+    color: white;
+    font-size: var(--pc-regular-letter);
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: right;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  /* auto top margin parks the closing line on the card's bottom edge, so the
+     shorter card fills its stretched height instead of trailing empty space. */
+  .meetings-card-highlight{
+    margin: auto 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+    color: var(--primary-pink);
+    font-size: var(--pc-regular-letter);
+    font-weight: 500;
+    line-height: 1.7;
+    text-align: right;
+  }
+
+  .meetings-questions{
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .meetings-question{
+    margin-bottom: 0.6rem;
+    padding: 0.85rem 1.25rem;
+
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 1.5rem;
+
+    color: white;
+    font-size: var(--pc-regular-letter);
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: right;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  .meetings-suitable{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .meetings-suitable-header{
+    margin: 0 0 1.25rem;
+
+    color: var(--primary-green);
+    font-size: var(--pc-sub-big-header);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .meetings-suitable-intro{
+    max-width: 52rem;
+    margin: 0 0 2.25rem;
+
+    color: var(--secondary-brown);
+    font-size: var(--pc-regular-letter);
+    font-weight: 400;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .meetings-suitable-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    width: 100%;
+    margin: 0 0 2.25rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .meetings-suitable-item{
+    display: flex;
+    align-items: center;
+
+    padding: 1.1rem 1.4rem;
+
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 1.5rem;
+
+    color: var(--secondary-brown);
+    font-size: var(--pc-regular-letter);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: right;
+
+    /* Small pink dot instead of a list bullet, which list-style:none removed. */
+    &::before{
+      content: '';
+      flex: none;
+      width: 0.6rem;
+      height: 0.6rem;
+      margin-left: 0.85rem;
+      border-radius: 50%;
+      background: var(--primary-pink);
+    }
+  }
+
+  .meetings-suitable-note{
+    max-width: 52rem;
+    margin: 0;
+
+    color: var(--primary-green);
+    font-size: var(--pc-regular-letter);
+    font-weight: 500;
+    line-height: 1.7;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  #meetings-section{
+    margin-bottom: 4rem;
+    padding: 0 1rem;
+  }
+
+  #meetings-section .meetings-header{
+    font-size: clamp(22px, 5vw, 34px);
+    margin-bottom: 2rem;
+  }
+
+  #meetings-section .meetings-cards{
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 4.5rem;
+  }
+
+  #meetings-section .meetings-card{
+    padding: 1.75rem 1.5rem;
+    border-radius: 2rem;
+  }
+
+  #meetings-section .meetings-card-header{
+    font-size: clamp(19px, 4.2vw, 26px);
+  }
+
+  #meetings-section .meetings-card-text,
+  #meetings-section .meetings-card-highlight,
+  #meetings-section .meetings-question{
+    font-size: clamp(15px, 2.9vw, 20px);
+  }
+
+  #meetings-section .meetings-suitable-header{
+    font-size: clamp(19px, 4.2vw, 26px);
+  }
+
+  #meetings-section .meetings-suitable-intro,
+  #meetings-section .meetings-suitable-item,
+  #meetings-section .meetings-suitable-note{
+    font-size: clamp(15px, 2.9vw, 20px);
+  }
+
+  #meetings-section .meetings-suitable-list{
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  #meetings-section .meetings-suitable-item{
+    padding: 0.95rem 1.15rem;
+    border-radius: 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  #meetings-section{
+    padding: 0 0.75rem;
+  }
+
+  #meetings-section .meetings-card{
+    padding: 1.5rem 1.15rem;
+    border-radius: 1.5rem;
+  }
+}

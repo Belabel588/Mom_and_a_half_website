@@ -1,6 +1,6 @@
 /* The hero is the one full-bleed band on the page: square corners, edge to edge,
    with the headline sitting on the photo at every screen size. The wrapper div
-   holds the About section too, so it needs an explicit width — the centering
+   holds the sub-headline band too, so it needs an explicit width — the centering
    layout would otherwise leave it to shrink-to-fit. */
 #hero-section{
   width: 100%;
@@ -21,6 +21,23 @@
   .hero-img-div{
     position: relative; // positioning context for the headline
     width: 100%;
+
+    /* Fixed ratio rather than a vh height. How much of the photo gets cropped
+       depends on the container's ratio against the source's (5394x3651, so
+       1.477:1) — with a vh height that ratio changes with every window shape,
+       and on a wide, short window the crop ate into the top of her head. At
+       1.85:1 exactly ~20% is cropped vertically, on every screen. */
+    aspect-ratio: 1.85 / 1;
+    height: auto;
+  }
+
+  /* Fills the img-div everywhere except portrait, where it stops short to
+     leave a band for the headline (see the portrait query at the end). */
+  .hero-img-frame{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
   .hero-img {
@@ -29,6 +46,11 @@
     object-fit: cover;
     border-radius: 0;
     filter: brightness(95%);
+
+    /* Hold the bottom of the frame so the mug and her hands stay in shot; the
+       ~20% that goes is ceiling and the top of the window. Not a flat 100% —
+       that would put the mug hard against the frame edge. */
+    object-position: center 92%;
   }
 
 
@@ -39,30 +61,108 @@
   }
 
 
+  /* The headline sits in a solid panel rather than as bare type on the photo:
+     loose text — whatever its colour — was competing with a busy, detailed
+     image. Deliberately compact, though. The photo is meant to carry the
+     screen; this is a caption on it, not a billboard over it. */
   .hero-section-text{
     position:absolute;
 
     direction: rtl;
 
-    color:rgba(255, 204, 204, 0.872);
-    font-size: var(--pc-main-header);
-    text-align:  right;
-    // Sits on the wall below the window; the narrower box keeps the right-hand
-    // (leading, in RTL) edge clear of her shoulder.
-    width:27%;
-    top:54%;
-    left:1.5%;
-    rotate:-5.5deg;
-    font-family: var(--Fredoka);
-    font-weight: 500;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-    text-decoration: none;
+    // Low on the wall to her side, clear of her figure and the flowers.
+    left: 4%;
+    /* Offset from the image's top in vh, not from its bottom: the image's
+       height now follows its aspect ratio (so it tracks window *width*), and
+       anything measured off its bottom edge drifts below the fold on some
+       window shapes. Measured from the top, the panel starts at 26vh + 48vh =
+       74vh down the viewport whatever the window — which leaves room for its
+       tallest rendering (~165px, on a wide window where the type hits its
+       clamp ceiling) to still clear a short one. */
+    top: 48vh;
+    bottom: auto;
+    // Narrow, so the headline stacks into a taller block rather than a wide band.
+    width: 24%;
+    max-width: 21rem;
 
-    // Stable box for the floating headline so it keeps its shape over the photo.
-    aspect-ratio: 4 / 1;
-    padding: 0.8rem 1rem;
+    // The extra top padding is what makes room for the ::before rule below.
+    padding: 2.1rem 1.75rem 1.7rem;
+
+    background: rgba(51, 102, 102, 0.92);
+    border-radius: 2rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+
+    /* Short pink rule above the headline — sized down to suit the smaller
+       panel. Sits on the leading (right, in RTL) edge here, and re-centres on
+       phones in the media query below. */
+    &::before{
+      content: '';
+      position: absolute;
+      top: 1.05rem;
+      right: 1.75rem;
+
+      width: 3rem;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--primary-pink);
+    }
   }
 
+  .hero-title{
+    margin: 0;
+    font-family: var(--Fredoka);
+    text-align: right;
+  }
+
+  .hero-title-main{
+    display: block;
+    margin-bottom: 0.4rem;
+
+    color: var(--primary-pink);
+    font-size: clamp(19px, 1.85vw, 29px);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .hero-title-sub{
+    display: block;
+
+    color: white;
+    font-size: clamp(15px, 1.45vw, 22px);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+}
+
+/* The sub-headline band under the photo. Full-bleed like the hero itself, with
+   the text held to a readable measure in the middle. */
+.hero-lead{
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+
+  direction: rtl;
+}
+
+.hero-lead-text{
+  margin: 0;
+
+  color: var(--primary-green);
+  font-size: var(--pc-regular-big-letter);
+  font-weight: 500;
+  line-height: 1.7;
+  text-align: center;
+
+  /* Shared panel treatment — see the mixin in basics.scss. The closing line of
+     #issue-section-start uses the same one so the two read as a pair.
+     Included last on purpose: the mixin ends in nested rules, and Sass warns
+     about plain declarations that follow a nested rule. */
+  @include lead-callout;
 }
 
 /* Media queries come last on purpose: these override the floating-headline box
@@ -70,24 +170,42 @@
    The headline stays absolutely positioned on the photo at every size — it only
    takes a larger share of the frame and fluid type as the image gets smaller. */
 
+/* Tablets in landscape: a little more width for the panel, since the type
+   inside it stops shrinking once the clamp() hits its floor. Vertical
+   placement is inherited from the base rule's vh offset. */
 @media (max-width: 1200px) {
   .hero-section .hero-section-text {
-    width: 31%;
-    font-size: calc(var(--pc-main-header) * 0.9);
-    top: 55%;
-    left: 2%;
+    width: 30%;
+    left: 3%;
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .hero-section .hero-section-text::before {
+    right: 1.5rem;
   }
 }
 
 @media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
   /* Hold the first screen for the hero alone: the section reserves the viewport
-     minus the header, so the About card always starts below the fold. svh is the
-     toolbar-visible height, so this still holds when mobile chrome is showing. */
+     minus the header, so the sub-headline starts below the fold. svh is the
+     toolbar-visible height, so this still holds when mobile chrome is showing.
+     Keep the 8rem in step with #web-main-header's mobile min-height — when the
+     header grew and this did not, the hero ran past the bottom of the screen
+     and clipped the headline panel. */
   .hero-section {
-    min-height: calc(100vh - 4rem);
-    min-height: calc(100svh - 4rem);
+    min-height: calc(100vh - 8rem);
+    min-height: calc(100svh - 8rem);
     align-items: stretch;
     margin-bottom: 2rem;
+  }
+
+  /* The section's own min-height drives the height here, so hand the img-div
+     back to the flex stretch. Both of these must be cleared: the desktop rule
+     sets an aspect-ratio, which would otherwise keep sizing the box and defeat
+     the stretch that makes the hero fill the phone screen. */
+  .hero-section .hero-img-div {
+    aspect-ratio: auto;
+    height: auto;
   }
 
   .hero-section .hero-img {
@@ -98,36 +216,167 @@
     object-position: 62% center;
   }
 
-  /* Tablets held vertically keep enough wall beside her arm for the headline to
-     sit roughly where it does on desktop. */
+  /* The tall phone/tablet crop leaves no usable wall beside her, so the panel
+     centres near the bottom instead of tucking into a corner. The img-div is
+     flex-stretched here, not 92vh, so a plain % offset is safe. */
   .hero-section .hero-section-text {
-    width: 27%;
-    top: 42%;
-    left: 2%;
-    font-size: clamp(11px, 3.3vw, 30px);
-    padding: 0;
-    aspect-ratio: auto;
-    // A touch more shadow keeps the smaller type off the bright window behind it.
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+    left: 50%;
+    transform: translateX(-50%);
+    // Clears the desktop rule's top offset, which would otherwise win and
+    // stretch the panel between the two edges.
+    top: auto;
+    bottom: 5%;
+
+    width: min(72%, 21rem);
+    max-width: none;
+
+    padding: 1.85rem 1.35rem 1.25rem;
+    border-radius: 1.75rem;
   }
 
-  .hero-section .hero-section-text p {
-    margin: 0;
+  /* Centred here to match the centred text, which is the version this rule
+     was originally admired in. */
+  .hero-section .hero-section-text::before {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0.95rem;
+    width: 2.75rem;
+  }
+
+  .hero-section .hero-title {
+    text-align: center;
+  }
+
+  .hero-section .hero-title-main {
+    font-size: clamp(17px, 3.5vw, 25px);
+  }
+
+  .hero-section .hero-title-sub {
+    font-size: clamp(14px, 2.9vw, 19px);
+  }
+
+  .hero-lead{
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .hero-lead-text{
+    font-size: clamp(16px, 3vw, 22px);
   }
 }
 
-/* Phones crop the photo far tighter, leaving no usable wall beside her arm, so
-   the headline sits above her head instead — wider, and centred over her. */
+/* Phones: tighten the panel's own padding and corners so it doesn't eat the
+   frame. Placement is inherited from the query above. */
 @media (max-width: 600px) {
   .hero-section .hero-section-text {
-    // Narrow enough to wrap into a squarish block rather than a wide thin banner.
-    width: 38%;
-    top: 2%;
-    left: 33%;
-    text-align: center;
-    // Straight rather than tilted: the desktop tilt reads as a stray slant once
-    // the headline is a centred block above her head.
-    rotate: 0deg;
-    font-size: clamp(13px, 4.1vw, 26px);
+    width: min(78%, 19rem);
+    padding: 1.6rem 1.1rem 1.05rem;
+    border-radius: 1.5rem;
+  }
+
+  .hero-section .hero-section-text::before {
+    top: 0.8rem;
+    width: 2.5rem;
+  }
+}
+
+/* A phone held sideways has almost no height to work with, and the img-div was
+   being left at auto height — so the photo fell back to its natural aspect
+   ratio, rendered taller than the screen, and pushed the headline clean off
+   it. A definite height gives the image's own height:100% something to resolve
+   against and keeps the hero to a single screen. (Long-standing, and separate
+   from the portrait work below — it just showed up while testing it.) */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-section .hero-img-div{
+    height: calc(100vh - 8rem);
+    height: calc(100svh - 8rem);
+  }
+}
+
+/* Portrait only — phones and tablets held upright. Landscape is deliberately
+   excluded (the query above still governs a phone turned sideways), because
+   there the photo is short and wide and has no spare height to give up.
+
+   The mug sits at ~98% of the photo's height, so there is no room beneath it
+   inside the frame. To get the headline clear of her hand and the mug, the
+   photo stops short of the hero's foot and the panel takes the band below it.
+   The height that costs is taken off the TOP of the photo rather than by
+   shrinking her: the image is sized taller than its frame and anchored to the
+   bottom, so the frame's overflow clips the ceiling above her head. */
+@media (max-width: 1024px) and (orientation: portrait) {
+  /* Stacked rather than a fixed-height band: the panel's height changes with
+     the type clamps (it is ~90px on a phone but ~145px on an iPad), so any
+     fixed band that cleared it on one left a gap on the other. Letting the
+     frame flex and the panel take its natural height sizes the band exactly. */
+  .hero-section .hero-img-div{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-section .hero-img-frame{
+    flex: 1;
+    min-height: 0; // lets the frame shrink rather than overflow the section
+    height: auto;
+  }
+
+  .hero-section .hero-img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    /* Taller than its frame and anchored to the bottom, so the overflow clips
+       the ceiling above her. 112% puts the cut just above her hairline, which
+       sits ~13% down the mobile photo; much more starts cutting her head. */
+    height: 112%;
+    /* The horizontal value pans the crop window across the photo. She sits
+       right of centre in the source, so panning the window right of centre is
+       what actually lands her in the middle of a portrait frame — plain
+       `center` left her hard against the right edge. This value is for phones;
+       tablets need their own, below. */
+    object-position: 74% bottom;
+  }
+
+  .hero-section .hero-section-text{
+    /* relative, not static: the ::before rule is positioned against this box,
+       and going fully static would hand it to .hero-img-div instead. */
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    transform: none;
+
+    align-self: center;
+    margin: 0.9rem 0 0;
+  }
+}
+
+/* A tablet's portrait frame is far wider than a phone's, so it crops much less
+   off the sides — and the phone's pan value, applied here, would leave her
+   sitting right of centre again. Panning further right compensates. */
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  .hero-section .hero-img{
+    object-position: 95% bottom;
+  }
+
+  /* The phone's panel width (capped at 21rem) reads as a small tile stranded
+     under a wide photo here. Taking most of the width — but stopping short of
+     the edges — keeps it tied to the image above it. The rem cap only bites on
+     the largest tablets, so the panel never runs to an unreadable measure. */
+  .hero-section .hero-section-text{
+    width: min(86%, 52rem);
+    padding: 1.9rem 2.25rem 1.6rem;
+  }
+
+  /* Scaled up to match: at the phone sizes the type looked lost in a panel
+     this wide. */
+  .hero-section .hero-title-main{
+    font-size: clamp(24px, 3.4vw, 34px);
+  }
+
+  .hero-section .hero-title-sub{
+    font-size: clamp(17px, 2.4vw, 24px);
   }
 }
