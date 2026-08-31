@@ -184,7 +184,9 @@
       flex: none;
       width: 0.6rem;
       height: 0.6rem;
-      margin-left: 0.85rem;
+      /* Logical, so the dot keeps its gap on whichever side the text starts
+         from — the section flips to LTR in English. */
+      margin-inline-end: 0.85rem;
       border-radius: 50%;
       background: var(--primary-pink);
     }

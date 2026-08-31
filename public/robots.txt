@@ -1,0 +1,6 @@
+# Everything on this site is public and should be crawlable.
+User-agent: *
+Allow: /
+
+# ⚠️ Update this if the site moves to a custom domain (see the note in index.html).
+Sitemap: https://mom-and-a-half.onrender.com/sitemap.xml

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One entry only, on purpose: the app uses HashRouter, so every section is an
+     anchor on this single URL rather than a separate page a crawler can fetch.
+     ⚠️ Update the URL here if the site moves to a custom domain. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mom-and-a-half.onrender.com/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

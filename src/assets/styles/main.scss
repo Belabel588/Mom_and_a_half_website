@@ -54,6 +54,11 @@
 @import './cmps/Testimonials.scss';
 @import './cmps/Contact.scss';
 
+/* Cross-cutting: these come last so their overrides outrank the components.
+   Extensionless because both are partials (_lang.scss / _accessibility.scss). */
+@import './lang';
+@import './accessibility';
+
 
 /*mq*/
 // @import './mq.scss';

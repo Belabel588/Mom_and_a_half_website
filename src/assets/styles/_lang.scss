@@ -1,0 +1,107 @@
+/* English overrides.
+   The site is authored Hebrew-first: an LTR root with `direction: rtl` set on
+   each section. Switching languages therefore means unwinding those per-section
+   rules rather than flipping the root, which would also reverse the header nav
+   and swap the About and Issue photos to the wrong sides.
+
+   Every selector below repeats the full path of the rule it overrides and adds
+   the html[data-lang] attribute on top, so it always outranks the original. An
+   abbreviated selector here silently loses to the id-prefixed originals. */
+
+html[data-lang="en"] {
+
+  /* ── direction ─────────────────────────────────────────────────────────── */
+  #issue-section-start,
+  #meetings-section,
+  #testimonials-section,
+  #contact-section,
+  .hero-lead,
+  .hero-section .hero-section-text,
+  .app-header-mobile-nav .app-header-mobile-link,
+  #about-section .about-section-container .about-section-text .about-section-text-header,
+  #about-section .about-section-container .about-section-text .about-section-text-body,
+  #issue-section .issue-section-texts .issue-section-textbox,
+  #issue-section .issue-section-texts .issue-section-textbox-2 {
+    direction: ltr;
+  }
+
+  /* ── text alignment ────────────────────────────────────────────────────── */
+  .hero-section .hero-title,
+  #issue-section-start .issue-section-list-item,
+  #meetings-section .meetings-card-header,
+  #meetings-section .meetings-card-text,
+  #meetings-section .meetings-card-highlight,
+  #meetings-section .meetings-question,
+  #meetings-section .meetings-suitable-item,
+  #issue-section .issue-section-texts .issue-section-text,
+  #issue-section .issue-section-texts .issue-section-textbox-header,
+  #testimonials-section .testimonial-quote,
+  #testimonials-section .testimonial-author,
+  .contact-field {
+    text-align: left;
+  }
+
+  /* The hero's accent rule hugs the leading edge, which is the left in English. */
+  .hero-section .hero-section-text::before {
+    right: auto;
+    left: 1.75rem;
+  }
+
+  /* The decorative quote mark likewise sits on the side the quote starts from. */
+  #testimonials-section .testimonial-card::before {
+    content: '“';
+    right: auto;
+    left: 1.75rem;
+  }
+}
+
+/* Mobile and tablet-portrait keep the headline panel centred in both languages,
+   so only the phone-width offsets need mirroring. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  html[data-lang="en"] .hero-section .hero-section-text::before {
+    right: auto;
+    left: 50%;
+  }
+
+  html[data-lang="en"] #testimonials-section .testimonial-card::before {
+    right: auto;
+    left: 1.25rem;
+  }
+}
+
+/* ── The toggle itself ────────────────────────────────────────────────────── */
+.lang-toggle{
+  position: absolute;
+  top: 50%;
+  left: calc(1rem + env(safe-area-inset-left, 0px));
+  transform: translateY(-50%);
+  z-index: 31;
+
+  padding: 0.4rem 0.85rem;
+
+  background: transparent;
+  border: 2px solid var(--primary-green);
+  border-radius: 999px;
+
+  font-family: var(--Fredoka);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-green);
+  cursor: pointer;
+
+  transition: background 0.25s ease, color 0.25s ease;
+
+  &:hover{
+    background: var(--primary-green);
+    color: #fff;
+  }
+}
+
+/* On phones the hamburger owns the right edge, so the toggle keeps the left and
+   shrinks to stay clear of the logo. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  .lang-toggle{
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,324 @@
+/* ── Skip link ────────────────────────────────────────────────────────────── */
+/* Off-screen until focused, so a keyboard user's first Tab offers a jump past
+   the navigation instead of walking them through every link. */
+.skip-link{
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+
+  padding: 0.75rem 1.25rem;
+  background: var(--primary-green);
+  color: #fff;
+  border-radius: 0 0 0.75rem 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:focus{
+    top: 0;
+  }
+}
+
+/* A visible focus ring everywhere. The browser default disappears against the
+   green panels, which effectively hides keyboard position. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+  outline: 3px solid var(--secondary-brown);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Floating button ──────────────────────────────────────────────────────── */
+/* Mirrors the back-to-top logo, on the opposite corner so the two never collide. */
+.a11y-button{
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 60;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+
+  background: var(--primary-green);
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  svg{
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  &:hover{
+    transform: scale(1.08);
+    background: var(--secondary-brown);
+  }
+}
+
+/* ── Panel ────────────────────────────────────────────────────────────────── */
+.a11y-panel{
+  position: fixed;
+  bottom: 6rem;
+  left: 1.5rem;
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: min(19rem, calc(100vw - 3rem));
+  padding: 1.25rem;
+
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.a11y-panel-title{
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  text-align: center;
+}
+
+.a11y-text-size{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  padding: 0.4rem;
+  background: rgba(51, 102, 102, 0.08);
+  border-radius: 0.75rem;
+}
+
+.a11y-step{
+  min-width: 2.75rem;
+  padding: 0.5rem;
+
+  background: var(--primary-green);
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.a11y-step-readout{
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+.a11y-toggle{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.65rem 0.8rem;
+
+  background: rgba(51, 102, 102, 0.06);
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+
+  font-size: 0.95rem;
+  color: var(--primary-green);
+  cursor: pointer;
+  text-align: start;
+
+  &.is-on{
+    background: rgba(51, 102, 102, 0.16);
+    border-color: var(--primary-green);
+  }
+}
+
+.a11y-toggle-icon{
+  flex: none;
+  width: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.a11y-toggle-label{
+  flex: 1;
+  font-weight: 600;
+}
+
+.a11y-toggle-state{
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.a11y-reset{
+  margin-top: 0.35rem;
+  padding: 0.6rem;
+
+  background: var(--secondary-brown);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── The modes themselves ─────────────────────────────────────────────────── */
+
+/* Readable font: drops the decorative display face for a plain one, which also
+   carries a fuller Hebrew glyph set. */
+html[data-a11y-font] body,
+html[data-a11y-font] button,
+html[data-a11y-font] input,
+html[data-a11y-font] textarea{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+}
+
+/* Highlight links: underlines every link and boxes it, so links are not
+   distinguished by colour alone. */
+html[data-a11y-links] a{
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  outline: 2px solid var(--secondary-brown);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Stop animations: kills every transition and animation, and forces the
+   scroll-revealed sections visible so nothing is left stuck at opacity 0. */
+html[data-a11y-motion] *,
+html[data-a11y-motion] *::before,
+html[data-a11y-motion] *::after{
+  animation: none !important;
+  transition: none !important;
+}
+
+html[data-a11y-motion]{
+  scroll-behavior: auto !important;
+}
+
+html[data-a11y-motion] #about-section,
+html[data-a11y-motion] #issue-section,
+html[data-a11y-motion] #issue-section-start,
+html[data-a11y-motion] #meetings-section,
+html[data-a11y-motion] #testimonials-section,
+html[data-a11y-motion] #contact-section{
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* High contrast: a dark, high-contrast repaint. Photographs are left alone —
+   inverting them makes them unrecognisable rather than more readable. */
+html[data-a11y-contrast] body,
+html[data-a11y-contrast] .app-main-layout{
+  background: #000 !important;
+}
+
+html[data-a11y-contrast] #web-main-header,
+html[data-a11y-contrast] .app-header-mobile-nav{
+  background: #000 !important;
+  border-bottom: 2px solid #fff;
+}
+
+html[data-a11y-contrast] .issue-section-list-item,
+html[data-a11y-contrast] .meetings-suitable-item,
+html[data-a11y-contrast] .hero-lead-text,
+html[data-a11y-contrast] .issue-section-outro,
+html[data-a11y-contrast] .a11y-panel,
+html[data-a11y-contrast] .contact-section-form,
+html[data-a11y-contrast] .meetings-card,
+html[data-a11y-contrast] .testimonial-card,
+html[data-a11y-contrast] .about-section-text,
+html[data-a11y-contrast] .issue-section-textbox,
+html[data-a11y-contrast] .issue-section-textbox-2,
+html[data-a11y-contrast] .hero-section-text{
+  background: #000 !important;
+  border: 2px solid #fff !important;
+  box-shadow: none !important;
+}
+
+html[data-a11y-contrast] h1,
+html[data-a11y-contrast] h2,
+html[data-a11y-contrast] h3,
+html[data-a11y-contrast] p,
+html[data-a11y-contrast] li,
+html[data-a11y-contrast] label,
+html[data-a11y-contrast] span,
+html[data-a11y-contrast] blockquote{
+  color: #fff !important;
+}
+
+html[data-a11y-contrast] a,
+html[data-a11y-contrast] .hero-title-main,
+html[data-a11y-contrast] .a11y-panel-title{
+  color: #ffff00 !important;
+}
+
+html[data-a11y-contrast] button{
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+html[data-a11y-contrast] input,
+html[data-a11y-contrast] textarea{
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* ── Respect the OS setting ───────────────────────────────────────────────── */
+/* Someone who has already asked their system to reduce motion should not have
+   to find the panel to get the same result. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after{
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ── Right-hand corner on RTL ─────────────────────────────────────────────── */
+/* In Hebrew the back-to-top logo sits right, so the accessibility control stays
+   left. Mirrored for English so it never lands under the logo. */
+html[data-lang="en"] .a11y-button,
+html[data-lang="en"] .a11y-panel{
+  left: auto;
+  right: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .a11y-button{
+    bottom: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .a11y-panel{
+    bottom: 5rem;
+    left: 1rem;
+  }
+
+  html[data-lang="en"] .a11y-button{ left: auto; right: 1rem; }
+  html[data-lang="en"] .a11y-panel{ left: auto; right: 1rem; }
+}

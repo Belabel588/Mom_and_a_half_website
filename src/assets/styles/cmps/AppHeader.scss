@@ -17,8 +17,12 @@ justify-content: space-evenly;
      covers the Dynamic Island/notch specifically — without it, the logo can
      render partly behind the cutout instead of below it. */
   padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
+  /* The language toggle is absolutely positioned, so it takes no flow space and
+     the nav would run underneath it. Reserving room on BOTH sides keeps the
+     logo centred (space-evenly would otherwise shift it) while pulling the
+     links clear of the toggle. */
+  padding-left: calc(4.5rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(4.5rem + env(safe-area-inset-right, 0px));
   /* Square bottom edge so the bar meets the full-bleed hero flush, with no
      rounded notch letting the page background show through at the corners. */
   border-bottom-left-radius: 0;
@@ -74,6 +78,19 @@ justify-content: space-evenly;
    would otherwise shrink to the width of the logo alone. */
 .app-main-layout > header{
   width: 100%;
+}
+
+/* Between the mobile breakpoint and ~1200px there is just enough room for six
+   links, the logo and the toggle — but only with a tighter rhythm. English
+   labels are longer than the Hebrew, so this is where it binds first. */
+@media (max-width: 1200px) {
+  #web-main-header .app-header-main-nav{
+    gap: 1.2rem;
+  }
+
+  #web-main-header .app-header-main-nav .app-header-main-link{
+    font-size: 1.05rem;
+  }
 }
 
 /* Hamburger, dropdown panel and backdrop are all kept at this specificity so the

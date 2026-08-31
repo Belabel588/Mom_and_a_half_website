@@ -1,26 +1,108 @@
 <!doctype html>
-<html lang="en">
+<!-- lang="he" tells search engines the content is Hebrew, which is what gets it
+     surfaced to Hebrew-language searchers. Deliberately NO dir="rtl" here: the
+     stylesheets set `direction: rtl` per section against an LTR root, so making
+     the root RTL reverses the header nav and swaps the About and Issue photos
+     to the wrong sides. dir is presentational only and carries no SEO weight. -->
+<html lang="he">
 
 <head>
 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Both target search terms appear here on purpose: the brand ("אמא וחצי")
+       and her name ("שרית חלפון") are what people will actually type. -->
+  <title>אמא וחצי | שרית חלפון – הדרכת הורים בגובה העיניים</title>
+  <meta name="description"
+    content="שרית חלפון – אמא וחצי. הדרכת הורים בגובה העיניים, מתוך הקשבה, הבנה וללא שיפוטיות. ליווי הורים לילדים מגיל שנה ועד גיל בית הספר היסודי." />
+
+  <!-- ⚠️ SITE URL — this address is repeated in the canonical and og:url below,
+       and in public/robots.txt and public/sitemap.xml. If the site moves to a
+       custom domain, all five need updating together. -->
+  <link rel="canonical" href="https://mom-and-a-half.onrender.com/" />
+
   <link rel="icon" href="./images/logo-pink-nobcg.png">
 
-  <meta charset="UTF-8" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fredoka:wght@300..700&family=Heebo:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Varela+Round&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
   <!-- Without this, iOS Safari tints its own top/bottom chrome bars white/gray
        instead of the page's background, leaving a mismatched band around the
        Dynamic Island and home indicator even though the page itself already
        extends under them (viewport-fit=cover, above). White matches the
        AppHeader band that sits at the very top of the page. -->
   <meta name="theme-color" content="#ffffff" />
-  <title>אמא וחצי</title>
-  <link rel="stylesheet" href="/src/assets/styles/main.css">
+
+  <!-- Link previews (WhatsApp, Facebook, etc). These crawlers do not run
+       JavaScript, so without them a shared link shows nothing but a bare URL. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="אמא וחצי" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:title" content="אמא וחצי | שרית חלפון – הדרכת הורים בגובה העיניים" />
+  <meta property="og:description"
+    content="הדרכת הורים בגובה העיניים, מתוך הקשבה, הבנה וללא שיפוטיות — כדי להבין טוב יותר את הילדים שלכם ואת הדרך שמתאימה למשפחה שלכם." />
+  <meta property="og:url" content="https://mom-and-a-half.onrender.com/" />
+  <meta property="og:image" content="https://mom-and-a-half.onrender.com/images/logo-pink-nobcg.png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1000" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Structured data. This is the part that lets Google tie the brand name,
+       the person, and her social profiles together as one entity — which is
+       what a search for her name needs in order to resolve to this site.
+       Every claim here is taken from the page copy; nothing is invented. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mom-and-a-half.onrender.com/#sarit",
+        "name": "שרית חלפון",
+        "jobTitle": "יועצת חינוכית ומדריכת הורים",
+        "description": "בעלת תואר ראשון בחינוך ותואר שני בייעוץ חינוכי, עם לימודי תעודה בייעוץ משפחתי וזוגי באוניברסיטת בר-אילן. יועצת חינוכית בבית ספר ומדריכת הורים.",
+        "url": "https://mom-and-a-half.onrender.com/",
+        "image": "https://mom-and-a-half.onrender.com/images/About-img-1.jpg",
+        "sameAs": [
+          "https://www.instagram.com/sarit_halfon_",
+          "https://www.facebook.com/sarit.halfon3",
+          "https://www.tiktok.com/@sarit_halfon_"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://mom-and-a-half.onrender.com/#business",
+        "name": "אמא וחצי",
+        "alternateName": "אמא וחצי - שרית חלפון",
+        "description": "הדרכת הורים בגובה העיניים, מתוך הקשבה, הבנה וללא שיפוטיות. ליווי הורים לילדים מגיל שנה ועד גיל בית הספר היסודי.",
+        "serviceType": "הדרכת הורים",
+        "url": "https://mom-and-a-half.onrender.com/",
+        "image": "https://mom-and-a-half.onrender.com/images/logo-pink-nobcg.png",
+        "founder": { "@id": "https://mom-and-a-half.onrender.com/#sarit" },
+        "provider": { "@id": "https://mom-and-a-half.onrender.com/#sarit" },
+        "areaServed": { "@type": "Country", "name": "IL" },
+        "inLanguage": "he",
+        "sameAs": [
+          "https://www.instagram.com/sarit_halfon_",
+          "https://www.facebook.com/sarit.halfon3",
+          "https://www.tiktok.com/@sarit_halfon_"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mom-and-a-half.onrender.com/#website",
+        "name": "אמא וחצי",
+        "url": "https://mom-and-a-half.onrender.com/",
+        "inLanguage": "he",
+        "publisher": { "@id": "https://mom-and-a-half.onrender.com/#sarit" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
