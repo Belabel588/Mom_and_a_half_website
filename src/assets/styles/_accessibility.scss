@@ -334,3 +334,48 @@ html[data-a11y-contrast] textarea{
     width: min(17rem, calc(100vw - 1.5rem));
   }
 }
+
+/* ── Making the text control actually reach everything ────────────────────── */
+/* Most type scales because its clamp() bounds are in rem. The hero headline is
+   the exception on wide desktop: between roughly 1200px and 1570px the middle
+   `vw` term governs the clamp, and a viewport-relative length cannot respond to
+   root font-size at all. While scaling is on, drop to the rem ceiling so it
+   moves with the rest. Narrower screens already sit on the rem bounds. */
+@media (min-width: 1201px) {
+  html[data-a11y-text] .hero-section .hero-title-main{
+    font-size: 1.8125rem;
+  }
+
+  html[data-a11y-text] .hero-section .hero-title-sub{
+    font-size: 1.375rem;
+  }
+}
+
+/* The remaining fluid sizes. A clamp() whose middle `vw` term is active ignores
+   root font-size entirely, so scaling does nothing to it. Raising the root does
+   lift the rem floor, and in most bands the floor overtakes the vw term and the
+   text grows anyway — but in the bands below it does not, so those are pinned to
+   their rem ceiling while scaling is on. Bands were found by sweeping widths
+   from 360px to 1920px with scaling at maximum and recording what failed to
+   grow; re-run that sweep if these clamps are ever retuned. */
+@media (min-width: 520px) and (max-width: 700px) {
+  html[data-a11y-text] #issue-section-start .issue-section-header,
+  html[data-a11y-text] #meetings-section .meetings-header,
+  html[data-a11y-text] #testimonials-section .testimonials-header{
+    font-size: 2.125rem;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 900px) {
+  html[data-a11y-text] #issue-section .issue-section-texts .issue-section-textbox-header,
+  html[data-a11y-text] #issue-section .issue-section-texts .issue-section-text,
+  html[data-a11y-text] #issue-section .issue-section-texts .issue-section-text-2{
+    font-size: 1.375rem;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  html[data-a11y-text] .contact-section-header{
+    font-size: 2.375rem;
+  }
+}

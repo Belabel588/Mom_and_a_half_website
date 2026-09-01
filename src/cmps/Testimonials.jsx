@@ -1,12 +1,12 @@
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { useLanguage } from '../context/LanguageContext'
 
-/* ⚠️ The quotes are PLACEHOLDERS and live in src/i18n/content.js (testimonials
-   .items, in both languages). They are written as visible templates, not as
-   realistic invented reviews, on purpose: a fabricated recommendation presented
-   as a genuine one would mislead visitors. Swap each quote for a real parent's
-   words and each author for how they agreed to be credited. Add or remove
-   entries freely — the grid adapts to any count. */
+/* The quotes are real messages parents sent Sarit, and live in
+   src/i18n/content.js (testimonials.items, in both languages). Long ones are
+   trimmed but not reworded. Two things still need her input: whether each
+   writer is happy for their words to be public, and how they want to be
+   credited — the authors are currently described by context, not named.
+   Add or remove entries freely; the grid adapts to any count. */
 export function Testimonials() {
   const [ref, isVisible] = useRevealOnScroll()
   const { t } = useLanguage()

@@ -53,6 +53,15 @@ body {
   align-items: center;
 }
 
+/* Same reason as the header rule in AppHeader.scss: .app-main-layout centres its
+   children, so a child without an explicit width shrink-wraps to its content
+   rather than filling the page. Without this, enlarging the text via the
+   accessibility panel grew main past the viewport and produced a horizontal
+   scrollbar. */
+#main-content{
+  width: 100%;
+}
+
 /* Back-to-top control. Anchored to the bottom corner rather than the old
    top:80% — mid-screen it landed in the middle of a paragraph (the About text
    on mobile especially), and with a transparent PNG it read as damage to the

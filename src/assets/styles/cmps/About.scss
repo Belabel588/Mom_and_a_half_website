@@ -143,12 +143,12 @@ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
 
   #about-section .about-section-text-header{
-    font-size: clamp(20px, 4.5vw, 27px);
+    font-size: clamp(1.25rem, 4.5vw, 1.6875rem);
     text-align: center;
   }
 
   #about-section .about-section-text-body{
-    font-size: clamp(14px, 3.6vw, 17px);
+    font-size: clamp(0.875rem, 3.6vw, 1.0625rem);
     line-height: 1.7;
   }
 }

@@ -119,7 +119,7 @@
     margin-bottom: 0.4rem;
 
     color: var(--primary-pink);
-    font-size: clamp(19px, 1.85vw, 29px);
+    font-size: clamp(1.1875rem, 1.85vw, 1.8125rem);
     font-weight: 600;
     line-height: 1.25;
   }
@@ -128,7 +128,7 @@
     display: block;
 
     color: white;
-    font-size: clamp(15px, 1.45vw, 22px);
+    font-size: clamp(0.9375rem, 1.45vw, 1.375rem);
     font-weight: 400;
     line-height: 1.45;
   }
@@ -250,11 +250,11 @@
   }
 
   .hero-section .hero-title-main {
-    font-size: clamp(17px, 3.5vw, 25px);
+    font-size: clamp(1.0625rem, 3.5vw, 1.5625rem);
   }
 
   .hero-section .hero-title-sub {
-    font-size: clamp(14px, 2.9vw, 19px);
+    font-size: clamp(0.875rem, 2.9vw, 1.1875rem);
   }
 
   .hero-lead{
@@ -264,7 +264,7 @@
   }
 
   .hero-lead-text{
-    font-size: clamp(16px, 3vw, 22px);
+    font-size: clamp(1rem, 3vw, 1.375rem);
   }
 }
 
@@ -374,10 +374,10 @@
   /* Scaled up to match: at the phone sizes the type looked lost in a panel
      this wide. */
   .hero-section .hero-title-main{
-    font-size: clamp(24px, 3.4vw, 34px);
+    font-size: clamp(1.5rem, 3.4vw, 2.125rem);
   }
 
   .hero-section .hero-title-sub{
-    font-size: clamp(17px, 2.4vw, 24px);
+    font-size: clamp(1.0625rem, 2.4vw, 1.5rem);
   }
 }

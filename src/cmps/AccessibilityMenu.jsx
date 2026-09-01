@@ -42,6 +42,9 @@ export function AccessibilityMenu() {
       ? `${100 + settings.textStep * TEXT_STEP_PERCENT}%`
       : ''
 
+    // Flag for CSS that needs to react to scaling itself — some fluid clamp()
+    // sizes are governed by their vw term, which no root font-size can move.
+    root.toggleAttribute('data-a11y-text', settings.textStep > 0)
     root.toggleAttribute('data-a11y-contrast', settings.contrast)
     root.toggleAttribute('data-a11y-links', settings.links)
     root.toggleAttribute('data-a11y-font', settings.readableFont)

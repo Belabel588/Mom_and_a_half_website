@@ -4,7 +4,9 @@
 
    ⚠️ The English is a translation of Sarit's Hebrew copy, not copy she wrote
    herself. It should be read over by her before it goes in front of clients —
-   tone in marketing copy rarely survives translation untouched. */
+   tone in marketing copy rarely survives translation untouched. That applies
+   doubly to testimonials.items, where the English renders somebody else's
+   words. */
 
 export const LANGUAGES = ['he', 'en']
 
@@ -118,9 +120,26 @@ export const CONTENT = {
       header: 'מילים טובות',
       intro: 'הורים שליוויתי מספרים על הדרך שעשינו יחד.',
       items: [
-        { quote: 'כאן תופיע המלצה אמיתית של הורה שליוויתי — מה העסיק אותו לפני שהגיע, ומה השתנה בבית אחרי המפגשים.', author: 'שם ההורה' },
-        { quote: 'כאן תופיע המלצה נוספת — למשל על תחושת הביטחון שההורה קיבל, או על כלי מסוים שעזר לו ביומיום.', author: 'שם ההורה' },
-        { quote: 'כאן תופיע המלצה שלישית — משפט קצר ואישי עובד הכי טוב, כזה שהורה אחר יוכל להזדהות איתו.', author: 'שם ההורה' },
+        {
+          quote: 'היה ממש מלמד ואיכותי 🤍 תודה עליכן צוות מדהים ושרית כמרצה בחסד 🤍',
+          author: 'משתתפת בסדנה',
+        },
+        {
+          quote: 'תודה רבה על כל הסדנאות שהיו, נהניתי ממש והחכמתי. שניפגש רק בדברים טובים ❤️',
+          author: 'משתתפת בסדנאות',
+        },
+        {
+          quote: 'שמחנו מאוד להגיע כל שבוע וציפינו ליום חמישי למפגש. המסגרת הזו כל כך חשובה לנשים אחרי לידה — השיתוף, ההבנה, החברויות שנוצרות והתמיכה. ההנחיה של שרית כל כך מכילה ורגישה, וכל מפגש היה משמעותי מאוד עבורי.',
+          author: 'משתתפת במעגל אימהות',
+        },
+        {
+          quote: 'תודה רבה על ההשקעה שלך לאורך כל הדרך! זה נתן לנו אוויר, שינוי אווירה מרענן, וממש חיכינו למפגש מדי שבוע. זכינו שזו את — נעימה תמיד, אכפתית, מכילה ומיוחדת! ✨❤️',
+          author: 'אמא מהפעילות השבועית',
+        },
+        {
+          quote: 'שרית יקרה ❤️ תודה רבה על השיחה אתמול, כרגיל עזרת לנו מאוד ופתחת עבורנו אפיקי חשיבה נוספים.',
+          author: 'הורה בליווי אישי',
+        },
       ],
     },
 
@@ -271,9 +290,26 @@ export const CONTENT = {
       header: 'Kind words',
       intro: 'Parents I have worked with, on the journey we made together.',
       items: [
-        { quote: 'A real recommendation from a parent will appear here — what was on their mind before we started, and what changed at home afterwards.', author: 'Parent’s name' },
-        { quote: 'A second recommendation will appear here — for example about the confidence they gained, or a particular tool that helped day to day.', author: 'Parent’s name' },
-        { quote: 'A third recommendation will appear here — a short, personal sentence works best, one another parent can recognise themselves in.', author: 'Parent’s name' },
+        {
+          quote: 'It was genuinely instructive and of real quality 🤍 Thank you all, an amazing team, and Sarit — a truly gifted teacher 🤍',
+          author: 'Workshop participant',
+        },
+        {
+          quote: 'Thank you so much for all the workshops. I really enjoyed them and learned a great deal. May we only meet on happy occasions ❤️',
+          author: 'Workshop participant',
+        },
+        {
+          quote: 'We were so happy to come every week and looked forward to Thursday’s session. This kind of space matters so much for women after birth — the sharing, the understanding, the friendships that form, the support. Sarit’s facilitation is so containing and sensitive, and every session was deeply meaningful for me.',
+          author: 'Participant, mothers’ circle',
+        },
+        {
+          quote: 'Thank you so much for everything you put in along the way! It gave us air, a refreshing change of atmosphere, and we genuinely looked forward to the session each week. We were lucky it was you — always warm, caring, accepting and special! ✨❤️',
+          author: 'Mother, weekly parent-and-child group',
+        },
+        {
+          quote: 'Dear Sarit ❤️ thank you so much for the conversation yesterday. As always, you helped us a great deal and opened up new ways of thinking for us.',
+          author: 'Parent, individual guidance',
+        },
       ],
     },
 
