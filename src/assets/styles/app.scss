@@ -53,6 +53,23 @@ body {
   align-items: center;
 }
 
+/* Anchor landing positions.
+   Every section starts at translateY(32px) scale(0.97) until it scrolls into
+   view. A nav click scrolls to where the section sits *at that moment*, then the
+   reveal animates it upward — so it settles above where the browser aimed and
+   the heading ends up off-screen (measured 44-58px past the top, worst on the
+   tallest sections, because the scale error grows with height). scroll-margin
+   absorbs that and leaves the heading sitting comfortably below the top edge
+   rather than jammed against it. */
+#about-section,
+#issue-section,
+#issue-section-start,
+#meetings-section,
+#testimonials-section,
+#contact-section{
+  scroll-margin-top: 6rem;
+}
+
 /* Same reason as the header rule in AppHeader.scss: .app-main-layout centres its
    children, so a child without an explicit width shrink-wraps to its content
    rather than filling the page. Without this, enlarging the text via the
@@ -204,3 +221,129 @@ img{ max-width:100%; height:auto; display:block; }
 
  
 // }
+
+/* ── Credits ──────────────────────────────────────────────────────────────────
+   Both languages, always. Styled as a soft card with a short rule above it —
+   the same motif as the hero sub-headline and the "אולי הגעתם" closing line —
+   so it belongs to the design rather than reading as a tacked-on footer. */
+.site-credits{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  /* Deep bottom padding rather than side padding: it lifts the panel clear of
+     the fixed back-to-top button that occupies the bottom corner once the page
+     is scrolled to the end, without narrowing the text. */
+  padding: 3rem 1.25rem calc(6.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.site-credits-panel{
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+
+  max-width: 34rem;
+  padding: 1.6rem 2.25rem 1.15rem;
+
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 1.75rem;
+
+  /* The short rule the other soft panels carry, scaled down to suit. */
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2.25rem;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--secondary-brown);
+    opacity: 0.55;
+  }
+}
+
+.site-credits-line{
+  margin: 0;
+  text-align: center;
+
+  line-height: 1.7;
+}
+
+/* English leads and Hebrew follows a shade quieter, so the two read as one
+   block rather than competing. The names size off their own line via em, so
+   this hierarchy carries down to them without a second set of rules. */
+.site-credits-line-en{
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* Trimmed a little below the English line so the Hebrew names, which are the
+   smaller of the two sets, still come out larger than the roles beside them
+   rather than a pixel under. */
+.site-credits-line-he{
+  font-size: 0.7rem;
+  opacity: 0.82;
+}
+
+.site-credits-item{
+  white-space: nowrap;
+}
+
+/* The roles are the connective tissue; they stay small and recede. */
+.site-credits-role{
+  color: var(--secondary-brown);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* The names carry the emphasis through weight and the brand green alone — no
+   background. Sized in em off their own line, so the English/Hebrew hierarchy
+   set above flows down to them: the Hebrew names land at 0.72rem, exactly where
+   the English ones sat before English was promoted to the lead line. */
+.site-credits-name{
+  margin-inline-start: 0.35rem;
+
+  font-size: 1.15em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--primary-green);
+}
+
+.site-credits-line-he .site-credits-name{
+  font-size: 1.03em;
+}
+
+.site-credits-sep{
+  margin-inline: 0.6rem;
+  color: var(--secondary-brown);
+  opacity: 0.4;
+}
+
+@media (max-width: 600px) {
+  .site-credits{
+    padding: 2.25rem 1rem calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-credits-panel{
+    padding: 1.4rem 1.35rem 1rem;
+    border-radius: 1.5rem;
+  }
+
+  /* One credit per line here. Left inline, a narrow column breaks the role away
+     from the name it belongs to ("צילום ועריכת / תמונות: שי ג׳"), which reads as
+     two unrelated fragments — worst at the largest accessibility text step. */
+  .site-credits-item{
+    display: block;
+    white-space: normal;
+  }
+
+  /* The separator only makes sense between items sharing a line. */
+  .site-credits-sep{
+    display: none;
+  }
+}

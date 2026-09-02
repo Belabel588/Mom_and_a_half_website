@@ -85,7 +85,7 @@ export const CONTENT = {
         'קושי בהצבת גבולות',
         'התקפי זעם והתפרצויות',
         'התנגדויות ומאבקים ביומיום',
-        'קושי בשיתוף פעולה',
+        'שינויים ומעברים',
         'מריבות בין אחים ומתחים בבית',
         'התלבטויות סביב הדרך הנכונה להגיב',
         'תחושה שאתם רוצים להבין טוב יותר את הילד שלכם',
@@ -256,7 +256,7 @@ export const CONTENT = {
         'Difficulty setting boundaries',
         'Tantrums and outbursts',
         'Everyday resistance and power struggles',
-        'Difficulty co-operating',
+        'Changes and transitions',
         'Arguments between siblings and tension at home',
         'Uncertainty about the right way to respond',
         'A sense that you want to understand your child better',
@@ -349,5 +349,25 @@ export const CONTENT = {
       on: 'on',
       off: 'off',
     },
+  },
+}
+
+/* Credits render in both languages at once, whatever the toggle is set to — so
+   they sit outside CONTENT, which is keyed by the active language. Role and
+   name are separate so each can be styled on its own. */
+export const CREDITS = {
+  he: {
+    dir: 'rtl',
+    items: [
+      { role: 'פיתוח האתר:', name: 'אורי ח׳' },
+      { role: 'צילום ועריכת תמונות:', name: 'שי ג׳' },
+    ],
+  },
+  en: {
+    dir: 'ltr',
+    items: [
+      { role: 'Site by', name: 'Ori H.' },
+      { role: 'Photography by', name: 'Shay G.' },
+    ],
   },
 }

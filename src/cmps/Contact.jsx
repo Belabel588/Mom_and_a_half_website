@@ -34,6 +34,18 @@ const SOCIAL_LINKS = [
       </svg>
     ),
   },
+  {
+    name: 'YouTube',
+    /* Percent-encoded: the handle is Hebrew, and the raw form breaks once the
+       URL is copied into anything that is not a browser address bar. */
+    href: 'https://www.youtube.com/@%D7%A9%D7%A8%D7%99%D7%AA%D7%97%D7%9C%D7%A4%D7%95%D7%9F%D7%94%D7%93%D7%A8%D7%9B%D7%AA%D7%94%D7%95%D7%A8%D7%99%D7%9D',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
+        <rect x="2.5" y="5" width="19" height="14" rx="4.5" />
+        <path d="M10.5 9.2v5.6l4.6-2.8z" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
 ]
 
 const EMPTY_FORM = { firstName: '', lastName: '', email: '', phone: '', message: '' }
