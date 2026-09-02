@@ -315,8 +315,8 @@ img{ max-width:100%; height:auto; display:block; }
   }
 
   /* One credit per line here. Left inline, a narrow column breaks the role away
-     from the name it belongs to ("Photography by / Shay G."), which reads as two
-     unrelated fragments — worst at the largest accessibility text step. */
+     from the name it belongs to ("צילום ועריכת / תמונות: שי ג׳"), which reads as
+     two unrelated fragments — worst at the largest accessibility text step. */
   .site-credits-item{
     display: block;
     white-space: normal;

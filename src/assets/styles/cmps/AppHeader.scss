@@ -20,9 +20,11 @@ justify-content: space-evenly;
   /* The utility cluster (language + accessibility) is absolutely positioned, so
      it takes no flow space and the nav would run underneath it. Reserving room
      on BOTH sides keeps the logo centred (space-evenly would otherwise shift
-     it) while pulling the links clear of the cluster. */
-  padding-left: calc(9.5rem + env(safe-area-inset-left, 0px));
-  padding-right: calc(9.5rem + env(safe-area-inset-right, 0px));
+     it) while pulling the links clear of the cluster. 7.5rem measured against a
+     cluster that is only 95px wide and ends at x=111, so this leaves it 9px of
+     clearance — the rest of the old 9.5rem is spent on larger nav type. */
+  padding-left: calc(7.5rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(7.5rem + env(safe-area-inset-right, 0px));
   /* Square bottom edge so the bar meets the full-bleed hero flush, with no
      rounded notch letting the page background show through at the corners. */
   border-bottom-left-radius: 0;
@@ -53,14 +55,18 @@ justify-content: space-evenly;
 
 .app-header-main-nav{
   display:flex;
-  gap:2.5rem;
+  gap:2.1rem;
   // padding-right: 2.5rem;
   
 
 
   .app-header-main-link{
-    font-size:1.375rem;
+    font-size:1.85rem;
     font-weight: 600;
+    /* A category label breaking across two lines inside a single-height bar
+       reads as damage rather than as wrapping — the bands below shrink the type
+       instead, and the hamburger takes over under 900px. */
+    white-space: nowrap;
     text-decoration: none;
     color:var(--primary-green);
   }
@@ -80,6 +86,18 @@ justify-content: space-evenly;
   width: 100%;
 }
 
+/* 1440 is the commonest desktop width and sits at the bottom of the full-size
+   band, where the six links crowd the logo. One step down before the 1400 band. */
+@media (max-width: 1500px) {
+  #web-main-header .app-header-main-nav{
+    gap: 1.9rem;
+  }
+
+  #web-main-header .app-header-main-nav .app-header-main-link{
+    font-size: 1.65rem;
+  }
+}
+
 /* Between the mobile breakpoint and ~1400px there is just enough room for six
    links, the logo and the utility cluster — but only with a tighter rhythm.
    English labels are longer than the Hebrew, so this is where it binds first.
@@ -87,34 +105,37 @@ justify-content: space-evenly;
    otherwise getting the full-size nav and so the tightest clearance of all. */
 @media (max-width: 1400px) {
   #web-main-header .app-header-main-nav{
-    gap: 1.2rem;
+    gap: 1.05rem;
   }
 
   #web-main-header .app-header-main-nav .app-header-main-link{
-    font-size: 1.05rem;
+    font-size: 1.4rem;
   }
 }
 
 /* The last stretch before the hamburger takes over at 900px. */
 @media (max-width: 1100px) {
   #web-main-header .app-header-main-nav{
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 
   #web-main-header .app-header-main-nav .app-header-main-link{
-    font-size: 0.95rem;
+    font-size: 1.15rem;
   }
 }
 
 /* Under ~1000px the bar is carrying six links, the logo and the utility cluster
-   in very little width — the last notch before the hamburger takes over. */
+   in very little width — the last notch before the hamburger takes over at
+   900px. This band takes the smallest share of the size increase: at 901px the
+   links, the 166px logo and the cluster between them leave no slack at all, and
+   anything larger here has the links touching the logo. */
 @media (max-width: 1000px) {
   #web-main-header .app-header-main-nav{
-    gap: 0.55rem;
+    gap: 0.35rem;
   }
 
   #web-main-header .app-header-main-nav .app-header-main-link{
-    font-size: 0.88rem;
+    font-size: 0.92rem;
   }
 }
 
@@ -182,7 +203,7 @@ justify-content: space-evenly;
     padding: 0.85rem 0.5rem;
     border-radius: 0.5rem;
 
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-green);
     text-decoration: none;

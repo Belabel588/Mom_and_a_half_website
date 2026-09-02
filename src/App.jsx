@@ -1,7 +1,6 @@
 import { HashRouter as Router } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { LanguageProvider, useLanguage } from './context/LanguageContext'
-import { CREDITS } from './i18n/content'
 import { AppHeader } from './cmps/AppHeader'
 import { Hero } from './cmps/Hero'
 import { IssueStart } from './cmps/IssueStart'
@@ -63,15 +62,15 @@ function Page() {
             src="./images/nav-logo-pink.png"
             alt={t.nav.backToTop} />
         </a>
-        {/* English only, and shown regardless of the language toggle. Names are
-            first name plus a last initial, and the panel borrows the same
+        {/* Credits follow the language toggle like the rest of the copy. Names
+            are first name plus a last initial, and the panel borrows the same
             soft-card-with-a-rule motif the hero sub-headline uses, so it reads as
-            part of the design rather than a tacked-on footer. lang/dir are set
-            here because the document itself is Hebrew. */}
+            part of the design rather than a tacked-on footer. dir is set here
+            because the root stays LTR by design — see LanguageContext. */}
         <footer className="site-credits">
           <div className="site-credits-panel">
-            <p className="site-credits-line" lang="en" dir="ltr">
-              {CREDITS.map((item, i) => (
+            <p className="site-credits-line" dir={t.dir}>
+              {t.credits.map((item, i) => (
                 <span className="site-credits-item" key={item.name}>
                   {i > 0 && <span className="site-credits-sep" aria-hidden="true">•</span>}
                   <span className="site-credits-role">{item.role}</span>

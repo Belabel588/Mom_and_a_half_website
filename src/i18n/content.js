@@ -17,6 +17,12 @@ export const CONTENT = {
     label: 'עברית',
     switchTo: 'Switch to English',
 
+    /* Role and name are kept apart so the name can carry its own emphasis. */
+    credits: [
+      { role: 'פיתוח האתר:', name: 'אורי ח׳' },
+      { role: 'צילום ועריכת תמונות:', name: 'שי ג׳' },
+    ],
+
     nav: {
       about: 'קצת עליי',
       why: 'למה בחרתי',
@@ -185,6 +191,11 @@ export const CONTENT = {
     label: 'English',
     switchTo: 'מעבר לעברית',
 
+    credits: [
+      { role: 'Site by', name: 'Ori H.' },
+      { role: 'Photography by', name: 'Shay G.' },
+    ],
+
     /* Kept deliberately short — six English labels plus the logo and the utility
        cluster only fit the bar between 900 and 1200px if the labels stay tight.
        The longer phrasing lives in the section headings themselves. */
@@ -351,11 +362,3 @@ export const CONTENT = {
     },
   },
 }
-
-/* Credits are English-only, and render regardless of the language toggle — so
-   they sit outside CONTENT, which is keyed by the active language. Role and name
-   are separate so each can be styled on its own. */
-export const CREDITS = [
-  { role: 'Site by', name: 'Ori H.' },
-  { role: 'Photography by', name: 'Shay G.' },
-]
