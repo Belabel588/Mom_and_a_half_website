@@ -21,8 +21,8 @@ justify-content: space-evenly;
      it takes no flow space and the nav would run underneath it. Reserving room
      on BOTH sides keeps the logo centred (space-evenly would otherwise shift
      it) while pulling the links clear of the cluster. */
-  padding-left: calc(7rem + env(safe-area-inset-left, 0px));
-  padding-right: calc(7rem + env(safe-area-inset-right, 0px));
+  padding-left: calc(9.5rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(9.5rem + env(safe-area-inset-right, 0px));
   /* Square bottom edge so the bar meets the full-bleed hero flush, with no
      rounded notch letting the page background show through at the corners. */
   border-bottom-left-radius: 0;
@@ -80,10 +80,12 @@ justify-content: space-evenly;
   width: 100%;
 }
 
-/* Between the mobile breakpoint and ~1200px there is just enough room for six
-   links, the logo and the toggle — but only with a tighter rhythm. English
-   labels are longer than the Hebrew, so this is where it binds first. */
-@media (max-width: 1200px) {
+/* Between the mobile breakpoint and ~1400px there is just enough room for six
+   links, the logo and the utility cluster — but only with a tighter rhythm.
+   English labels are longer than the Hebrew, so this is where it binds first.
+   The ceiling covers tablet landscape (iPad Pro 12.9 is 1366 wide), which was
+   otherwise getting the full-size nav and so the tightest clearance of all. */
+@media (max-width: 1400px) {
   #web-main-header .app-header-main-nav{
     gap: 1.2rem;
   }
@@ -101,6 +103,18 @@ justify-content: space-evenly;
 
   #web-main-header .app-header-main-nav .app-header-main-link{
     font-size: 0.95rem;
+  }
+}
+
+/* Under ~1000px the bar is carrying six links, the logo and the utility cluster
+   in very little width — the last notch before the hamburger takes over. */
+@media (max-width: 1000px) {
+  #web-main-header .app-header-main-nav{
+    gap: 0.55rem;
+  }
+
+  #web-main-header .app-header-main-nav .app-header-main-link{
+    font-size: 0.88rem;
   }
 }
 

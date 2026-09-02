@@ -60,9 +60,12 @@
     list-style: none;
 
     /* Five lines across two columns leaves one on its own; letting the last
-       span the full row ends the block flush instead of with a hole beside it. */
+       span the full row ends the block flush instead of with a hole beside it.
+       Centred because it is then twice the width of its siblings, and
+       right-aligned text stranded the sentence against one edge. */
     > li:last-child{
       grid-column: 1 / -1;
+      text-align: center;
     }
   }
 
@@ -128,6 +131,12 @@
     padding: 1.15rem 1.25rem;
     border-radius: 1.5rem;
     font-size: clamp(0.9375rem, 2.9vw, 1.25rem);
+  }
+
+  /* One column here, so the last card is no wider than its siblings and the
+     centring above would just look inconsistent. */
+  #issue-section-start .issue-section-list > li:last-child{
+    text-align: right;
   }
 
   #issue-section-start .issue-section-outro{
