@@ -352,22 +352,10 @@ export const CONTENT = {
   },
 }
 
-/* Credits render in both languages at once, whatever the toggle is set to — so
-   they sit outside CONTENT, which is keyed by the active language. Role and
-   name are separate so each can be styled on its own. */
-export const CREDITS = {
-  he: {
-    dir: 'rtl',
-    items: [
-      { role: 'פיתוח האתר:', name: 'אורי ח׳' },
-      { role: 'צילום ועריכת תמונות:', name: 'שי ג׳' },
-    ],
-  },
-  en: {
-    dir: 'ltr',
-    items: [
-      { role: 'Site by', name: 'Ori H.' },
-      { role: 'Photography by', name: 'Shay G.' },
-    ],
-  },
-}
+/* Credits are English-only, and render regardless of the language toggle — so
+   they sit outside CONTENT, which is keyed by the active language. Role and name
+   are separate so each can be styled on its own. */
+export const CREDITS = [
+  { role: 'Site by', name: 'Ori H.' },
+  { role: 'Photography by', name: 'Shay G.' },
+]

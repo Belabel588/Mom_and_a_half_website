@@ -223,7 +223,7 @@ img{ max-width:100%; height:auto; display:block; }
 // }
 
 /* ── Credits ──────────────────────────────────────────────────────────────────
-   Both languages, always. Styled as a soft card with a short rule above it —
+   Styled as a soft card with a short rule above it —
    the same motif as the hero sub-headline and the "אולי הגעתם" closing line —
    so it belongs to the design rather than reading as a tacked-on footer. */
 .site-credits{
@@ -243,7 +243,6 @@ img{ max-width:100%; height:auto; display:block; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
 
   max-width: 34rem;
   padding: 1.6rem 2.25rem 1.15rem;
@@ -270,24 +269,10 @@ img{ max-width:100%; height:auto; display:block; }
 .site-credits-line{
   margin: 0;
   text-align: center;
-
   line-height: 1.7;
-}
 
-/* English leads and Hebrew follows a shade quieter, so the two read as one
-   block rather than competing. The names size off their own line via em, so
-   this hierarchy carries down to them without a second set of rules. */
-.site-credits-line-en{
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-}
-
-/* Trimmed a little below the English line so the Hebrew names, which are the
-   smaller of the two sets, still come out larger than the roles beside them
-   rather than a pixel under. */
-.site-credits-line-he{
-  font-size: 0.7rem;
-  opacity: 0.82;
 }
 
 .site-credits-item{
@@ -302,9 +287,8 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* The names carry the emphasis through weight and the brand green alone — no
-   background. Sized in em off their own line, so the English/Hebrew hierarchy
-   set above flows down to them: the Hebrew names land at 0.72rem, exactly where
-   the English ones sat before English was promoted to the lead line. */
+   background. Sized in em off the line rather than in rem, so they keep their
+   ratio to the roles beside them whatever the line is set to. */
 .site-credits-name{
   margin-inline-start: 0.35rem;
 
@@ -312,10 +296,6 @@ img{ max-width:100%; height:auto; display:block; }
   font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--primary-green);
-}
-
-.site-credits-line-he .site-credits-name{
-  font-size: 1.03em;
 }
 
 .site-credits-sep{
@@ -335,8 +315,8 @@ img{ max-width:100%; height:auto; display:block; }
   }
 
   /* One credit per line here. Left inline, a narrow column breaks the role away
-     from the name it belongs to ("צילום ועריכת / תמונות: שי ג׳"), which reads as
-     two unrelated fragments — worst at the largest accessibility text step. */
+     from the name it belongs to ("Photography by / Shay G."), which reads as two
+     unrelated fragments — worst at the largest accessibility text step. */
   .site-credits-item{
     display: block;
     white-space: normal;
