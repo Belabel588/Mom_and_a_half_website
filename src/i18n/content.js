@@ -32,7 +32,7 @@ export const CONTENT = {
     nav: {
       about: 'קצת עליי',
       why: 'למה בחרתי',
-      parents: 'הורים מספרים',
+      parents: 'הגעתם כי',
       testimonials: 'מילים טובות',
       meetings: 'המפגשים',
       contact: 'צרו קשר',
