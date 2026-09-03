@@ -27,15 +27,6 @@ export const SOCIAL_LINKS = [
     ),
   },
   {
-    name: 'TikTok',
-    href: 'https://www.tiktok.com/@sarit_halfon_?is_from_webapp=1&sender_device=pc',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16.5 3c.3 1.9 1.6 3.4 3.5 3.8v2.8c-1.3 0-2.5-.4-3.5-1.1v6.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.05v2.9a2.7 2.7 0 1 0 1.9 2.6V3h2.8z" />
-      </svg>
-    ),
-  },
-  {
     name: 'YouTube',
     /* Percent-encoded: the handle is Hebrew, and the raw form breaks once the
        URL is copied into anything that is not a browser address bar. */
