@@ -46,6 +46,19 @@ html[data-lang="en"] {
     text-align: left;
   }
 
+  /* ── Issue section proportions ─────────────────────────────────────────── */
+  /* The English copy runs a good deal longer than the Hebrew, so at the shared
+     split the upper bubble grew tall enough to fill the photo on its own. A
+     wider text column takes the same words in fewer lines; the photo gives up
+     the difference, which it can afford since its height follows the column. */
+  #issue-section .issue-section-img{
+    flex-basis: 44%;
+  }
+
+  #issue-section .issue-section-texts{
+    flex-basis: 56%;
+  }
+
   /* The hero's accent rule hugs the leading edge, which is the left in English. */
   .hero-section .hero-section-text::before {
     right: auto;
