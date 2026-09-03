@@ -35,7 +35,7 @@ export const CONTENT = {
       parents: 'הורים מספרים',
       testimonials: 'מילים טובות',
       meetings: 'המפגשים',
-      contact: 'צור קשר',
+      contact: 'צרו קשר',
       openMenu: 'פתיחת תפריט',
       closeMenu: 'סגירת תפריט',
       logoAlt: 'אמא וחצי, שרית חלפון, הדרכת הורים',
