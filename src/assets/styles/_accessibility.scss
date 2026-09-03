@@ -37,7 +37,7 @@ textarea:focus-visible{
 .header-utilities{
   position: absolute;
   top: 50%;
-  left: calc(1rem + env(safe-area-inset-left, 0px));
+  left: calc(var(--header-edge) + env(safe-area-inset-left, 0px));
   transform: translateY(-50%);
   z-index: 40;
 
@@ -314,9 +314,12 @@ html[data-a11y-contrast] textarea{
    is pinned to the viewport edge rather than the cluster — anchored to the
    cluster it would hang off the side of a narrow screen. */
 @media (max-width: 600px) {
+  :root{
+    --header-edge: 0.6rem;
+  }
+
   .header-utilities{
     gap: 0.3rem;
-    left: calc(0.6rem + env(safe-area-inset-left, 0px));
   }
 
   .a11y-button{

@@ -28,7 +28,28 @@
   --primary-pink:rgb(255, 204, 204);
   
   
-  --secondary-brown: rgb(173,140, 133);
+  /* Darkened from rgb(173,140,133). The old value measured 3.06:1 against the
+     white cards it is used for body text on — under the 4.5:1 that normal-size
+     text needs, and it showed worst on phones. This is 4.9:1 on those cards and
+     still reads as the same warm brown. */
+  --secondary-brown: rgb(140, 105, 98);
+
+  //todo###################################### SPACING ##########################################
+
+  /* One value for the gap between every section, so the rhythm down the page is
+     even. Sections set margin-bottom only and let adjacent margins collapse —
+     mixing top and bottom margins is what made the old spacing uneven. */
+  --section-gap: 8rem;
+
+  /* Horizontal breathing room at the page edges. */
+  --page-gutter: 2rem;
+
+  /* How far the header's edge controls — the utility cluster on one side, the
+     hamburger on the other — sit from the screen edge. Shared so the two stay
+     symmetrical; the hamburger subtracts its own padding from it, since that
+     padding is inside the button and would otherwise push its bars further in
+     than the utility circles opposite. */
+  --header-edge: 1rem;
 
 
 

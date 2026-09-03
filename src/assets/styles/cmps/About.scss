@@ -4,8 +4,7 @@ width:100%;
 justify-content: center;
 
 
-margin-top: 8rem;
-margin-bottom: 8rem;
+margin-bottom: var(--section-gap);
 
 /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
    is-visible, not CSS animation-timeline:view() — that never actually
@@ -100,9 +99,9 @@ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
    border-radius shorthand and would otherwise leave the corners lopsided. */
 @media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
   #about-section{
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    padding: 0 1rem;
+    margin-top: 0;
+    margin-bottom: var(--section-gap);
+    padding: 0 var(--page-gutter);
   }
 
   #about-section .about-section-container{
@@ -155,7 +154,7 @@ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
 @media (max-width: 420px) {
   #about-section{
-    padding: 0 0.75rem;
+    padding: 0 var(--page-gutter);
   }
 
   #about-section .about-section-container{

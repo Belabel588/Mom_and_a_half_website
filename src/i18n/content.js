@@ -19,9 +19,15 @@ export const CONTENT = {
 
     /* Role and name are kept apart so the name can carry its own emphasis. */
     credits: [
-      { role: 'פיתוח האתר:', name: 'אורי ח׳' },
-      { role: 'צילום ועריכת תמונות:', name: 'שי ג׳' },
+      { role: 'פיתוח האתר:', name: 'אורי חלפון' },
+      { role: 'צילום ועריכת תמונות:', name: 'שי גבעולי' },
     ],
+
+    footer: {
+      tagline: 'ליווי להורות שמחה',
+      follow: 'עקבו אחריי',
+      rights: 'כל הזכויות שמורות לאמא וחצי, שרית חלפון',
+    },
 
     nav: {
       about: 'קצת עליי',
@@ -192,9 +198,15 @@ export const CONTENT = {
     switchTo: 'מעבר לעברית',
 
     credits: [
-      { role: 'Site by', name: 'Ori H.' },
-      { role: 'Photography by', name: 'Shay G.' },
+      { role: 'Site by', name: 'Ori Halfon' },
+      { role: 'Photography by', name: 'Shay Givoly' },
     ],
+
+    footer: {
+      tagline: 'Guidance towards a happier parenthood',
+      follow: 'Follow me',
+      rights: 'All rights reserved to Mom and a Half, Sarit Halfon',
+    },
 
     /* Kept deliberately short — six English labels plus the logo and the utility
        cluster only fit the bar between 900 and 1200px if the labels stay tight.

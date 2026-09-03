@@ -1,0 +1,154 @@
+/* ── Closing band ─────────────────────────────────────────────────────────────
+   Green, full-bleed, and deliberately the only thing below the contact form —
+   this is where visitors look for links and small print. It reuses the form's
+   green rather than introducing a colour, so the page closes on the same note
+   it makes its invitation in. No card treatment: the band itself is the shape,
+   and the site already leans hard on cards. */
+.site-footer{
+  width: 100%;
+  background: var(--primary-green);
+  color: var(--text-light);
+}
+
+/* Centred, with no logo or title: the badge already appears in the header, in
+   the contact panel and on the back-to-top control, and a fourth showing here
+   was one too many. The follow label and the icons carry this band alone. */
+.site-footer-inner{
+  display: flex;
+  justify-content: center;
+
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem var(--page-gutter) 2.25rem;
+}
+
+.site-footer-social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-footer-social-label{
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer-social-row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.site-footer-social-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+
+  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+
+  svg{
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  &:hover{
+    background: var(--primary-pink);
+    color: var(--primary-green);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible{
+    outline: 3px solid var(--primary-pink);
+    outline-offset: 3px;
+  }
+}
+
+/* A hairline rather than a second block of colour: it separates the small print
+   without making the band look like two stacked footers. */
+.site-footer-base{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem var(--page-gutter) 2rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+}
+
+.site-footer-rights,
+.site-footer-credits{
+  margin: 0;
+  line-height: 1.7;
+}
+
+.site-footer-rights{
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.site-footer-credits{
+  font-size: 0.8rem;
+}
+
+.site-footer-credit{
+  white-space: nowrap;
+}
+
+.site-footer-role{
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pink rather than white so the names read as the one deliberate accent in the
+   small print, without needing to be any larger. */
+.site-footer-name{
+  margin-inline-start: 0.35rem;
+  color: var(--primary-pink);
+  font-weight: 600;
+}
+
+.site-footer-sep{
+  margin-inline: 0.55rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Phones and vertically-held tablets: stack, centred. Same query the rest of
+   the site uses so a tablet held upright is treated as mobile throughout. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  .site-footer-inner{
+    padding-top: 2.5rem;
+  }
+
+  /* The fixed back-to-top button sits in this corner once the page is scrolled
+     to the end. In rem so the clearance grows with the text when the
+     accessibility control scales it up — at the largest step the credits were
+     landing underneath the button. */
+  .site-footer-base{
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* One credit per line, so a role never breaks away from its name. */
+  .site-footer-credit{
+    display: block;
+    white-space: normal;
+  }
+
+  .site-footer-sep{
+    display: none;
+  }
+}

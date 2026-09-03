@@ -12,6 +12,11 @@ html[data-lang="en"] {
 
   /* ── direction ─────────────────────────────────────────────────────────── */
   #issue-section-start,
+  /* The header sets `direction: rtl` on itself, which outranks the section rule
+     above it. Left as-is, the trailing ellipsis in "Maybe you came here because…"
+     is a bidi-neutral character at the end of an LTR run inside an RTL box, so
+     it was reordered to the visual left of the sentence. */
+  #issue-section-start .issue-section-header,
   #meetings-section,
   #testimonials-section,
   #contact-section,

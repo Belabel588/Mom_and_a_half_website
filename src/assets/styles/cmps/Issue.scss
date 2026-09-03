@@ -2,14 +2,18 @@
   display: flex;
   position: relative;
   justify-content: flex-start;
-  align-items: flex-start;
+  /* Stretch, not flex-start: the photo and the text column then always resolve
+     to the same height, so the lower bubble ends level with the foot of the
+     photo instead of hanging below it. In English the copy runs longer and the
+     pair of bubbles overflowed the photo by up to 324px. */
+  align-items: stretch;
 
 
-  margin-bottom: 8rem;
+  margin-bottom: var(--section-gap);
 
   width:80vw;
   height:fit-content;
-  margin-top: -3rem;
+  margin-top: 0;
 
   /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
      is-visible, not CSS animation-timeline:view() — that never actually
@@ -25,19 +29,23 @@
   }
 
 
+  /* The ratio lives on the frame rather than the image so it acts as the
+     photo's natural height while still letting the flex stretch above grow it
+     when the text column is the taller of the two. */
   .issue-section-img{
     flex: 0 1 50%;
     min-width: 0;
     padding-bottom: 2rem;
 
     display: flex;
+    aspect-ratio: 4 / 5;
   }
 
   /* Cropped taller than the source photo's native ~1:1 ratio so the frame
      reads as a portrait rather than a square next to the text column. */
   .issue-img{
     width:100%;
-    aspect-ratio: 4 / 5;
+    height:100%;
     border-radius: 6.25rem;
     object-fit: cover;
   }
@@ -57,8 +65,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    gap:5rem;
+    /* The column now fills the photo's height, so the space between the two
+       bubbles is whatever is left over rather than a fixed 5rem — which is what
+       used to push the lower one off the bottom once the copy grew. The gap
+       below is the floor, for when there is little slack to share. */
+    justify-content: space-between;
+    gap: 2rem;
 
     margin-left: -4rem;
     padding-top: 1rem;
@@ -150,7 +162,7 @@
 @media (max-width: 1200px) {
   #issue-section{
     width:90vw;
-    margin-top: -2rem;
+    margin-top: 0;
   }
   #issue-section .issue-section-texts{
     margin-left: -2.5rem;
@@ -166,7 +178,7 @@
     display:block;
     width:100%;
     margin-top: 0.5rem;
-    padding: 0 1rem;
+    padding: 0 var(--page-gutter);
   }
   #issue-section .issue-section-img{
     display: block;
@@ -207,7 +219,7 @@
 @media (max-width: 600px) {
   /* Phones: fluid type. Horizontal padding stays on #issue-section so the bubbles
      keep matching the photo's width instead of tucking in narrower than it. */
-  #issue-section{ width:100%; margin-bottom: 2rem; }
+  #issue-section{ width:100%; margin-bottom: var(--section-gap); }
   #issue-section .issue-section-texts .issue-section-textbox,
   #issue-section .issue-section-texts .issue-section-textbox-2{
     width: 100%;
@@ -222,7 +234,7 @@
 }
 
 @media (max-width: 420px) {
-  #issue-section{ padding: 0 0.75rem; }
+  #issue-section{ padding: 0 var(--page-gutter); }
   #issue-section .issue-img{ border-radius: 1.5rem; }
   #issue-section .issue-section-texts .issue-section-textbox,
   #issue-section .issue-section-texts .issue-section-textbox-2{

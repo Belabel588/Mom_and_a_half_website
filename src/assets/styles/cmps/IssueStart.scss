@@ -8,8 +8,8 @@
 
   width: 100%;
   max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 2rem;
+  margin: 0 auto var(--section-gap);
+  padding: 0 var(--page-gutter);
 
   /* Revealed via IntersectionObserver (see useRevealOnScroll) toggling
      is-visible, not CSS animation-timeline:view() — that never actually
@@ -82,13 +82,15 @@
 
     color: var(--secondary-brown);
     font-size: var(--pc-regular-letter);
-    font-weight: 400;
+    /* 500 rather than 400: paired with the darker brown this is what makes
+       these cards comfortable to read on a phone. */
+    font-weight: 500;
     line-height: 1.65;
     text-align: right;
   }
 
   .issue-section-outro{
-    margin: 0 0 8rem;
+    margin: 0;
 
     color: var(--primary-green);
     font-size: var(--pc-regular-big-letter);
@@ -109,7 +111,7 @@
    as mobile everywhere on the page rather than only in some sections. */
 @media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
   #issue-section-start{
-    padding: 0 1rem;
+    padding: 0 var(--page-gutter);
   }
 
   #issue-section-start .issue-section-header{
@@ -141,13 +143,12 @@
 
   #issue-section-start .issue-section-outro{
     font-size: clamp(1rem, 3vw, 1.3125rem);
-    margin-bottom: 4rem;
   }
 }
 
 @media (max-width: 420px) {
   #issue-section-start{
-    padding: 0 0.75rem;
+    padding: 0 var(--page-gutter);
   }
 
   #issue-section-start .issue-section-list-item{

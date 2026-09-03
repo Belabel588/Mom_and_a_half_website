@@ -9,8 +9,8 @@
   max-width: 78rem;
   // Generous top margin so the quotes read as a fresh beat rather than running
   // on from the "why I do this" section above them.
-  margin: 7rem auto 8rem;
-  padding: 0 2rem;
+  margin: 0 auto var(--section-gap);
+  padding: 0 var(--page-gutter);
 
   /* Revealed via IntersectionObserver (see useRevealOnScroll); see the note in
      IssueStart.scss for why this is not animation-timeline:view(). */
@@ -51,11 +51,11 @@
        wider cards keeps the measure readable and the heights close. With an odd
        count the last one simply sits alone on the final row. */
     grid-template-columns: 1fr 1fr;
-    /* Sized to their own content rather than stretched to a common height:
-       these quotes differ a lot in length, and equal heights left the shortest
-       card two thirds empty. A slightly ragged bottom edge reads better than
-       that. */
-    align-items: start;
+    /* Stretched to a common height per row. Sized to their own content the
+       pair in a row could differ by 76px, which read as a mistake rather than
+       as rhythm. The quote takes the slack (flex: 1 below) so the author line
+       and its rule sit on the card's floor, level across the row. */
+    align-items: stretch;
     gap: 1.75rem;
 
     width: 100%;
@@ -125,9 +125,9 @@
 
 @media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
   #testimonials-section{
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    padding: 0 1rem;
+    margin-top: 0;
+    margin-bottom: var(--section-gap);
+    padding: 0 var(--page-gutter);
   }
 
   #testimonials-section .testimonials-header{
@@ -168,7 +168,7 @@
 
 @media (max-width: 420px) {
   #testimonials-section{
-    padding: 0 0.75rem;
+    padding: 0 var(--page-gutter);
   }
 
   #testimonials-section .testimonial-card{

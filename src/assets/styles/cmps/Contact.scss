@@ -1,6 +1,7 @@
 #contact-section {
   width: 100%;
-  padding: 5rem 2rem;
+  margin-bottom: var(--section-gap);
+  padding: 0 var(--page-gutter);
   display: flex;
   justify-content: center;
 
@@ -21,7 +22,7 @@
 
   --primary-green: rgb(51, 102, 102);
   --primary-pink: rgb(255, 204, 204);
-  --secondary-brown: rgb(173, 140, 133);
+  --secondary-brown: rgb(140, 105, 98);
 
   --text-light: #ffffff;
   --text-dark: #1f2933;
@@ -143,41 +144,8 @@
   text-align: center;
 }
 
-/* SOCIAL LINKS */
-.contact-social-links {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
 
-.contact-social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-light);
-
-  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
-
-  svg {
-    width: 1.4rem;
-    height: 1.4rem;
-  }
-
-  &:hover {
-    background: var(--primary-pink);
-    color: var(--primary-green);
-    transform: scale(1.1);
-  }
-}
-
+/* BUTTON */
 .contact-submit-button {
   min-width: 240px;
   padding: 1rem 3rem;
@@ -234,7 +202,7 @@
    drop to a single column and ease off the padding. */
 @media (max-width: 700px) {
   #contact-section {
-    padding: 3rem 1.25rem;
+    padding: 0 var(--page-gutter);
   }
 
   .contact-section-form {

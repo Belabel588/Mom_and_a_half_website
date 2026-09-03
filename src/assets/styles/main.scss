@@ -53,6 +53,7 @@
 @import './cmps/About.scss';
 @import './cmps/Testimonials.scss';
 @import './cmps/Contact.scss';
+@import './cmps/Footer.scss';
 
 /* Cross-cutting: these come last so their overrides outrank the components.
    Extensionless because both are partials (_lang.scss / _accessibility.scss). */

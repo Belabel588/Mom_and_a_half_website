@@ -9,6 +9,7 @@ import { About } from './cmps/About'
 import { Issue } from './cmps/Issue'
 import { Testimonials } from './cmps/Testimonials'
 import { Contact } from './cmps/Contact'
+import { Footer } from './cmps/Footer'
 import './assets/styles/main.scss'
 
 /* Split out from App so it can call useLanguage — a component cannot consume a
@@ -57,29 +58,27 @@ function Page() {
         {/* The accessibility control lives in AppHeader, not here — see the
             utility cluster there. This back-to-top logo is the one thing that
             stays floating, since its whole job is to be reachable mid-page. */}
-        <a href="#web-main-header" aria-label={t.nav.backToTop}>
-          <img className={`logo-nav ${showNavLogo ? 'show' : ''}`}
-            src="./images/nav-logo-pink.png"
-            alt={t.nav.backToTop} />
+        <a className={`back-to-top ${showNavLogo ? 'is-shown' : ''}`}
+          href="#web-main-header" aria-label={t.nav.backToTop}>
+
+          {/* The logo alone never said what it did. The label spells it out on
+              hover and focus, and the arrow badge says it at a glance for
+              everyone else — without covering the badge itself, which is the
+              part that makes the control feel like part of the brand. */}
+          <span className="back-to-top-label" aria-hidden="true">{t.nav.backToTop}</span>
+
+          <span className="back-to-top-disc">
+            <img className="logo-nav" src="./images/nav-logo-pink.png" alt="" />
+            <span className="back-to-top-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 18V7" />
+                <path d="M6.5 12.5 12 7l5.5 5.5" />
+              </svg>
+            </span>
+          </span>
         </a>
-        {/* Credits follow the language toggle like the rest of the copy. Names
-            are first name plus a last initial, and the panel borrows the same
-            soft-card-with-a-rule motif the hero sub-headline uses, so it reads as
-            part of the design rather than a tacked-on footer. dir is set here
-            because the root stays LTR by design — see LanguageContext. */}
-        <footer className="site-credits">
-          <div className="site-credits-panel">
-            <p className="site-credits-line" dir={t.dir}>
-              {t.credits.map((item, i) => (
-                <span className="site-credits-item" key={item.name}>
-                  {i > 0 && <span className="site-credits-sep" aria-hidden="true">•</span>}
-                  <span className="site-credits-role">{item.role}</span>
-                  <span className="site-credits-name">{item.name}</span>
-                </span>
-              ))}
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </Router>
     </section >
   )

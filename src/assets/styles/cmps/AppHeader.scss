@@ -55,7 +55,7 @@ justify-content: space-evenly;
 
 .app-header-main-nav{
   display:flex;
-  gap:2.1rem;
+  gap:2.4rem;
   // padding-right: 2.5rem;
   
 
@@ -90,7 +90,7 @@ justify-content: space-evenly;
    band, where the six links crowd the logo. One step down before the 1400 band. */
 @media (max-width: 1500px) {
   #web-main-header .app-header-main-nav{
-    gap: 1.9rem;
+    gap: 2.1rem;
   }
 
   #web-main-header .app-header-main-nav .app-header-main-link{
@@ -105,7 +105,7 @@ justify-content: space-evenly;
    otherwise getting the full-size nav and so the tightest clearance of all. */
 @media (max-width: 1400px) {
   #web-main-header .app-header-main-nav{
-    gap: 1.05rem;
+    gap: 1.2rem;
   }
 
   #web-main-header .app-header-main-nav .app-header-main-link{
@@ -147,7 +147,10 @@ justify-content: space-evenly;
 
   position: absolute;
   top: 50%;
-  right: calc(1rem + env(safe-area-inset-right, 0px));
+  /* The 0.5rem padding below is inside the button, so anchoring it at a flat
+     --header-edge put the visible bars half a rem further in than the utility
+     circles opposite them. Subtracting the padding lines the two up. */
+  right: calc(var(--header-edge) - 0.5rem + env(safe-area-inset-right, 0px));
   transform: translateY(-50%);
 
   flex-direction: column;

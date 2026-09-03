@@ -53,6 +53,22 @@ body {
   align-items: center;
 }
 
+/* Phones and vertically-held tablets get a tighter section rhythm and more room
+   at the edges than the desktop defaults — the same query the components use, so
+   a tablet held upright is treated as mobile throughout. */
+@media (max-width: 900px), (max-width: 1024px) and (orientation: portrait) {
+  :root{
+    --section-gap: 5rem;
+    --page-gutter: 2.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  :root{
+    --page-gutter: 2rem;
+  }
+}
+
 /* Anchor landing positions.
    Every section starts at translateY(32px) scale(0.97) until it scrolls into
    view. A nav click scrolls to where the section sits *at that moment*, then the
@@ -79,22 +95,52 @@ body {
   width: 100%;
 }
 
-/* Back-to-top control. Anchored to the bottom corner rather than the old
-   top:80% — mid-screen it landed in the middle of a paragraph (the About text
-   on mobile especially), and with a transparent PNG it read as damage to the
-   text rather than as a button floating above it.
+/* ── Back-to-top control ──────────────────────────────────────────────────────
+   Anchored to the bottom corner rather than the old top:80% — mid-screen it
+   landed in the middle of a paragraph (the About text on mobile especially),
+   and with a transparent PNG it read as damage to the text rather than as a
+   button floating above it.
 
-   `cover`, not `contain`: the source is 2000x933, a circular badge centred in a
-   wide, mostly transparent canvas. Contain fits that whole width into the
-   button, which shrinks the badge itself to under half the button and leaves a
-   broad white ring. Cover crops the empty sides away so the badge fills the
-   disc, and the white background then shows only as a thin rim around it. */
-.logo-nav{
+   The logo on its own gave no clue what it did. Rather than replace it with a
+   plain arrow — which would throw away the idea that the brand mark carries you
+   home — the badge keeps the disc and adds two hints: a small pink arrow chip
+   tucked on its upper edge, and a label that slides out on hover and focus. */
+.back-to-top{
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 55;
 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  text-decoration: none;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+
+  &.is-shown{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.back-to-top-disc{
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* `cover`, not `contain`: the source is 2000x933, a circular badge centred in a
+   wide, mostly transparent canvas. Contain fits that whole width into the
+   button, which shrinks the badge itself to under half the button and leaves a
+   broad white ring. Cover crops the empty sides away so the badge fills the
+   disc, and the white background then shows only as a thin rim around it. */
+.logo-nav{
+  display: block;
   width: 3.5rem;
   height: 3.5rem;
   padding: 0;
@@ -104,19 +150,96 @@ body {
   border-radius: 50%;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   object-fit: cover;
+}
 
-  visibility: hidden;
+/* Pink on green, the same pairing the hero headline uses. */
+.back-to-top-arrow{
+  position: absolute;
+  /* Resting on the very tip of the disc — high enough to stay clear of the
+     character's bun, which is what makes the button read as the brand mark, but
+     touching the circle so the two still read as one control. */
+  bottom: calc(100% - 0.55rem);
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background: var(--primary-green);
+  color: var(--primary-pink);
+  border: 2px solid #fff;
+  border-radius: 50%;
+
+  transition: transform 0.3s ease;
+
+  svg{
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+}
+
+/* Hidden by width rather than display so it can animate open, and so screen
+   readers get the accessible name from the link's aria-label either way. */
+.back-to-top-label{
+  overflow: hidden;
+  max-width: 0;
+  padding: 0.5rem 0;
+
+  background: var(--primary-green);
+  color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
   opacity: 0;
-  cursor: pointer;
-  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
 
-  &.show {
-    visibility: visible;
+  transition: max-width 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible{
+  .back-to-top-label{
+    max-width: 12rem;
+    padding: 0.5rem 0.95rem;
     opacity: 1;
   }
 
-  &:hover{
-    transform: scale(1.1);
+  .back-to-top-disc{
+    transform: translateY(-3px);
+  }
+
+  /* The arrow lifts off the disc a touch — the motion is the clearest signal of
+     the direction the control moves you in. */
+  .back-to-top-arrow{
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+.back-to-top:focus-visible{
+  outline: none;
+
+  .logo-nav{
+    outline: 3px solid var(--primary-green);
+    outline-offset: 3px;
+  }
+}
+
+/* Whoever asked for less motion gets the label and arrow, but no movement. */
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-disc,
+  .back-to-top-arrow{
+    transition: none;
+  }
+
+  .back-to-top:hover .back-to-top-disc,
+  .back-to-top:focus-visible .back-to-top-disc{
+    transform: none;
   }
 }
 
@@ -134,8 +257,11 @@ img{ max-width:100%; height:auto; display:block; }
 
 @media (max-width: 600px){
 /* A touch smaller and tighter into the corner, so it covers as little of the
-   text as a floating control can. */
-.logo-nav{ width: 3rem; height: 3rem; bottom: 1rem; right: 1rem; }
+   text as a floating control can. The label is a hover affordance and there is
+   no hover on a phone, so the arrow badge carries the meaning on its own. */
+.back-to-top{ bottom: 1rem; right: 1rem; }
+.logo-nav{ width: 3rem; height: 3rem; }
+.back-to-top-label{ display: none; }
 .mobile-nav{ width: 60vw; left:50%; transform: translateX(-50%); top: auto; bottom: 6%; }
 }
 
@@ -221,109 +347,3 @@ img{ max-width:100%; height:auto; display:block; }
 
  
 // }
-
-/* ── Credits ──────────────────────────────────────────────────────────────────
-   Styled as a soft card with a short rule above it —
-   the same motif as the hero sub-headline and the "אולי הגעתם" closing line —
-   so it belongs to the design rather than reading as a tacked-on footer. */
-.site-credits{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-
-  /* Deep bottom padding rather than side padding: it lifts the panel clear of
-     the fixed back-to-top button that occupies the bottom corner once the page
-     is scrolled to the end, without narrowing the text. */
-  padding: 3rem 1.25rem calc(6.5rem + env(safe-area-inset-bottom, 0px));
-}
-
-.site-credits-panel{
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  max-width: 34rem;
-  padding: 1.6rem 2.25rem 1.15rem;
-
-  background: rgba(255, 255, 255, 0.55);
-  border-radius: 1.75rem;
-
-  /* The short rule the other soft panels carry, scaled down to suit. */
-  &::before{
-    content: '';
-    position: absolute;
-    top: 0.85rem;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 2.25rem;
-    height: 3px;
-    border-radius: 2px;
-    background: var(--secondary-brown);
-    opacity: 0.55;
-  }
-}
-
-.site-credits-line{
-  margin: 0;
-  text-align: center;
-  line-height: 1.7;
-
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-}
-
-.site-credits-item{
-  white-space: nowrap;
-}
-
-/* The roles are the connective tissue; they stay small and recede. */
-.site-credits-role{
-  color: var(--secondary-brown);
-  font-weight: 400;
-  opacity: 0.85;
-}
-
-/* The names carry the emphasis through weight and the brand green alone — no
-   background. Sized in em off the line rather than in rem, so they keep their
-   ratio to the roles beside them whatever the line is set to. */
-.site-credits-name{
-  margin-inline-start: 0.35rem;
-
-  font-size: 1.15em;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--primary-green);
-}
-
-.site-credits-sep{
-  margin-inline: 0.6rem;
-  color: var(--secondary-brown);
-  opacity: 0.4;
-}
-
-@media (max-width: 600px) {
-  .site-credits{
-    padding: 2.25rem 1rem calc(6rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  .site-credits-panel{
-    padding: 1.4rem 1.35rem 1rem;
-    border-radius: 1.5rem;
-  }
-
-  /* One credit per line here. Left inline, a narrow column breaks the role away
-     from the name it belongs to ("צילום ועריכת / תמונות: שי ג׳"), which reads as
-     two unrelated fragments — worst at the largest accessibility text step. */
-  .site-credits-item{
-    display: block;
-    white-space: normal;
-  }
-
-  /* The separator only makes sense between items sharing a line. */
-  .site-credits-sep{
-    display: none;
-  }
-}

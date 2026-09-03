@@ -142,10 +142,10 @@
   justify-content: center;
 
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 var(--page-gutter);
   // Sits well clear of the headline panel above it rather than crowding it.
   margin-top: 5.5rem;
-  margin-bottom: 8rem;
+  margin-bottom: var(--section-gap);
 
   direction: rtl;
 }
@@ -258,9 +258,9 @@
   }
 
   .hero-lead{
-    padding: 0 1rem;
+    padding: 0 var(--page-gutter);
     margin-top: 3.5rem;
-    margin-bottom: 4.5rem;
+    margin-bottom: var(--section-gap);
   }
 
   .hero-lead-text{
@@ -272,9 +272,7 @@
    frame. Placement is inherited from the query above. */
 @media (max-width: 600px) {
   .hero-section .hero-section-text {
-    width: min(78%, 19rem);
-    padding: 1.6rem 1.1rem 1.05rem;
-    border-radius: 1.5rem;
+    padding: 1.5rem var(--page-gutter) 1.35rem;
   }
 
   .hero-section .hero-section-text::before {
@@ -290,6 +288,15 @@
    against and keeps the hero to a single screen. (Long-standing, and separate
    from the portrait work below — it just showed up while testing it.) */
 @media (max-width: 900px) and (orientation: landscape) {
+  /* Landscape keeps the panel, so restore the box the portrait rules above
+     flattened — these queries overlap on a phone turned sideways. */
+  .hero-section .hero-section-text{
+    width: min(72%, 21rem);
+    padding: 1.85rem 1.35rem 1.25rem;
+    border-radius: 1.75rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+  }
+
   .hero-section .hero-img-div{
     height: calc(100vh - 8rem);
     height: calc(100svh - 8rem);
@@ -316,30 +323,47 @@
     flex-direction: column;
   }
 
+  /* She stands at 63% across the photo, so centring her head means cropping the
+     left side away — and there is only enough photo left of frame to do that
+     while still filling it when the frame is clearly taller than it is wide.
+     Phones already are (~1.55:1); a tablet held upright is nearly square, so
+     this floor is what makes the crop possible there. Measured in vw rather
+     than vh on purpose: the frame's height then no longer depends on the
+     viewport height, so it cannot change when a mobile browser's toolbar
+     collapses — which is what made the photo shift while scrolling. */
   .hero-section .hero-img-frame{
     flex: 1;
-    min-height: 0; // lets the frame shrink rather than overflow the section
     height: auto;
+    min-height: 119vw;
   }
 
+  /* Focal-point crop, rather than object-fit's percentage positions. Those
+     shift as the amount being cropped changes with the frame, so one value
+     centred her on a phone and left her off-centre on a tablet. Sizing the
+     image by its height and sliding it by a percentage of its OWN width pins a
+     single point of the photo — her head, 62.8% across — to the frame's centre line, whatever
+     shape the frame is. */
   .hero-section .hero-img{
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 50%;
 
-    width: 100%;
-    /* Taller than its frame and anchored to the bottom, so the overflow clips
-       the ceiling above her. 112% puts the cut just above her hairline, which
-       sits ~13% down the mobile photo; much more starts cutting her head. */
-    height: 112%;
-    /* The horizontal value pans the crop window across the photo. She sits
-       right of centre in the source, so panning the window right of centre is
-       what actually lands her in the middle of a portrait frame — plain
-       `center` left her hard against the right edge. This value is for phones;
-       tablets need their own, below. */
-    object-position: 74% bottom;
+    /* Its natural shape, so the element's own box is the photo. */
+    width: auto;
+    max-width: none;
+    /* Anchored to the bottom, so this crops 7.4% off the ceiling. Her hair
+       starts 12.7% down, which leaves clear space above her head, and the mug
+       at 97.4% and the table below it stay in shot. */
+    height: 108%;
+
+    transform: translateX(-62.8%);
   }
 
+  /* Not a card here. In portrait the headline becomes a solid green band running
+     the full width under the photo — the page already leans hard on cards, and a
+     tile floating under a full-bleed photo was one more of them. Landscape
+     tablets and desktop keep the panel: there the headline sits *on* the photo,
+     where a band would have nothing to sit against. */
   .hero-section .hero-section-text{
     /* relative, not static: the ::before rule is positioned against this box,
        and going fully static would hand it to .hero-img-div instead. */
@@ -349,26 +373,28 @@
     bottom: auto;
     transform: none;
 
-    align-self: center;
-    margin: 0.9rem 0 0;
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    padding: 1.75rem var(--page-gutter) 1.6rem;
+
+    background: var(--primary-green);
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
-/* A tablet's portrait frame is far wider than a phone's, so it crops much less
-   off the sides — and the phone's pan value, applied here, would leave her
-   sitting right of centre again. Panning further right compensates. */
 @media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
-  .hero-section .hero-img{
-    object-position: 95% bottom;
-  }
-
   /* The phone's panel width (capped at 21rem) reads as a small tile stranded
      under a wide photo here. Taking most of the width — but stopping short of
      the edges — keeps it tied to the image above it. The rem cap only bites on
      the largest tablets, so the panel never runs to an unreadable measure. */
+  /* Width is the band's now — only the padding changes, to keep the longer
+     tablet measure off the edges. */
   .hero-section .hero-section-text{
-    width: min(86%, 52rem);
-    padding: 1.9rem 2.25rem 1.6rem;
+    padding: 2.1rem var(--page-gutter) 1.9rem;
   }
 
   /* Scaled up to match: at the phone sizes the type looked lost in a panel
